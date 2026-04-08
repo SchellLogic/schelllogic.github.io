@@ -264,7 +264,7 @@
     }
 
     .hero {
-      padding: 98px 0 54px;
+      padding: 104px 0 62px;
       position: relative;
     }
 
@@ -296,7 +296,7 @@
     }
 
     h1 {
-      font-size: clamp(3.2rem, 5vw, 5.8rem);
+      font-size: clamp(3.2rem, 5vw, 5.9rem);
       max-width: 11ch;
       color: #ffffff;
       text-shadow: 0 12px 34px rgba(0,0,0,0.22);
@@ -307,9 +307,7 @@
       color: #ffffff;
     }
 
-    h3, h4 {
-      color: #ffffff;
-    }
+    h3, h4 { color: #ffffff; }
 
     .lead {
       color: var(--muted);
@@ -325,8 +323,16 @@
       margin-top: 16px;
     }
 
+    .hero-subline {
+      margin-top: 14px;
+      color: #eff5ff;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
     .hero-formula-row {
-      margin: 26px 0 0;
+      margin: 28px 0 0;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -344,9 +350,15 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
-    .founder-note {
+    .hero-note-stack {
       margin-top: 24px;
+      display: grid;
+      gap: 14px;
       max-width: 64ch;
+    }
+
+    .founder-note,
+    .gentle-note {
       padding: 18px 20px;
       border-radius: 20px;
       border: 1px solid rgba(147, 182, 232, 0.14);
@@ -354,6 +366,20 @@
       color: var(--muted-2);
       font-size: 0.99rem;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .hero-soft-caption {
+      margin-top: 10px;
+      color: #b9cae3;
+      font-size: 0.92rem;
     }
 
     .hero-trustbar {
@@ -364,7 +390,7 @@
     }
 
     .trust-item {
-      padding: 18px 18px;
+      padding: 18px;
       border-radius: 20px;
       border: 1px solid rgba(147, 182, 232, 0.14);
       background: linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.03) 100%);
@@ -437,7 +463,7 @@
     }
 
     .hero-card-title {
-      font-size: 1.46rem;
+      font-size: 1.48rem;
       font-weight: 800;
       color: #ffffff;
       max-width: 18ch;
@@ -553,11 +579,11 @@
       color: #ffffff;
     }
 
-    section { padding: 60px 0; }
+    section { padding: 64px 0; }
 
     .section-head {
       max-width: 860px;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .grid-3, .grid-2 {
@@ -568,12 +594,12 @@
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
 
-    .feature, .module, .about-card, .contact-card, .quote-card, .story-card {
+    .feature, .module, .about-card, .contact-card, .quote-card, .story-card, .ethos-card {
       padding: 28px;
       background: linear-gradient(180deg, rgba(15,29,54,0.84) 0%, rgba(9,20,40,0.90) 100%);
     }
 
-    .feature h3, .module h3, .quote-card h2, .about-card h2, .story-card h2 {
+    .feature h3, .module h3, .quote-card h2, .about-card h2, .story-card h2, .ethos-card h2 {
       color: #ffffff;
     }
 
@@ -709,6 +735,25 @@
       border: 1px solid rgba(147, 182, 232, 0.12);
       background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
       color: #d7e5fb;
+    }
+
+    .ethos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .ethos-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ethos-card strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
     }
 
     .founder-section {
@@ -884,7 +929,8 @@
       .grid-2,
       .contact-wrap,
       .hero-trustbar,
-      .story-grid {
+      .story-grid,
+      .ethos-grid {
         grid-template-columns: 1fr;
       }
 
@@ -900,7 +946,7 @@
     @media (max-width: 640px) {
       .hero { padding-top: 42px; }
 
-      .feature, .module, .about-card, .contact-card, .hero-card, .highlight, .quote-card, .story-card {
+      .feature, .module, .about-card, .contact-card, .hero-card, .highlight, .quote-card, .story-card, .ethos-card {
         padding: 20px;
       }
 
@@ -958,6 +1004,10 @@
           <div class="eyebrow">Built by a financial controller & softwareudvikler</div>
           <h1>Det burde ikke være så svært</h1>
 
+          <p class="hero-subline">
+            Økonomi kræver ansvar. Systemer bør ikke gøre det tungere end nødvendigt.
+          </p>
+
           <p class="lead">
             SchellLogic er bygget til organisationer, der ønsker mere sammenhæng i økonomien — uden at blive trukket ind i tunge systemer, lange IT-forløb eller endnu flere manuelle mellemled.
           </p>
@@ -972,9 +1022,20 @@
             <span class="formula-chip">Klarere data = bedre beslutninger</span>
           </div>
 
-          <div class="founder-note">
-            Jeg bygger ikke bare software. Jeg bygger den løsning, jeg selv ville ønske fandtes, når økonomiarbejdet bliver tungt, fragmenteret og unødigt manuelt.
+          <div class="hero-note-stack">
+            <div class="founder-note">
+              Jeg bygger ikke bare software. Jeg bygger den løsning, jeg selv ville ønske fandtes, når økonomiarbejdet bliver tungt, fragmenteret og unødigt manuelt.
+            </div>
+            <div class="gentle-note">
+              Målet er ikke bare at effektivisere. Målet er at skabe mere ro, mere tillid og bedre rum til det arbejde, der faktisk betyder noget.
+            </div>
           </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#kontakt">Book en preview</a>
+            <a class="btn btn-secondary" href="#om">Læs mere om mig</a>
+          </div>
+          <div class="hero-soft-caption">Første skridt skal være enkelt, trygt og respektfuldt.</div>
 
           <div class="hero-trustbar">
             <div class="trust-item">
@@ -1019,9 +1080,7 @@
           </div>
 
           <div class="hero-quote">
-            <p>
-              “I have made this longer than usual because I have not had time to make it shorter.”
-            </p>
+            <p>“I have made this longer than usual because I have not had time to make it shorter.”</p>
             <cite>— Blaise Pascal</cite>
           </div>
 
@@ -1130,6 +1189,41 @@
             Mindre støj. Mere overblik. Mere tillid til processen.
           </p>
         </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Kernen</div>
+          <h2>Intelligent behøver ikke betyde koldt</h2>
+          <p class="lead">
+            Det kan også betyde ærligere. Klarere. Mere brugbart. Mere respektfuldt over for de mennesker, der skal leve med løsningen bagefter.
+          </p>
+        </div>
+
+        <div class="ethos-grid">
+          <article class="card ethos-card">
+            <strong>Ærlighed</strong>
+            <p class="muted">
+              Ikke flere store løfter end virkeligheden kan bære. Kun noget, der faktisk giver mening i praksis.
+            </p>
+          </article>
+
+          <article class="card ethos-card">
+            <strong>Troværdighed</strong>
+            <p class="muted">
+              En løsning bliver først værdifuld, når man kan stole på processen, tallene og intentionen bag.
+            </p>
+          </article>
+
+          <article class="card ethos-card">
+            <strong>Altruisme</strong>
+            <p class="muted">
+              Teknologi bør ikke kun optimere. Den bør også hjælpe mennesker med at arbejde med mere ro, værdighed og mening.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
