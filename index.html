@@ -337,13 +337,6 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
-    .hero-cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-
     .hero-trustbar {
       margin-top: 28px;
       display: grid;
@@ -430,220 +423,21 @@
       color: #ffffff;
     }
 
-    .saas-shell,
-    .saas-top,
-    .saas-login,
-    .saas-grid,
-    .saas-panel,
-    .saas-list,
-    .saas-list-row,
-    .saas-status,
-    .saas-footer,
-    .dashboard-grid,
-    .dashboard-card,
-    .dashboard-footer,
-    .mini {
+    .hero-card p,
+    .hero-card li,
+    .mini span,
+    .dashboard-card p,
+    .dashboard-footer p {
       position: relative;
       z-index: 1;
-    }
-
-    .saas-shell {
-      margin-top: 18px;
-      border-radius: 24px;
-      border: 1px solid rgba(154, 191, 240, 0.16);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.02) 100%);
-      overflow: hidden;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.04),
-        0 18px 34px rgba(3, 12, 28, 0.26);
-    }
-
-    .saas-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(154, 191, 240, 0.10);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .saas-dots {
-      display: flex;
-      gap: 7px;
-    }
-
-    .saas-dots span {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: rgba(220, 234, 255, 0.28);
-    }
-
-    .saas-badge {
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #9ec4ff;
-    }
-
-    .saas-login {
-      padding: 16px 18px;
-      border-bottom: 1px solid rgba(154, 191, 240, 0.10);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .saas-user {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .saas-user strong {
-      font-size: 0.98rem;
-      color: #ffffff;
-    }
-
-    .saas-user span {
-      font-size: 0.87rem;
-      color: #a9bdd9;
-    }
-
-    .saas-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(75, 157, 255, 0.12);
-      border: 1px solid rgba(132, 184, 255, 0.18);
-      color: #dce9ff;
-      font-size: 0.84rem;
-      font-weight: 700;
-    }
-
-    .saas-chip::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #7bc5ff;
-      box-shadow: 0 0 14px rgba(123, 197, 255, 0.7);
-    }
-
-    .saas-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 14px;
-      padding: 16px;
-    }
-
-    .saas-panel {
-      border-radius: 20px;
-      border: 1px solid rgba(154, 191, 240, 0.12);
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
-      padding: 16px;
-    }
-
-    .saas-label {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #94baf0;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .saas-panel h4 {
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-
-    .saas-metric {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #ffffff;
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .saas-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .saas-list-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(154, 191, 240, 0.10);
-      color: #dbe8fb;
-      font-size: 0.9rem;
-    }
-
-    .saas-list-row strong {
-      color: #ffffff;
-    }
-
-    .saas-status {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .saas-status-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(154, 191, 240, 0.10);
-      color: #cfe0f6;
-      font-size: 0.88rem;
-    }
-
-    .saas-status-pill {
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(81, 168, 255, 0.14);
-      border: 1px solid rgba(142, 192, 255, 0.16);
-      color: #e8f3ff;
-      font-size: 0.78rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .saas-footer {
-      padding: 0 16px 16px;
-    }
-
-    .saas-footer-card {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(61,129,255,0.14), rgba(61,129,255,0.06));
-      border: 1px solid rgba(152, 192, 240, 0.12);
-      color: #dce9ff;
-      font-size: 0.92rem;
-      font-weight: 700;
     }
 
     .dashboard-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
-      margin-top: 18px;
+      position: relative;
+      z-index: 1;
     }
 
     .dashboard-card {
@@ -681,6 +475,8 @@
       border-radius: 22px;
       border: 1px solid rgba(147, 182, 232, 0.14);
       background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.028) 100%);
+      position: relative;
+      z-index: 1;
     }
 
     .dashboard-footer h4 {
@@ -984,8 +780,7 @@
       .grid-3,
       .grid-2,
       .contact-wrap,
-      .hero-trustbar,
-      .saas-grid {
+      .hero-trustbar {
         grid-template-columns: 1fr;
       }
 
@@ -1057,7 +852,7 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Built by a financial controller & softwareudvikler</div>
-          <h1>Økonomistyring med omtanke og intellektuel ro</h1>
+          <h1>En mere intelligent vej til økonomistyring</h1>
           <p class="lead">
             SchellLogic samler budget, opfølgning, forecast og årsregnskab i én elegant løsning for NGO’er, fonde og organisationer, der ønsker mere overblik, mindre Excel-kaos og et stærkere økonomisk fundament.
           </p>
@@ -1067,11 +862,6 @@
 
           <div class="founder-note">
             Jeg bygger ikke bare software. Jeg bygger den løsning, jeg selv ville ønske fandtes, når økonomiarbejdet bliver tungt, fragmenteret og unødigt manuelt.
-          </div>
-
-          <div class="hero-cta-row">
-            <a class="btn btn-primary" href="#kontakt">Book en preview</a>
-            <a class="btn btn-secondary" href="#moduler">Se moduler</a>
           </div>
 
           <div class="hero-trustbar">
@@ -1093,88 +883,14 @@
         <div class="card hero-card">
           <div class="hero-card-header">
             <div>
-              <div class="hero-card-label">Platform preview</div>
+              <div class="hero-card-label">Founder preview</div>
               <div class="hero-card-title">Et mere eksklusivt alternativ til Excel-kaos</div>
             </div>
           </div>
 
-          <div class="saas-shell">
-            <div class="saas-top">
-              <div class="saas-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div class="saas-badge">Secure workspace preview</div>
-            </div>
-
-            <div class="saas-login">
-              <div class="saas-user">
-                <strong>SchellLogic Workspace</strong>
-                <span>Budget · Opfølgning · Forecast · Årsregnskab</span>
-              </div>
-              <div class="saas-chip">Preview mode aktiv</div>
-            </div>
-
-            <div class="saas-grid">
-              <div class="saas-panel">
-                <div class="saas-label">Overblik</div>
-                <h4>Samlet økonomiworkflow</h4>
-                <div class="saas-metric">4 moduler</div>
-                <p class="muted">
-                  Ét fælles flow fra planlægning til afslutning, så økonomiarbejdet opleves mere roligt, mere samlet og mere professionelt.
-                </p>
-
-                <div class="saas-list">
-                  <div class="saas-list-row">
-                    <span><strong>Budget</strong></span>
-                    <span>Klar struktur</span>
-                  </div>
-                  <div class="saas-list-row">
-                    <span><strong>Opfølgning</strong></span>
-                    <span>Mindre friktion</span>
-                  </div>
-                  <div class="saas-list-row">
-                    <span><strong>Forecast</strong></span>
-                    <span>Bedre overblik</span>
-                  </div>
-                  <div class="saas-list-row">
-                    <span><strong>Årsregnskab</strong></span>
-                    <span>Samme datagrundlag</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="saas-panel">
-                <div class="saas-label">Status</div>
-                <h4>Følelse af kontrol</h4>
-                <div class="saas-status">
-                  <div class="saas-status-row">
-                    <span>Datagrundlag</span>
-                    <span class="saas-status-pill">Samlet</span>
-                  </div>
-                  <div class="saas-status-row">
-                    <span>Manuelle mellemled</span>
-                    <span class="saas-status-pill">Reduceret</span>
-                  </div>
-                  <div class="saas-status-row">
-                    <span>Ledelsesoverblik</span>
-                    <span class="saas-status-pill">Styrket</span>
-                  </div>
-                  <div class="saas-status-row">
-                    <span>Første skridt</span>
-                    <span class="saas-status-pill">Trygt</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="saas-footer">
-              <div class="saas-footer-card">
-                Previewet er skabt for at give et roligt, eksklusivt og tydeligt første indtryk af platformen — uden pres og uden støj.
-              </div>
-            </div>
-          </div>
+          <p class="muted">
+            Mange organisationer har brug for mere professionaliseret økonomistyring, men ønsker hverken at blive låst i tunge systemer eller trukket ind i lange, dyre IT-forløb. SchellLogic er skabt som et mere intelligent alternativ: elegant, fokuseret og bygget til praksis.
+          </p>
 
           <div class="dashboard-grid">
             <div class="dashboard-card primary-glow">
@@ -1187,6 +903,28 @@
               <div class="small-label">Outcome</div>
               <strong>Mindre friktion</strong>
               <p class="muted">Færre manuelle mellemled, færre løse filer og mere tid til overblik og beslutninger.</p>
+            </div>
+          </div>
+
+          <ul class="checklist">
+            <li>Ét fælles datagrundlag i stedet for mange lokale regneark</li>
+            <li>Stærkere sammenhæng mellem planlægning, styring og afslutning</li>
+            <li>Skabt med forståelse for reelle økonomiarbejdsgange</li>
+            <li>Velegnet til organisationer med høje behov og begrænsede IT-budgetter</li>
+          </ul>
+
+          <div class="priority-note">
+            Du behøver ikke bruge millioner for at få en intelligent, gennemført og tillidsvækkende økonomiløsning.
+          </div>
+
+          <div class="hero-mini-grid">
+            <div class="mini">
+              <strong>4 kerneområder</strong>
+              <span class="muted">Budget, opfølgning, forecast og årsregnskab</span>
+            </div>
+            <div class="mini">
+              <strong>Founder-built</strong>
+              <span class="muted">Høj faglighed, tæt ejerskab og mere menneskelig kvalitet</span>
             </div>
           </div>
 
