@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SchellLogic</title>
+  <meta
+    name="description"
+    content="SchellLogic samler budget, opfølgning, forecast og årsregnskab i én intelligent løsning for NGO'er, fonde og organisationer, som ønsker mere overblik uden store IT-budgetter."
+  />
+  <style>
+    :root {
+      --bg: #050c17;
+      --bg-2: #081120;
+      --bg-3: #0c1b34;
+      --card: rgba(12, 22, 42, 0.78);
+      --card-strong: rgba(11, 22, 43, 0.92);
+      --text: #eef4ff;
+      --muted: #9db2cf;
+      --muted-2: #cbd9ec;
+      --primary: #63b3ff;
+      --primary-2: #2c7cff;
+      --primary-3: #dce8ff;
+      --line: rgba(145, 182, 236, 0.16);
+      --line-strong: rgba(170, 204, 255, 0.24);
+      --shadow: 0 26px 70px rgba(0, 0, 0, 0.36);
+      --shadow-strong: 0 40px 110px rgba(2, 8, 19, 0.62);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(59, 125, 255, 0.25), transparent 24%),
+        radial-gradient(circle at 85% 9%, rgba(91, 189, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 50% 20%, rgba(125, 87, 255, 0.09), transparent 26%),
+        linear-gradient(180deg, #040a14 0%, #07101d 28%, #09162a 62%, #0a1830 100%);
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 76px 76px;
+      pointer-events: none;
+      opacity: 0.18;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.82), transparent 96%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% -8%, rgba(111, 190, 255, 0.10), transparent 34%);
+      pointer-events: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background:
+        linear-gradient(180deg, rgba(6, 14, 28, 0.88) 0%, rgba(6, 14, 28, 0.74) 100%);
+      backdrop-filter: blur(22px) saturate(1.15);
+      -webkit-backdrop-filter: blur(22px) saturate(1.15);
+      border-bottom: 1px solid rgba(146, 183, 236, 0.12);
+      box-shadow:
+        0 10px 34px rgba(0,0,0,0.20),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+
+    .topbar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(110, 176, 255, 0.06) 24%,
+          rgba(110, 176, 255, 0.10) 50%,
+          rgba(110, 176, 255, 0.06) 76%,
+          transparent 100%
+        );
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .topbar::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(185, 218, 255, 0.28) 20%,
+        rgba(185, 218, 255, 0.44) 50%,
+        rgba(185, 218, 255, 0.28) 80%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+
+    .topbar-inner {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      position: relative;
+      padding: 8px 14px 8px 8px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(146, 183, 236, 0.10);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 10px 26px rgba(0,0,0,0.12);
+    }
+
+    .brand-wrap::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(90,160,255,0.16) 0%,
+        rgba(90,160,255,0.07) 42%,
+        transparent 72%
+      );
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .brand-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      flex-shrink: 0;
+      opacity: 0.96;
+      mix-blend-mode: screen;
+      filter:
+        drop-shadow(0 0 8px rgba(72,145,255,0.18))
+        drop-shadow(0 0 18px rgba(57,126,255,0.16))
+        drop-shadow(0 8px 18px rgba(0,0,0,0.20))
+        contrast(1.03)
+        saturate(1.03);
+      mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0.6) 80%, transparent 100%);
+      -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0.6) 80%, transparent 100%);
+      animation: topLogoFloat 5s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      font-size: 1.34rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    }
+
+    .brand small {
+      display: block;
+      font-size: 0.84rem;
+      color: #b9cae3;
+      font-weight: 700;
+      margin-top: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      font-size: 0.96rem;
+      color: #aec0dc;
+      font-weight: 700;
+      transition: 0.22s ease;
+    }
+
+    .nav a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 18px rgba(110, 176, 255, 0.18);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.22s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2d7dff 0%, #67c1ff 100%);
+      color: #04101e;
+      box-shadow:
+        0 18px 44px rgba(49, 133, 255, 0.30),
+        inset 0 1px 0 rgba(255,255,255,0.30);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 22px 50px rgba(49, 133, 255, 0.38),
+        inset 0 1px 0 rgba(255,255,255,0.34);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #f3f8ff;
+      border-color: rgba(131, 175, 241, 0.18);
+      backdrop-filter: blur(10px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(131, 175, 241, 0.30);
+    }
+
+    .hero {
+      padding: 92px 0 38px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 999px;
+      background: rgba(97, 169, 255, 0.10);
+      color: #d8e8ff;
+      font-size: 0.88rem;
+      font-weight: 800;
+      border: 1px solid rgba(137, 182, 255, 0.18);
+      margin-bottom: 16px;
+      box-shadow: 0 10px 24px rgba(20, 74, 157, 0.14);
+      backdrop-filter: blur(10px);
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0 0 12px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    h1 {
+      font-size: clamp(2.95rem, 5vw, 5.6rem);
+      max-width: 10.2ch;
+      color: #ffffff;
+      text-shadow: 0 12px 34px rgba(0,0,0,0.22);
+    }
+
+    h2 {
+      font-size: clamp(2.05rem, 3vw, 3.05rem);
+      color: #ffffff;
+    }
+
+    h3, h4 {
+      color: #ffffff;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.09rem;
+      max-width: 62ch;
+    }
+
+    .lead-strong {
+      color: #dce9ff;
+      font-size: 1.06rem;
+      font-weight: 700;
+      max-width: 60ch;
+      margin-top: 14px;
+    }
+
+    .founder-note {
+      margin-top: 20px;
+      max-width: 62ch;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(147, 182, 232, 0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.03) 100%);
+      color: var(--muted-2);
+      font-size: 0.98rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .hero-trustbar {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .trust-item {
+      padding: 16px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(147, 182, 232, 0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.03) 100%);
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .trust-item strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-card {
+      padding: 28px;
+      background:
+        linear-gradient(180deg, rgba(12, 25, 50, 0.94) 0%, rgba(9, 20, 40, 0.96) 100%);
+      box-shadow: var(--shadow-strong);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -36% auto auto -18%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(86, 169, 255, 0.20), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -70px -70px auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-card-header {
+      display: block;
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(150, 185, 235, 0.12);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 800;
+      color: #a9c9ff;
+      margin-bottom: 6px;
+    }
+
+    .hero-card-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .hero-card p,
+    .hero-card li,
+    .mini span,
+    .dashboard-card p,
+    .dashboard-footer p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dashboard-card {
+      border-radius: 22px;
+      padding: 18px;
+      border: 1px solid rgba(147, 182, 232, 0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.03) 100%);
+    }
+
+    .dashboard-card strong {
+      display: block;
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .dashboard-card .small-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9fc0ec;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .dashboard-card.primary-glow {
+      background: linear-gradient(180deg, rgba(58,128,255,0.18) 0%, rgba(30,84,205,0.10) 100%);
+      border-color: rgba(134, 184, 255, 0.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .dashboard-footer {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(147, 182, 232, 0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.028) 100%);
+      position: relative;
+      z-index: 1;
+    }
+
+    .dashboard-footer h4 {
+      font-size: 1.04rem;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .hero-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mini {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(147, 182, 232, 0.14);
+      border-radius: 20px;
+      padding: 18px;
+    }
+
+    .mini strong {
+      display: block;
+      font-size: 1.22rem;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    section { padding: 46px 0; }
+
+    .section-head {
+      max-width: 820px;
+      margin-bottom: 24px;
+    }
+
+    .grid-3, .grid-2 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .feature, .module, .about-card, .contact-card, .quote-card {
+      padding: 26px;
+      background: linear-gradient(180deg, rgba(15,29,54,0.84) 0%, rgba(9,20,40,0.90) 100%);
+    }
+
+    .feature h3, .module h3, .quote-card h2, .about-card h2 {
+      color: #ffffff;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      background: linear-gradient(135deg, rgba(78, 150, 255, 0.18) 0%, rgba(61, 119, 255, 0.24) 100%);
+      color: #e8f2ff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      margin-bottom: 14px;
+      box-shadow: 0 10px 22px rgba(26, 104, 229, 0.18);
+      border: 1px solid rgba(137, 182, 255, 0.14);
+    }
+
+    .muted { color: var(--muted); }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+    }
+
+    .checklist li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #71b5ff;
+      font-weight: 800;
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #1857ea 0%, #1e76ff 48%, #54bcff 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 34px;
+      box-shadow: 0 30px 78px rgba(18, 79, 177, 0.34);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .highlight::after {
+      content: "";
+      position: absolute;
+      inset: auto auto -80px -60px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .highlight h2 { margin-bottom: 10px; color: #ffffff; }
+
+    .highlight p {
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 0;
+      font-size: 1.08rem;
+      max-width: 72ch;
+    }
+
+    .founder-section {
+      position: relative;
+    }
+
+    .founder-badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(147, 182, 232, 0.14);
+      color: #dbe7fb;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .contact-shell {
+      padding: 8px;
+      border-radius: 36px;
+      background: linear-gradient(135deg, rgba(83,145,255,0.24) 0%, rgba(99,189,255,0.10) 45%, rgba(255,255,255,0.03) 100%);
+      box-shadow: 0 30px 80px rgba(7, 15, 31, 0.40);
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-lines p {
+      margin: 8px 0;
+      color: var(--muted);
+    }
+
+    .soft-note {
+      margin-top: 12px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(69,132,255,0.12) 0%, rgba(69,132,255,0.07) 100%);
+      border: 1px solid rgba(151, 186, 235, 0.18);
+      color: #dce9ff;
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .priority-note {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(60,121,255,0.13) 0%, rgba(47,125,255,0.08) 100%);
+      border: 1px solid rgba(153, 188, 236, 0.16);
+      color: #dce9ff;
+      font-weight: 700;
+    }
+
+    .contact-luxury-note {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(153, 188, 236, 0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.025) 100%);
+      color: var(--muted-2);
+      font-size: 0.96rem;
+    }
+
+    .contact-logo-wrap {
+      position: relative;
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 270px;
+      padding: 28px 16px 14px;
+      border-radius: 28px;
+      overflow: hidden;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 50% 48%, rgba(95, 165, 255, 0.15) 0%, rgba(95, 165, 255, 0.08) 22%, rgba(95, 165, 255, 0.02) 45%, transparent 72%),
+        linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%);
+      border: 1px solid rgba(151, 186, 235, 0.10);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.05),
+        inset 0 0 60px rgba(77, 139, 255, 0.05);
+    }
+
+    .contact-logo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -18%;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(86, 168, 255, 0.20) 0%, rgba(86, 168, 255, 0.09) 26%, rgba(86, 168, 255, 0.03) 46%, transparent 70%);
+      filter: blur(22px);
+      z-index: 0;
+      pointer-events: none;
+      animation: pulseGlow 6s ease-in-out infinite;
+    }
+
+    .contact-logo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      opacity: 0.65;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .contact-logo {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 390px);
+      max-height: 250px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      opacity: 0.97;
+      mix-blend-mode: screen;
+      filter:
+        drop-shadow(0 0 20px rgba(72,145,255,0.25))
+        drop-shadow(0 0 50px rgba(57,126,255,0.20))
+        drop-shadow(0 20px 50px rgba(0,0,0,0.35));
+      mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, transparent 100%);
+      -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, transparent 100%);
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+
+    .footer {
+      padding: 30px 0 46px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @keyframes topLogoFloat {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes logoFloat {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(0.98);
+        opacity: 0.72;
+      }
+      50% {
+        transform: scale(1.04);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0.98);
+        opacity: 0.72;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .contact-wrap,
+      .hero-trustbar {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-grid,
+      .hero-mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner { padding: 14px 0; }
+      h1 { max-width: none; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 42px; }
+
+      .feature, .module, .about-card, .contact-card, .hero-card, .highlight, .quote-card {
+        padding: 20px;
+      }
+
+      .contact-shell {
+        padding: 0;
+        background: none;
+        box-shadow: none;
+      }
+
+      .brand-logo {
+        width: 46px;
+        height: 46px;
+      }
+
+      .brand-wrap {
+        padding: 7px 12px 7px 7px;
+      }
+
+      .contact-logo-wrap {
+        min-height: 200px;
+        margin-top: 26px;
+        padding: 20px 10px 10px;
+      }
+
+      .contact-logo {
+        width: min(100%, 300px);
+        max-height: 190px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand-wrap">
+        <img src="logo.png" alt="SchellLogic logo" class="brand-logo" />
+        <div class="brand">
+          SchellLogic
+          <small>Budget, opfølgning, forecast og årsregnskab · One intelligent solution</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#udfordring">Udfordringen</a>
+        <a href="#moduler">Moduler</a>
+        <a href="#om">Om mig</a>
+        <a class="btn btn-primary" href="#kontakt">Book en uformel snak</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Built by a financial controller & softwareudvikler</div>
+          <h1>En mere intelligent vej til økonomistyring</h1>
+          <p class="lead">
+            SchellLogic samler budget, opfølgning, forecast og årsregnskab i én elegant løsning for NGO’er, fonde og organisationer, der ønsker mere overblik, mindre Excel-kaos og et stærkere økonomisk fundament.
+          </p>
+          <p class="lead-strong">
+            Ikke et tungt enterprise-projekt. Ikke endnu en halv løsning. Men en gennemtænkt platform bygget med økonomifaglig forståelse, teknisk præcision og menneskelig respekt.
+          </p>
+
+          <div class="founder-note">
+            Jeg bygger ikke bare software. Jeg bygger den løsning, jeg selv ville ønske fandtes, når økonomiarbejdet bliver tungt, fragmenteret og unødigt manuelt.
+          </div>
+
+          <div class="hero-trustbar">
+            <div class="trust-item">
+              <strong>Financial controller</strong>
+              Bygget med forståelse for økonomiens virkelighed.
+            </div>
+            <div class="trust-item">
+              <strong>Softwareudvikler</strong>
+              Designet og udviklet med samme tanke hele vejen igennem.
+            </div>
+            <div class="trust-item">
+              <strong>Founder-led</strong>
+              Direkte dialog, høj kvalitet og menneskelig tilgang.
+            </div>
+          </div>
+        </div>
+
+        <div class="card hero-card">
+          <div class="hero-card-header">
+            <div>
+              <div class="hero-card-label">Founder preview</div>
+              <div class="hero-card-title">Et mere eksklusivt alternativ til Excel-kaos</div>
+            </div>
+          </div>
+
+          <p class="muted">
+            Mange organisationer har brug for mere professionaliseret økonomistyring, men ønsker hverken at blive låst i tunge systemer eller trukket ind i lange, dyre IT-forløb. SchellLogic er skabt som et mere intelligent alternativ: elegant, fokuseret og bygget til praksis.
+          </p>
+
+          <div class="dashboard-grid">
+            <div class="dashboard-card primary-glow">
+              <div class="small-label">Value</div>
+              <strong>Én samlet platform</strong>
+              <p class="muted">Samme retning fra budget til afslutning, så økonomiarbejdet føles mere roligt og mere professionelt.</p>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="small-label">Outcome</div>
+              <strong>Mindre friktion</strong>
+              <p class="muted">Færre manuelle mellemled, færre løse filer og mere tid til overblik og beslutninger.</p>
+            </div>
+          </div>
+
+          <ul class="checklist">
+            <li>Ét fælles datagrundlag i stedet for mange lokale regneark</li>
+            <li>Stærkere sammenhæng mellem planlægning, styring og afslutning</li>
+            <li>Skabt med forståelse for reelle økonomiarbejdsgange</li>
+            <li>Velegnet til organisationer med høje behov og begrænsede IT-budgetter</li>
+          </ul>
+
+          <div class="priority-note">
+            Platformen udvikles løbende med fokus på reel praksis i økonomifunktioner — med ambitionen om at sætte en ny standard for klarhed, sammenhæng og kvalitet.
+          </div>
+
+          <div class="hero-mini-grid">
+            <div class="mini">
+              <strong>4 kerneområder</strong>
+              <span class="muted">Budget, opfølgning, forecast og årsregnskab</span>
+            </div>
+            <div class="mini">
+              <strong>Founder-built</strong>
+              <span class="muted">Høj faglighed, tæt ejerskab og mere menneskelig kvalitet</span>
+            </div>
+          </div>
+
+          <div class="dashboard-footer">
+            <h4>Bygget af Astrid Schell</h4>
+            <p class="muted">
+              Kombinationen af financial controller og softwareudvikler giver en løsning, der både forstår tallene, processerne og det menneskelige behov for klarhed, ro og tillid.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="udfordring">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Udfordringen</div>
+          <h2>Når økonomien er spredt, bliver selv gode mennesker fanget i tunge processer</h2>
+          <p class="lead">
+            I mange NGO’er, fonde og organisationer lever budget, forecast, opfølgning og afslutning stadig i separate filer og manuelle arbejdsgange. Det skaber friktion, usikkerhed og unødigt pres i en funktion, der i forvejen har nok ansvar.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card feature">
+            <div class="icon">01</div>
+            <h3>For mange versioner</h3>
+            <p class="muted">
+              Når økonomien lever i flere Excel-filer, bliver det svært at arbejde ud fra ét fælles billede af virkeligheden.
+            </p>
+          </article>
+
+          <article class="card feature">
+            <div class="icon">02</div>
+            <h3>For meget manuelt arbejde</h3>
+            <p class="muted">
+              Data flyttes, kontrolleres og samles igen. Det tager tid, øger fejlrisikoen og stjæler fokus fra analyse og ledelsesstøtte.
+            </p>
+          </article>
+
+          <article class="card feature">
+            <div class="icon">03</div>
+            <h3>For lidt ro i processen</h3>
+            <p class="muted">
+              Når systemer og arbejdsgange ikke hænger sammen, bliver økonomistyring mere tung end den behøver at være.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="highlight">
+          <h2>Man behøver ikke vælge mellem menneskelighed og høj kvalitet</h2>
+          <p>
+            SchellLogic er skabt til organisationer, der ønsker mere struktur, mere sammenhæng og mere professionelt overblik — men som samtidig ønsker en løsning, der er realistisk, elegant og bygget med respekt for deres virkelighed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="moduler">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Platformens moduler</div>
+          <h2>Tre moduler. Ét fælles fundament. Et langt mere roligt workflow.</h2>
+          <p class="lead">
+            Platformen er bygget, så planlægning, styring og afslutning hænger naturligt sammen. Det giver bedre datakvalitet, færre brud i processen og en mere professionel oplevelse for hele økonomifunktionen.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card module">
+            <div class="icon">A</div>
+            <h3>Planlægning</h3>
+            <p class="muted">
+              Saml budget og budgetgrundlag ét sted, så planlægningen bliver mere struktureret, mere gennemskuelig og lettere at arbejde videre med.
+            </p>
+            <ul class="checklist">
+              <li>Budget på tværs af afdelinger og aktiviteter</li>
+              <li>Stærkere struktur i budgetgrundlaget</li>
+              <li>Bedre udgangspunkt for hele økonomiåret</li>
+            </ul>
+          </article>
+
+          <article class="card module">
+            <div class="icon">B</div>
+            <h3>Styring</h3>
+            <p class="muted">
+              Følg udviklingen med opfølgning og forecast, så økonomien aktivt kan bruges til at forstå, prioritere og reagere.
+            </p>
+            <ul class="checklist">
+              <li>Actual vs. budget med højere klarhed</li>
+              <li>Forecast med bedre sammenhæng</li>
+              <li>Stærkere beslutningsgrundlag for ledelsen</li>
+            </ul>
+          </article>
+
+          <article class="card module">
+            <div class="icon">C</div>
+            <h3>Afslutning</h3>
+            <p class="muted">
+              Brug samme datagrundlag videre i årsregnskab og rapportering, så afslutningen bliver mindre fragmenteret og mere tryg at komme igennem.
+            </p>
+            <ul class="checklist">
+              <li>Samme data hele vejen igennem</li>
+              <li>Mindre dobbeltarbejde ved afslutning</li>
+              <li>Bedre struktur i den samlede proces</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="om" class="founder-section">
+      <div class="container grid-2">
+        <article class="card about-card">
+          <div class="eyebrow">Om mig</div>
+          <h2>Bygget af én, der både forstår økonomien og selv bygger løsningen</h2>
+          <p class="muted">
+            Mit navn er Astrid Schell. Jeg arbejder som financial controller og er også softwareudvikler. Det gør det muligt at bygge noget, der ikke bare ser godt ud, men som også passer til de arbejdsgange, krav og bekymringer, økonomifunktioner faktisk står med.
+          </p>
+          <p class="muted">
+            Jeg kender følelsen af Excel-kaos, usammenhængende processer og tunge manuelle mellemled. Derfor er ambitionen at skabe løsninger, der giver mere ro, mere tillid og mere reel værdi i hverdagen.
+          </p>
+          <div class="founder-badge">Founder-led · Financial controller · Softwareudvikler</div>
+        </article>
+
+        <article class="card about-card">
+          <div class="eyebrow">Min tilgang</div>
+          <h2>Grounded, intelligent og menneskelig</h2>
+          <p class="muted">
+            Jeg tror på teknologi, der hjælper rigtigt. Ikke teknologi for teknologiens skyld. SchellLogic er derfor bygget som et specialiseret, gennemtænkt og nærværende produkt — med respekt for organisationens ressourcer og virkelighed.
+          </p>
+          <ul class="checklist">
+            <li>Finansfaglighed og softwareudvikling samlet i én profil</li>
+            <li>Praktisk bygget frem for teoretisk overdesignet</li>
+            <li>Ærlig, empatisk og samarbejdsorienteret tilgang</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid-2">
+        <article class="card quote-card feature">
+          <div class="eyebrow">For hvem?</div>
+          <h2>Til organisationer med høje behov — og et ønske om noget mere intelligent end standardløsninger</h2>
+          <p class="muted">
+            Hvis I ønsker mere struktur, mere kvalitet og mere professionelt overblik i økonomien, men ikke vil ind i et tungt og upersonligt IT-forløb, kan SchellLogic være et stærkere alternativ.
+          </p>
+        </article>
+
+        <article class="card quote-card feature">
+          <div class="eyebrow">Format</div>
+          <h2>Demo, sparring og tilpasning med direkte founder-kontakt</h2>
+          <p class="muted">
+            Jeg arbejder gerne fleksibelt: som demo, sparring, kaffe eller konkret forløb. Fokus er at finde ud af, hvad der faktisk giver mening for jer — ikke at presse en generisk løsning ned over nogen.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="contact-shell">
+          <div class="contact-wrap">
+            <article class="card contact-card">
+              <div class="eyebrow">Kontakt</div>
+              <h2>Book en uformel snak og mærk forskellen i tonen</h2>
+              <p class="lead">
+                Hvis du er nysgerrig på, hvordan budget, opfølgning, forecast og årsregnskab kan samles i en mere intelligent og sammenhængende løsning, tager jeg meget gerne en uforpligtende dialog.
+              </p>
+              <div class="soft-note">
+                Book kaffe, få sparring, se platformen eller tag en uformel demo — første skridt skal være enkelt, trygt og respektfuldt.
+              </div>
+              <div class="contact-luxury-note">
+                Du taler ikke med et stort salgsapparat. Du taler direkte med den person, der både forstår økonomiarbejdet og selv bygger løsningen.
+              </div>
+            </article>
+
+            <article class="card contact-card">
+              <h3>Kontaktoplysninger</h3>
+              <div class="contact-lines">
+                <p><strong>Navn:</strong> Astrid Schell</p>
+                <p><strong>Email:</strong> SchellLogic@proton.me</p>
+                <p><strong>Muligheder:</strong> Kaffe, demo, sparring eller uformel dialog</p>
+              </div>
+              <div style="margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <a class="btn btn-primary" href="mailto:SchellLogic@proton.me">Book kaffe / demo</a>
+                <a class="btn btn-secondary" href="mailto:SchellLogic@proton.me">Få sparring</a>
+              </div>
+
+              <div class="contact-logo-wrap">
+                <img src="logo1.png" alt="SchellLogic logo" class="contact-logo" />
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      SchellLogic · Intelligent finance platforming for organisations that want more clarity, less Excel and more room for what matters.
+    </div>
+  </footer>
+</body>
+</html>
