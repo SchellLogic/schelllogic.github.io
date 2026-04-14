@@ -3,33 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SchellLogic | Budget, forecast, opfølgning og rapportering samlet ét sted</title>
+  <title>SchellLogic | Et cockpit for moderne økonomistyring</title>
   <meta
     name="description"
-    content="SchellLogic samler budget, forecast, opfølgning og rapportering i én sammenhængende platform for organisationer og virksomheder med komplekse budgetter og manuelle processer."
+    content="SchellLogic samler budget, forecast, opfølgning, likviditet, projekter og bevillinger i ét sammenhængende cockpit for organisationer og virksomheder, der ønsker mere klarhed, mindre kompleksitet og bedre beslutningsgrundlag."
   />
   <style>
     :root {
-      --bg: #050c17;
-      --bg-2: #081120;
-      --bg-3: #0c1b34;
-      --panel: rgba(10, 18, 34, 0.88);
-      --panel-soft: rgba(255, 255, 255, 0.028);
-      --text: #eef4ff;
-      --muted: #9db2cf;
-      --muted-2: #cbd9ec;
-      --line: rgba(145, 182, 236, 0.12);
-      --line-strong: rgba(170, 204, 255, 0.2);
-      --blue: #63b3ff;
-      --blue-2: #2c7cff;
-      --blue-3: #dce8ff;
-      --green: #81dba7;
-      --red: #ff9c9c;
-      --shadow: 0 24px 64px rgba(0, 0, 0, 0.34);
-      --shadow-strong: 0 38px 100px rgba(2, 8, 19, 0.58);
-      --radius: 26px;
-      --radius-sm: 18px;
-      --max: 1260px;
+      --bg-0: #04101f;
+      --bg-1: #07182d;
+      --bg-2: #0b2141;
+      --bg-3: #10315f;
+      --panel: rgba(10, 22, 43, 0.84);
+      --panel-2: rgba(12, 28, 55, 0.92);
+      --panel-soft: rgba(255, 255, 255, 0.04);
+      --panel-softer: rgba(255, 255, 255, 0.028);
+      --text: #eff6ff;
+      --text-soft: #d8e7ff;
+      --muted: #9fb7d9;
+      --muted-2: #bfd2ec;
+      --line: rgba(150, 196, 255, 0.13);
+      --line-strong: rgba(150, 196, 255, 0.24);
+      --blue-1: #d7e8ff;
+      --blue-2: #a7ceff;
+      --blue-3: #74b8ff;
+      --blue-4: #4297ff;
+      --blue-5: #1e73ff;
+      --cyan: #76e3ff;
+      --green: #8ee7b0;
+      --amber: #ffd28c;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --shadow-strong: 0 40px 110px rgba(1, 8, 22, 0.56);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-sm: 14px;
+      --max: 1320px;
     }
 
     * {
@@ -45,10 +54,11 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 14% 0%, rgba(59, 125, 255, 0.14), transparent 24%),
-        radial-gradient(circle at 85% 9%, rgba(91, 189, 255, 0.08), transparent 24%),
-        linear-gradient(180deg, #040a14 0%, #07101d 28%, #09162a 62%, #0a1830 100%);
-      line-height: 1.6;
+        radial-gradient(circle at 12% 0%, rgba(90, 160, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(90, 220, 255, 0.11), transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(40, 98, 190, 0.20), transparent 36%),
+        linear-gradient(180deg, #040d19 0%, #061323 20%, #081b32 52%, #0c2444 100%);
+      line-height: 1.55;
       overflow-x: hidden;
       position: relative;
     }
@@ -58,12 +68,12 @@
       position: fixed;
       inset: 0;
       background:
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 96px 96px;
+        linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+      background-size: 80px 80px;
       pointer-events: none;
-      opacity: 0.1;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), transparent 96%);
+      opacity: 0.09;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), transparent 96%);
     }
 
     a {
@@ -80,15 +90,15 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(6, 14, 28, 0.86);
+      background: rgba(4, 14, 29, 0.72);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(146, 183, 236, 0.1);
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+      border-bottom: 1px solid rgba(154, 202, 255, 0.11);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.16);
     }
 
     .topbar-inner {
-      min-height: 84px;
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -101,22 +111,22 @@
       align-items: center;
       gap: 14px;
       min-width: 0;
-      padding: 6px 0;
+      padding: 10px 0;
     }
 
     .brand-logo {
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
       object-fit: contain;
-      flex-shrink: 0;
+      border-radius: 14px;
       filter:
-        drop-shadow(0 0 8px rgba(72, 145, 255, 0.14))
-        drop-shadow(0 8px 18px rgba(0, 0, 0, 0.18));
-      animation: topLogoFloat 5s ease-in-out infinite;
+        drop-shadow(0 0 10px rgba(77, 156, 255, 0.18))
+        drop-shadow(0 10px 22px rgba(0, 0, 0, 0.20));
+      animation: logoFloat 5.5s ease-in-out infinite;
     }
 
     .brand {
-      font-size: 1.34rem;
+      font-size: 1.32rem;
       font-weight: 800;
       letter-spacing: -0.035em;
       color: #ffffff;
@@ -124,23 +134,23 @@
 
     .brand small {
       display: block;
-      font-size: 0.84rem;
-      color: #b9cae3;
-      font-weight: 700;
       margin-top: 4px;
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-weight: 700;
       letter-spacing: -0.01em;
     }
 
     .nav {
       display: flex;
-      align-items: center;
       gap: 18px;
+      align-items: center;
       flex-wrap: wrap;
     }
 
     .nav a {
-      font-size: 0.95rem;
-      color: #aec0dc;
+      font-size: 0.94rem;
+      color: #bed3ee;
       font-weight: 700;
       transition: 0.2s ease;
     }
@@ -150,175 +160,285 @@
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       padding: 14px 22px;
       border-radius: 999px;
-      font-weight: 700;
-      transition: 0.2s ease;
       border: 1px solid transparent;
+      font-weight: 800;
+      transition: 0.2s ease;
       cursor: pointer;
+      white-space: nowrap;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #2d7dff 0%, #67c1ff 100%);
-      color: #04101e;
-      box-shadow:
-        0 16px 36px rgba(49, 133, 255, 0.24),
-        inset 0 1px 0 rgba(255, 255, 255, 0.26);
-    }
-
-    .btn-primary:hover {
+    .btn:hover {
       transform: translateY(-1px);
     }
 
+    .btn-primary {
+      color: #04111f;
+      background: linear-gradient(135deg, #4d9fff 0%, #85deff 100%);
+      box-shadow:
+        0 16px 34px rgba(56, 139, 255, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.34);
+    }
+
     .btn-secondary {
-      border: 1px solid rgba(147, 182, 232, 0.14);
-      background: rgba(255, 255, 255, 0.035);
-      color: #e7f0ff;
+      color: #e8f3ff;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(152, 199, 255, 0.14);
     }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.05);
+    .hero-shell {
+      padding: 28px 0 24px;
     }
 
-    .report-shell {
-      padding: 28px 0 54px;
-    }
-
-    .report {
-      border: 1px solid var(--line);
-      border-radius: 30px;
+    .hero {
+      position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(9, 17, 32, 0.76) 0%, rgba(8, 15, 28, 0.86) 100%);
-      box-shadow: var(--shadow-strong);
-      backdrop-filter: blur(14px);
-    }
-
-    .report-cover {
-      padding: 28px 24px 20px;
-      border-bottom: 1px solid var(--line);
+      border-radius: 34px;
+      border: 1px solid var(--line);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.012));
+        linear-gradient(180deg, rgba(13, 28, 52, 0.86), rgba(9, 20, 39, 0.92));
+      box-shadow: var(--shadow-strong);
+      backdrop-filter: blur(16px);
     }
 
-    .report-cover-grid {
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(80, 155, 255, 0.16), transparent 22%),
+        radial-gradient(circle at 88% 16%, rgba(100, 228, 255, 0.11), transparent 20%),
+        radial-gradient(circle at 60% 70%, rgba(42, 112, 255, 0.11), transparent 34%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 18px;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 20px;
+      padding: 26px;
       align-items: stretch;
     }
 
-    .cover-block,
-    .cover-meta {
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0.016));
-      padding: 22px;
+    .hero-copy,
+    .hero-cockpit {
+      position: relative;
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018));
+      padding: 24px;
     }
 
-    .cover-kicker {
-      font-size: 0.74rem;
+    .hero-kicker,
+    .section-kicker {
+      display: inline-block;
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-weight: 800;
-      color: #a9c9ff;
-      margin-bottom: 10px;
+      color: #9dccff;
+      margin-bottom: 12px;
     }
 
-    .cover-block h1 {
+    .hero h1 {
       margin: 0;
-      font-size: clamp(2.25rem, 4vw, 4.2rem);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-      color: #ffffff;
-      max-width: 12ch;
+      font-size: clamp(2.35rem, 4.6vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      max-width: 11ch;
     }
 
-    .cover-subline {
-      max-width: 70ch;
-      color: var(--muted);
-      font-size: 1.04rem;
-      margin-top: 14px;
+    .hero-lead {
+      max-width: 66ch;
+      color: var(--muted-2);
+      font-size: 1.05rem;
+      margin-top: 16px;
     }
 
-    .hero-target {
-      margin-top: 18px;
-      display: inline-flex;
-      flex-wrap: wrap;
+    .hero-pills {
+      display: flex;
       gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
     }
 
-    .hero-pill {
-      padding: 10px 12px;
+    .pill {
+      padding: 10px 13px;
       border-radius: 999px;
+      border: 1px solid rgba(153, 199, 255, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      color: #dfeeff;
       font-size: 0.84rem;
       font-weight: 700;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: rgba(255, 255, 255, 0.03);
-      color: #dce8fb;
     }
 
     .hero-actions {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 12px;
       margin-top: 22px;
     }
 
-    .cover-meta-table {
-      width: 100%;
-      border-collapse: collapse;
+    .hero-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
-    .cover-meta-table td {
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(147, 182, 232, 0.08);
-      vertical-align: top;
-      color: #dce8fb;
+    .cockpit-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
     }
 
-    .cover-meta-table td:first-child {
-      width: 42%;
-      color: #9db9de;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.74rem;
+    .cockpit-title {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .cockpit-status {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(130, 231, 176, 0.12);
+      color: #cbffe0;
+      border: 1px solid rgba(130, 231, 176, 0.20);
+      font-size: 0.8rem;
       font-weight: 800;
     }
 
-    .cover-meta-table tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .cover-note {
-      margin-top: 18px;
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(147, 182, 232, 0.08);
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    .report-body {
+    .cockpit-grid {
       display: grid;
-      grid-template-columns: 260px minmax(0, 1fr);
-      min-height: 1120px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric-card,
+    .mini-panel {
+      border-radius: 20px;
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.02));
+      padding: 16px;
+    }
+
+    .metric-label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .metric-value {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+    }
+
+    .metric-sub {
+      margin-top: 8px;
+      color: #c9dcf6;
+      font-size: 0.9rem;
+    }
+
+    .metric-value.good {
+      color: #dfffe9;
+    }
+
+    .metric-value.blue {
+      color: #dbebff;
+    }
+
+    .metric-value.cyan {
+      color: #d8fbff;
+    }
+
+    .mini-panel {
+      grid-column: span 2;
+    }
+
+    .bars {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 62px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .bar-row span {
+      color: #dce9fb;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      border: 1px solid rgba(154, 202, 255, 0.10);
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #3c91ff, #7bddff);
+      box-shadow: 0 0 18px rgba(90, 175, 255, 0.28);
+    }
+
+    .main-shell {
+      padding-bottom: 54px;
+    }
+
+    .dashboard {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(8, 17, 33, 0.74), rgba(8, 18, 36, 0.88));
+      box-shadow: var(--shadow-strong);
+      backdrop-filter: blur(14px);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 1100px;
     }
 
     .sidebar {
-      border-right: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.016), rgba(255, 255, 255, 0.006));
       padding: 20px 16px;
+      border-right: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.020), rgba(255, 255, 255, 0.008));
     }
 
     .sidebar-title {
+      margin: 0 0 12px;
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      color: #9db9de;
+      color: #9dc8fb;
       font-weight: 800;
-      margin: 0 0 12px;
     }
 
     .sidebar-nav {
@@ -329,253 +449,280 @@
     .sidebar-link {
       padding: 14px 14px;
       border-radius: 16px;
-      border: 1px solid transparent;
-      color: #cfe0f7;
+      color: #d6e6fb;
       background: transparent;
+      border: 1px solid transparent;
       font-weight: 700;
-      transition: 0.18s ease;
+      transition: 0.2s ease;
     }
 
     .sidebar-link:hover,
     .sidebar-link.active {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018));
-      border-color: rgba(147, 182, 232, 0.1);
       color: #ffffff;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.025));
+      border-color: rgba(153, 199, 255, 0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
 
     .sidebar-note {
-      margin-top: 20px;
+      margin-top: 18px;
       padding: 16px;
       border-radius: 18px;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.012));
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(153, 199, 255, 0.10);
       color: var(--muted);
       font-size: 0.92rem;
     }
 
-    .main {
+    .content {
       padding: 20px;
       display: grid;
       gap: 18px;
+      align-content: start;
     }
 
-    .section-card {
-      background: linear-gradient(180deg, rgba(12, 22, 42, 0.76), rgba(10, 18, 34, 0.9));
+    .tabs-shell {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tab-btn {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      color: #d8e9ff;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      color: #041120;
+      background: linear-gradient(135deg, #5ca9ff, #8fe7ff);
+      border-color: transparent;
+      box-shadow:
+        0 12px 24px rgba(72, 145, 255, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.34);
+    }
+
+    .panel {
+      display: none;
+      border-radius: 26px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(12, 24, 46, 0.78), rgba(10, 20, 38, 0.92));
       box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
+      overflow: hidden;
     }
 
-    .section-head {
-      padding: 18px 20px;
-      border-bottom: 1px solid rgba(147, 182, 232, 0.1);
+    .panel.active {
+      display: block;
+      animation: fadeUp 0.28s ease;
+    }
+
+    .panel-head {
+      padding: 20px 22px;
+      border-bottom: 1px solid rgba(153, 199, 255, 0.10);
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
-    .section-head h2,
-    .section-head h3 {
+    .panel-head h2 {
       margin: 0;
+      font-size: clamp(1.5rem, 2.2vw, 2rem);
+      letter-spacing: -0.03em;
     }
 
-    .section-kicker {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #9db9de;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .section-body {
-      padding: 20px;
-    }
-
-    .muted {
+    .panel-sub {
       color: var(--muted);
+      margin-top: 8px;
+      max-width: 70ch;
     }
 
-    .strong {
-      color: #dfe9fb;
-      font-weight: 700;
+    .panel-tag {
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      color: #dceaff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
-    .beretning-grid,
-    .two-col {
+    .panel-body {
+      padding: 22px;
       display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
       gap: 18px;
     }
 
-    .soft-box {
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.018));
-      color: #dbe7fb;
-    }
-
-    .soft-box p {
-      margin: 0;
-    }
-
-    .soft-box cite {
-      display: block;
-      margin-top: 10px;
-      font-style: normal;
-      color: #9eb8dc;
-      font-size: 0.88rem;
-    }
-
-    .value-grid {
+    .grid-3,
+    .grid-2,
+    .grid-4 {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .value-card {
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.016));
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .value-card strong {
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+    }
+
+    .card strong {
       display: block;
-      margin-bottom: 8px;
       color: #ffffff;
       font-size: 1rem;
+      margin-bottom: 8px;
       letter-spacing: -0.02em;
     }
 
-    .value-card p {
+    .card p {
       margin: 0;
       color: var(--muted);
     }
 
-    .statement-table {
+    .feature-table {
       width: 100%;
       border-collapse: collapse;
     }
 
-    .statement-table th,
-    .statement-table td {
+    .feature-table th,
+    .feature-table td {
       text-align: left;
       padding: 14px 12px;
-      border-bottom: 1px solid rgba(147, 182, 232, 0.08);
+      border-bottom: 1px solid rgba(153, 199, 255, 0.08);
       vertical-align: top;
     }
 
-    .statement-table th {
+    .feature-table th {
       font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #9db9de;
+      letter-spacing: 0.13em;
+      color: #9dc8fb;
       font-weight: 800;
     }
 
-    .statement-table td {
-      color: #dce8fb;
+    .feature-table td {
+      color: #dbe9fb;
     }
 
-    .statement-table td:last-child,
-    .statement-table th:last-child {
+    .feature-table td:last-child,
+    .feature-table th:last-child {
       text-align: right;
       white-space: nowrap;
     }
 
-    .value-positive {
-      color: #d7ffe7;
-    }
-
-    .value-negative {
-      color: #ffd1d1;
-    }
-
-    .statement-total td {
-      color: #ffffff;
+    .badge-good,
+    .badge-blue,
+    .badge-soft {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
       font-weight: 800;
+      border: 1px solid transparent;
     }
 
-    .note-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+    .badge-good {
+      color: #dfffe9;
+      background: rgba(130, 231, 176, 0.12);
+      border-color: rgba(130, 231, 176, 0.18);
     }
 
-    .note-item {
-      padding: 18px;
-      border-radius: 20px;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.018));
+    .badge-blue {
+      color: #ddedff;
+      background: rgba(100, 170, 255, 0.12);
+      border-color: rgba(100, 170, 255, 0.18);
     }
 
-    .note-item strong {
-      display: block;
-      color: #ffffff;
-      font-size: 1rem;
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
+    .badge-soft {
+      color: #d4e4ff;
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(153, 199, 255, 0.10);
     }
 
-    .note-item p {
+    .vision-box {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(153, 199, 255, 0.12);
+      background:
+        radial-gradient(circle at top right, rgba(96, 182, 255, 0.12), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      color: #e7f2ff;
+    }
+
+    .vision-box p {
       margin: 0;
-      color: var(--muted);
+      font-size: 1.03rem;
+      color: #e5f0ff;
     }
 
-    .module-groups {
+    .vision-box .muted-line {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .module-list {
       display: grid;
       gap: 14px;
     }
 
-    .module-group {
+    .module-row {
       display: grid;
       grid-template-columns: 180px minmax(0, 1fr);
       gap: 16px;
       padding: 18px;
       border-radius: 22px;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
     }
 
-    .module-group-title {
-      font-size: 1.08rem;
-      font-weight: 800;
+    .module-row-title {
       color: #ffffff;
-      letter-spacing: -0.03em;
-      align-self: start;
+      font-size: 1.04rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
     }
 
     .module-tags {
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
     .module-tag {
       padding: 10px 12px;
       border-radius: 999px;
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      background: rgba(255, 255, 255, 0.035);
+      color: #ddeaff;
       font-size: 0.84rem;
-      font-weight: 700;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: rgba(255, 255, 255, 0.03);
-      color: #dce8fb;
-    }
-
-    .founder-badge {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(147, 182, 232, 0.12);
-      color: #dbe7fb;
-      font-size: 0.88rem;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .contact-box {
@@ -584,9 +731,9 @@
       gap: 18px;
       align-items: center;
       padding: 20px;
-      border-radius: 22px;
-      border: 1px solid rgba(147, 182, 232, 0.1);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018));
+      border-radius: 24px;
+      border: 1px solid rgba(153, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
     }
 
     .contact-box p {
@@ -594,68 +741,37 @@
       color: var(--muted);
     }
 
-    .contact-logo-wrap {
-      position: relative;
-      margin-top: 12px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 240px;
-      padding: 20px 16px 10px;
-      border-radius: 24px;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 50% 48%, rgba(95, 165, 255, 0.1) 0%, rgba(95, 165, 255, 0.05) 22%, rgba(95, 165, 255, 0.02) 45%, transparent 72%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.022) 0%, rgba(255, 255, 255, 0.01) 100%);
-      border: 1px solid rgba(151, 186, 235, 0.08);
-    }
-
-    .contact-logo {
-      width: min(100%, 360px);
-      max-height: 220px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      opacity: 0.97;
-      mix-blend-mode: screen;
-      filter:
-        drop-shadow(0 0 18px rgba(72, 145, 255, 0.18))
-        drop-shadow(0 18px 44px rgba(0, 0, 0, 0.3));
-      animation: logoFloat 6s ease-in-out infinite;
+    .contact-box .lead {
+      color: #e7f2ff;
+      font-weight: 700;
     }
 
     .footer {
-      padding: 24px 0 44px;
+      padding: 20px 0 42px;
       color: var(--muted);
       font-size: 0.94rem;
     }
 
-    @keyframes topLogoFloat {
-      0% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-3px);
-      }
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
     @keyframes logoFloat {
-      0% {
-        transform: translateY(0px);
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
       }
-      50% {
-        transform: translateY(-6px);
-      }
-      100% {
-        transform: translateY(0px);
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (max-width: 1100px) {
-      .report-body {
+    @media (max-width: 1180px) {
+      .hero-grid,
+      .dashboard-grid {
         grid-template-columns: 1fr;
       }
 
@@ -667,34 +783,25 @@
       .sidebar-nav {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .report-cover-grid {
-        grid-template-columns: 1fr;
-      }
     }
 
     @media (max-width: 980px) {
-      .beretning-grid,
-      .two-col,
-      .note-grid,
+      .grid-2,
+      .grid-3,
+      .grid-4,
       .contact-box,
-      .module-group,
-      .value-grid {
+      .module-row {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 720px) {
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
       .topbar-inner {
-        padding: 14px 0;
-      }
-
-      .report-shell {
-        padding-top: 20px;
-      }
-
-      .cover-block h1 {
-        max-width: none;
+        padding: 12px 0;
       }
 
       .sidebar-nav {
@@ -706,13 +813,20 @@
         height: 46px;
       }
 
-      .contact-logo-wrap {
-        min-height: 190px;
+      .hero h1 {
+        max-width: none;
       }
 
-      .contact-logo {
-        width: min(100%, 280px);
-        max-height: 170px;
+      .cockpit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-panel {
+        grid-column: span 1;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -724,458 +838,608 @@
         <img src="logo.png" alt="SchellLogic logo" class="brand-logo" />
         <div class="brand">
           SchellLogic
-          <small>Budget, forecast, opfølgning og rapportering · samlet ét sted</small>
+          <small>Et cockpit for moderne økonomistyring</small>
         </div>
       </div>
 
       <nav class="nav">
-        <a href="#beretning">Beretning</a>
-        <a href="#vaerdi">Værdi</a>
+        <a href="#cockpit">Cockpit</a>
         <a href="#platform">Platform</a>
-        <a href="#founder">Founder</a>
-        <a class="btn btn-primary" href="#preview">Book en preview</a>
+        <a href="#vision">Vision</a>
+        <a href="#kontakt">Kontakt</a>
+        <a class="btn btn-primary" href="mailto:SchellLogic@proton.me?subject=Forespørgsel%20om%20SchellLogic">Book en præsentation</a>
       </nav>
     </div>
   </header>
 
-  <main class="report-shell">
-    <div class="container">
-      <div class="report">
-        <div class="report-cover" id="beretning">
-          <div class="report-cover-grid">
-            <div class="cover-block">
-              <div class="cover-kicker">SchellLogic</div>
-              <h1>Drop Excel-kaos. Få budget, forecast og opfølgning samlet i én platform.</h1>
-              <div class="cover-subline">
-                SchellLogic er bygget til organisationer, foreninger og virksomheder med komplekse budgetter, manuelle processer og behov for bedre sammenhæng mellem planlægning, opfølgning og rapportering.
+  <main>
+    <section class="hero-shell" id="cockpit">
+      <div class="container">
+        <div class="hero">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <div class="hero-kicker">SchellLogic cockpit</div>
+              <h1>Skab overblik. Sænk kompleksiteten. Styr økonomien samlet.</h1>
+              <div class="hero-lead">
+                SchellLogic samler budget, forecast, opfølgning, likviditet, projekter og bevillinger i én sammenhængende platform for organisationer og virksomheder, der ønsker mere struktur, mere klarhed og bedre beslutningsgrundlag.
               </div>
 
-              <div class="hero-target">
-                <span class="hero-pill">Organisationer</span>
-                <span class="hero-pill">Foreninger</span>
-                <span class="hero-pill">Virksomheder med komplekse budgetter</span>
+              <div class="hero-pills">
+                <span class="pill">Budget</span>
+                <span class="pill">Forecast</span>
+                <span class="pill">Opfølgning</span>
+                <span class="pill">Likviditet</span>
+                <span class="pill">Projekter</span>
+                <span class="pill">Bevillinger & fonde</span>
               </div>
 
               <div class="hero-actions">
-                <a class="btn btn-primary" href="#preview">Book en preview</a>
-                <a class="btn btn-secondary" href="mailto:SchellLogic@proton.me">Kontakt mig</a>
+                <a class="btn btn-primary" href="mailto:SchellLogic@proton.me?subject=Forespørgsel%20om%20præsentation%20af%20SchellLogic">Book en præsentation</a>
+                <a class="btn btn-secondary" href="#platform">Se platformen</a>
+              </div>
+
+              <div class="hero-note">
+                Bygget med udgangspunkt i, at avanceret software ikke kun skal være for de største virksomheder. Økonomistyring skal være mere tilgængelig, mere sammenhængende og mere menneskelig.
               </div>
             </div>
 
-            <div class="cover-meta">
-              <div class="cover-kicker">Overblik</div>
-              <table class="cover-meta-table">
-                <tr>
-                  <td>Problem</td>
-                  <td>Spredte filer, manuelle mellemled og manglende sammenhæng</td>
-                </tr>
-                <tr>
-                  <td>Løsning</td>
-                  <td>Én platform til budget, opfølgning, forecast og rapportering</td>
-                </tr>
-                <tr>
-                  <td>Målgruppe</td>
-                  <td>Organisationer med komplekse budgetter og begrænsede IT-ressourcer</td>
-                </tr>
-                <tr>
-                  <td>Status</td>
-                  <td>Funktionel platform klar til dialog og pilotforløb</td>
-                </tr>
-                <tr>
-                  <td>Udarbejdet af</td>
-                  <td>Astrid Schell</td>
-                </tr>
-              </table>
-
-              <div class="cover-note">
-                Målet er ikke bare at digitalisere økonomiarbejde, men at gøre avanceret økonomistyring mere tilgængelig for dem, der faktisk har brug for den.
+            <div class="hero-cockpit">
+              <div class="cockpit-header">
+                <div class="cockpit-title">Live cockpit preview</div>
+                <div class="cockpit-status">Klar til implementering</div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="report-body">
-          <aside class="sidebar">
-            <div class="sidebar-title">Indhold</div>
-            <div class="sidebar-nav">
-              <a class="sidebar-link active" href="#beretning">01 · Introduktion</a>
-              <a class="sidebar-link" href="#vaerdi">02 · Værdi</a>
-              <a class="sidebar-link" href="#resultatopgoerelse">03 · Nuværende virkelighed</a>
-              <a class="sidebar-link" href="#balance">04 · Ønsket fremtid</a>
-              <a class="sidebar-link" href="#konsolidering">05 · Samlet model</a>
-              <a class="sidebar-link" href="#platform">06 · Platformstruktur</a>
-              <a class="sidebar-link" href="#noter">07 · Noter</a>
-              <a class="sidebar-link" href="#founder">08 · Founder</a>
-              <a class="sidebar-link" href="#preview">09 · Preview</a>
-            </div>
-
-            <div class="sidebar-note">
-              SchellLogic er skabt ud fra tanken om, at teknologi skal gøre menneskers hverdag enklere — ikke gøre arbejdet mere tungt eller fjerne fokus fra det, der virkelig betyder noget.
-            </div>
-          </aside>
-
-          <div class="main">
-            <section class="section-card">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Ledelsesberetning</div>
-                  <h2>Det burde ikke være så svært at skabe overblik</h2>
+              <div class="cockpit-grid">
+                <div class="metric-card">
+                  <div class="metric-label">Budgetstatus</div>
+                  <div class="metric-value blue">97,4%</div>
+                  <div class="metric-sub">Af strukturen samlet i én model</div>
                 </div>
-              </div>
-              <div class="section-body">
-                <div class="beretning-grid">
-                  <div class="soft-box">
-                    <p class="strong">
-                      Økonomiarbejde kræver ansvar, præcision og tillid. Software bør støtte det — ikke gøre det tungere.
-                    </p>
-                    <p style="margin-top: 12px;">
-                      Mange organisationer arbejder stadig med spredte Excel-filer, versionsusikkerhed og manuelle mellemled mellem budget, opfølgning, forecast og rapportering. Det koster tid, ro og kvalitet. SchellLogic er bygget som et mere sammenhængende alternativ.
-                    </p>
-                  </div>
 
-                  <div class="soft-box">
-                    <p>
-                      “Teknologi skal ikke tage menneskets plads. Den skal give os mere plads til det, kun mennesker kan skabe: dømmekraft, ansvar og nærvær.”
-                    </p>
-                    <cite>— SchellLogic vision</cite>
-                  </div>
+                <div class="metric-card">
+                  <div class="metric-label">Likviditetsudsyn</div>
+                  <div class="metric-value cyan">12 mdr.</div>
+                  <div class="metric-sub">Mere ro i planlægningen</div>
                 </div>
-              </div>
-            </section>
 
-            <section class="section-card" id="vaerdi">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Værdi</div>
-                  <h2>Hvad platformen giver i praksis</h2>
+                <div class="metric-card">
+                  <div class="metric-label">Rapporteringsflow</div>
+                  <div class="metric-value good">Samlet</div>
+                  <div class="metric-sub">Mindre manuelt mellemled</div>
                 </div>
-              </div>
-              <div class="section-body">
-                <div class="value-grid">
-                  <div class="value-card">
-                    <strong>Saml arbejdet ét sted</strong>
-                    <p>Budget, forecast, opfølgning og rapportering bindes sammen i én økonomisk model frem for separate spor.</p>
-                  </div>
 
-                  <div class="value-card">
-                    <strong>Mindre manuel friktion</strong>
-                    <p>Færre mellemled, mindre versionskaos og mindre tid brugt på at afstemme filer, tal og forklaringer.</p>
-                  </div>
-
-                  <div class="value-card">
-                    <strong>Bedre beslutningsgrundlag</strong>
-                    <p>Mere sammenhængende data giver mere ro, højere troværdighed og bedre grundlag for ledelse og bestyrelse.</p>
-                  </div>
+                <div class="metric-card">
+                  <div class="metric-label">Bevillinger</div>
+                  <div class="metric-value blue">24</div>
+                  <div class="metric-sub">Mulighed for samlet overblik</div>
                 </div>
-              </div>
-            </section>
 
-            <section class="section-card" id="resultatopgoerelse">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Nuværende virkelighed</div>
-                  <h2>Hvad mange stadig kæmper med i dag</h2>
-                </div>
-              </div>
-              <div class="section-body">
-                <table class="statement-table">
-                  <thead>
-                    <tr>
-                      <th>Område</th>
-                      <th>Situation</th>
-                      <th>Konsekvens</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>Budget</strong></td>
-                      <td>Ligger ofte i egne filer og versioner</td>
-                      <td class="value-negative">Begrænset sammenhæng</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Opfølgning</strong></td>
-                      <td>Kræver manuelle mellemled og særskilte arbejdsgange</td>
-                      <td class="value-negative">Tidsforbrug og usikkerhed</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Forecast</strong></td>
-                      <td>Bliver ofte et separat spor med sin egen logik</td>
-                      <td class="value-negative">Lavere troværdighed</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Rapportering</strong></td>
-                      <td>Bygges ovenpå mange manuelle sammenstillinger</td>
-                      <td class="value-negative">Mindre ro i processen</td>
-                    </tr>
-                    <tr class="statement-total">
-                      <td><strong>Samlet resultat</strong></td>
-                      <td>Økonomiarbejdet bliver tungere, end det behøver at være</td>
-                      <td>Mindre klarhed</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <section class="section-card" id="balance">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Ønsket fremtid</div>
-                  <h2>Balance mellem behov og virkelighed</h2>
-                </div>
-              </div>
-              <div class="section-body">
-                <div class="two-col">
-                  <div>
-                    <table class="statement-table">
-                      <thead>
-                        <tr>
-                          <th>Det man ønsker</th>
-                          <th>Værdi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Klarhed</td>
-                          <td>Bedre beslutningsgrundlag</td>
-                        </tr>
-                        <tr>
-                          <td>Sammenhæng</td>
-                          <td>Samme datagrundlag på tværs</td>
-                        </tr>
-                        <tr>
-                          <td>Tillid</td>
-                          <td>Højere troværdighed i tallene</td>
-                        </tr>
-                        <tr>
-                          <td>Ro</td>
-                          <td>Mindre dobbeltarbejde og færre brud</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <div>
-                    <table class="statement-table">
-                      <thead>
-                        <tr>
-                          <th>Det der står i vejen</th>
-                          <th>Belastning</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Versionskaos</td>
-                          <td>Usikkerhed</td>
-                        </tr>
-                        <tr>
-                          <td>Manuelle arbejdsgange</td>
-                          <td>Tidsforbrug</td>
-                        </tr>
-                        <tr>
-                          <td>Fragmenteret data</td>
-                          <td>Brud i processen</td>
-                        </tr>
-                        <tr>
-                          <td>Tunge systemer</td>
-                          <td>Mindre fleksibilitet</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="section-card" id="konsolidering">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Samlet model</div>
-                  <h2>Fra separate spor til én sammenhængende økonomimodel</h2>
-                </div>
-              </div>
-              <div class="section-body">
-                <table class="statement-table">
-                  <thead>
-                    <tr>
-                      <th>Område</th>
-                      <th>Typisk i dag</th>
-                      <th>Med SchellLogic</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>Budget</strong></td>
-                      <td>Planlægning lever separat</td>
-                      <td>Bliver fundamentet for resten</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Opfølgning</strong></td>
-                      <td>Sker i egne filer eller processer</td>
-                      <td>Bygger direkte videre på samme struktur</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Forecast</strong></td>
-                      <td>Får egen logik og egne versioner</td>
-                      <td>Forankres i samme model som budget og actuals</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Rapportering</strong></td>
-                      <td>Bliver ofte endnu et manuelt lag</td>
-                      <td>Viderefører samme logik hele vejen</td>
-                    </tr>
-                    <tr class="statement-total">
-                      <td colspan="2">Samlet effekt</td>
-                      <td>Bedre sammenhæng, højere kvalitet og mere ro</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </section>
-
-            <section class="section-card" id="platform">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Platformstruktur</div>
-                  <h2>Modulstrukturen følger den økonomiske logik</h2>
-                </div>
-              </div>
-              <div class="section-body">
-                <div class="module-groups">
-                  <div class="module-group">
-                    <div class="module-group-title">Planlægning</div>
-                    <div class="module-tags">
-                      <span class="module-tag">Budget</span>
-                      <span class="module-tag">Budgetgrundlag</span>
-                      <span class="module-tag">Nye initiativer</span>
-                      <span class="module-tag">Referater</span>
+                <div class="mini-panel">
+                  <div class="metric-label">Sammenhæng på tværs</div>
+                  <div class="bars">
+                    <div class="bar-row">
+                      <span>Budget</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 92%"></div></div>
+                      <span>92%</span>
                     </div>
-                  </div>
-
-                  <div class="module-group">
-                    <div class="module-group-title">Styring</div>
-                    <div class="module-tags">
-                      <span class="module-tag">Opfølgning</span>
-                      <span class="module-tag">Forecast</span>
-                      <span class="module-tag">Finansposter</span>
-                      <span class="module-tag">Konsolidering</span>
+                    <div class="bar-row">
+                      <span>Forecast</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 86%"></div></div>
+                      <span>86%</span>
                     </div>
-                  </div>
-
-                  <div class="module-group">
-                    <div class="module-group-title">Afslutning</div>
-                    <div class="module-tags">
-                      <span class="module-tag">Kvartalsluk</span>
-                      <span class="module-tag">Årsregnskab</span>
-                      <span class="module-tag">Årsrapport</span>
+                    <div class="bar-row">
+                      <span>Likviditet</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 79%"></div></div>
+                      <span>79%</span>
+                    </div>
+                    <div class="bar-row">
+                      <span>Bevillinger</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 83%"></div></div>
+                      <span>83%</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
-
-            <section class="section-card" id="noter">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Noter</div>
-                  <h2>Supplerende oplysninger</h2>
-                </div>
-              </div>
-              <div class="section-body">
-                <div class="note-grid">
-                  <div class="note-item">
-                    <strong>Note 1 — Hvorfor findes SchellLogic?</strong>
-                    <p>Fordi økonomiarbejde stadig alt for ofte bliver gjort tungere af spredte filer, procesbrud og systemer, der ikke hænger ordentligt sammen.</p>
-                  </div>
-
-                  <div class="note-item">
-                    <strong>Note 2 — Hvem er det relevant for?</strong>
-                    <p>Organisationer, foreninger og virksomheder med flere enheder, komplekse budgetter eller store krav til styring og rapportering.</p>
-                  </div>
-
-                  <div class="note-item">
-                    <strong>Note 3 — Hvad er ambitionen?</strong>
-                    <p>At gøre avanceret økonomistyring mere tilgængelig — ikke kun for de største virksomheder, men for alle med behovet.</p>
-                  </div>
-
-                  <div class="note-item">
-                    <strong>Note 4 — Hvorfor web?</strong>
-                    <p>For at samle struktur, samarbejde, deling og overblik i ét fælles digitalt rum frem for i mange separate filer.</p>
-                  </div>
-
-                  <div class="note-item">
-                    <strong>Note 5 — Hvad er forskellen fra et regneark?</strong>
-                    <p>SchellLogic er bygget som en sammenhængende model, hvor budget, opfølgning og rapportering ikke lever i hver sin verden.</p>
-                  </div>
-
-                  <div class="note-item">
-                    <strong>Note 6 — Hvad søger jeg nu?</strong>
-                    <p>Dialog med relevante organisationer og virksomheder, der har et reelt behov og kunne være interesseret i et pilotforløb.</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="section-card" id="founder">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Founder</div>
-                  <h2>Bygget af én, der både forstår økonomien og selv bygger løsningen</h2>
-                </div>
-              </div>
-              <div class="section-body">
-                <p class="muted">
-                  Mit navn er Astrid Schell. Jeg arbejder som financial controller og er også softwareudvikler. Det gør det muligt at bygge noget, der ikke bare ser godt ud, men som også passer til de arbejdsgange, krav og bekymringer, økonomifunktioner faktisk står med.
-                </p>
-                <p class="muted">
-                  Jeg tror ikke på teknologi som en dommedagsversion, hvor mennesker erstattes af maskiner. Jeg tror på teknologi som en måde at gøre arbejdet enklere, skabe bedre struktur og give mennesker mere plads til dømmekraft, ansvar og det faglige, der virkelig betyder noget.
-                </p>
-                <div class="founder-badge">Founder · Financial controller · Softwareudvikler</div>
-              </div>
-            </section>
-
-            <section class="section-card" id="preview">
-              <div class="section-head">
-                <div>
-                  <div class="section-kicker">Preview</div>
-                  <h2>Book en preview eller tag en første dialog</h2>
-                </div>
-              </div>
-              <div class="section-body">
-                <div class="contact-box">
-                  <div>
-                    <p class="strong">
-                      Hvis du er nysgerrig på, hvordan budget, forecast, opfølgning og rapportering kan samles i en mere rolig og sammenhængende model, tager jeg meget gerne en første dialog.
-                    </p>
-                    <p style="margin-top: 10px;">
-                      Jeg præsenterer gerne platformen og uddyber, hvordan den kan bruges i praksis for organisationer og virksomheder med komplekse økonomiske arbejdsgange.
-                    </p>
-                    <p style="margin-top: 10px;">
-                      <strong>Navn:</strong> Astrid Schell<br />
-                      <strong>Email:</strong> SchellLogic@proton.me
-                    </p>
-                  </div>
-
-                  <div>
-                    <a class="btn btn-primary" href="mailto:SchellLogic@proton.me?subject=Forespørgsel%20om%20preview%20af%20SchellLogic">Book en preview</a>
-                  </div>
-                </div>
-
-                <div class="contact-logo-wrap">
-                  <img src="logo1.png" alt="SchellLogic logo" class="contact-logo" />
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
+            </div>
+          </div><!-- hero-grid -->
+        </div><!-- hero -->
       </div>
-    </div>
+    </section>
+
+    <section class="main-shell" id="platform">
+      <div class="container">
+        <div class="dashboard">
+          <div class="dashboard-grid">
+            <aside class="sidebar">
+              <div class="sidebar-title">Navigér i platformen</div>
+              <div class="sidebar-nav">
+                <a class="sidebar-link active" href="#overview">01 · Overblik</a>
+                <a class="sidebar-link" href="#vision">02 · Vision</a>
+                <a class="sidebar-link" href="#kontakt">03 · Kontakt</a>
+              </div>
+
+              <div class="sidebar-note">
+                SchellLogic er tænkt som et cockpit: ét sted hvor økonomi, planlægning, likviditet, projekter og bevillinger hænger sammen i stedet for at ligge i separate spor.
+              </div>
+            </aside>
+
+            <div class="content">
+              <div class="tabs-shell" id="overview">
+                <button class="tab-btn active" data-tab="tab-overblik">Overblik</button>
+                <button class="tab-btn" data-tab="tab-budget">Budget</button>
+                <button class="tab-btn" data-tab="tab-forecast">Forecast</button>
+                <button class="tab-btn" data-tab="tab-opfoelgning">Opfølgning</button>
+                <button class="tab-btn" data-tab="tab-likviditet">Likviditet</button>
+                <button class="tab-btn" data-tab="tab-projekter">Projekter</button>
+                <button class="tab-btn" data-tab="tab-bevillinger">Bevillinger</button>
+                <button class="tab-btn" data-tab="tab-vision">Vision</button>
+              </div>
+
+              <section class="panel active" id="tab-overblik">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Overblik</div>
+                    <h2>Én sammenhængende platform i stedet for mange manuelle lag</h2>
+                    <div class="panel-sub">
+                      SchellLogic er bygget til organisationer og virksomheder, der ønsker at samle økonomiarbejdet ét sted og få mere ro i alt fra planlægning til rapportering.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Cockpit-tænkning</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="grid-3">
+                    <div class="card">
+                      <strong>Mere klarhed</strong>
+                      <p>Få et bedre beslutningsgrundlag ved at samle budget, forecast og opfølgning i samme økonomiske logik.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mindre kompleksitet</strong>
+                      <p>Reducer versionskaos, manuelle sammenstillinger og unødige procesbrud mellem økonomiske arbejdsgange.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Bedre sammenhæng</strong>
+                      <p>Lad rapportering, likviditet, projekter og bevillinger bygge videre på samme strukturelle fundament.</p>
+                    </div>
+                  </div>
+
+                  <table class="feature-table">
+                    <thead>
+                      <tr>
+                        <th>Område</th>
+                        <th>Typisk situation i dag</th>
+                        <th>Med SchellLogic</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Budget</strong></td>
+                        <td>Spredte filer og flere versioner</td>
+                        <td><span class="badge-good">Samlet model</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Forecast</strong></td>
+                        <td>Særskilt logik og ekstra regneark</td>
+                        <td><span class="badge-blue">Bygger videre på budget</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Opfølgning</strong></td>
+                        <td>Manuelle brobygninger mellem budget og actuals</td>
+                        <td><span class="badge-blue">Samme datagrundlag</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Rapportering</strong></td>
+                        <td>Endnu et manuelt lag</td>
+                        <td><span class="badge-good">Mere direkte flow</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-budget">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Budget</div>
+                    <h2>Budget som strukturelt fundament</h2>
+                    <div class="panel-sub">
+                      Budgettet er ikke tænkt som et isoleret regneark, men som den strukturelle kerne, resten af platformen bygger videre på.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Struktur først</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="grid-3">
+                    <div class="card">
+                      <strong>Én chart of accounts</strong>
+                      <p>Samme økonomiske struktur kan bruges på tværs af moduler og arbejdsgange.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mere robust planlægning</strong>
+                      <p>Budgettet bliver et fælles referencepunkt i stedet for endnu en separat fil.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mere tillid til tallene</strong>
+                      <p>Når strukturen er samlet, bliver afvigelser og sammenhænge lettere at forstå.</p>
+                    </div>
+                  </div>
+
+                  <table class="feature-table">
+                    <thead>
+                      <tr>
+                        <th>Fokus</th>
+                        <th>Værdi</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Budgetgrundlag</td>
+                        <td>Samlet struktur for kontoplan og økonomisk logik</td>
+                        <td><span class="badge-good">Kerneområde</span></td>
+                      </tr>
+                      <tr>
+                        <td>Versionsstyring</td>
+                        <td>Mere ro og mindre usikkerhed</td>
+                        <td><span class="badge-blue">En del af flowet</span></td>
+                      </tr>
+                      <tr>
+                        <td>Afdelinger og dimensioner</td>
+                        <td>Mulighed for mere præcis styring</td>
+                        <td><span class="badge-soft">Bygget til struktur</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-forecast">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Forecast</div>
+                    <h2>Forecast som en naturlig forlængelse af budgettet</h2>
+                    <div class="panel-sub">
+                      Forecast skal ikke være et nyt univers. Det skal være en styret videreførelse af det økonomiske fundament, man allerede arbejder i.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Bedre retning</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="grid-3">
+                    <div class="card">
+                      <strong>Færre særskilte spor</strong>
+                      <p>Forecast kan bygge på samme model som budget og opfølgning i stedet for at leve alene.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mere retvisende styring</strong>
+                      <p>Det bliver lettere at forstå udviklingen gennem året og justere i tide.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Bedre ledelsesdialog</strong>
+                      <p>Når forklaringer og tal hænger bedre sammen, bliver dialogen mere produktiv.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-opfoelgning">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Opfølgning</div>
+                    <h2>Opfølgning med mindre friktion og mere overskuelighed</h2>
+                    <div class="panel-sub">
+                      Opfølgning bliver stærkere, når den ikke kræver tunge manuelle broer mellem filer, forklaringer og økonomiske dimensioner.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Mere ro i processen</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="grid-3">
+                    <div class="card">
+                      <strong>Afvigelser i kontekst</strong>
+                      <p>Se afvigelser i relation til budget, perioder og den underliggende struktur.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mere troværdig rapportering</strong>
+                      <p>Når tallene hænger bedre sammen, bliver rapporteringen mere tryg for ledelse og bestyrelse.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mindre manuel gentagelse</strong>
+                      <p>Undgå at bygge samme forklaringslag flere gange i forskellige formater.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-likviditet">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Likviditetsstyring</div>
+                    <h2>Likviditet som en integreret del af økonomistyringen</h2>
+                    <div class="panel-sub">
+                      Likviditetsstyring bør ikke være en eftertanke. Den skal være tæt koblet til budget, forecast, bevillinger og den faktiske drift.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Bedre udsyn</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="grid-3">
+                    <div class="card">
+                      <strong>Mere overblik over fremtidige bevægelser</strong>
+                      <p>Skab et bedre billede af, hvordan økonomiske beslutninger påvirker den løbende likviditet.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Bedre kobling til drift</strong>
+                      <p>Likviditet giver mest værdi, når den ikke ligger i sin egen isolerede model.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mere ro i prioriteringer</strong>
+                      <p>Styrk beslutninger om investeringer, projekter og bevillingsaktiviteter med bedre udsyn.</p>
+                    </div>
+                  </div>
+
+                  <table class="feature-table">
+                    <thead>
+                      <tr>
+                        <th>Element</th>
+                        <th>Hvorfor det er vigtigt</th>
+                        <th>Effekt</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ind- og udbetalinger</td>
+                        <td>Skaber et mere realistisk billede af den løbende økonomi</td>
+                        <td><span class="badge-blue">Stærkere styring</span></td>
+                      </tr>
+                      <tr>
+                        <td>Planlagte aktiviteter</td>
+                        <td>Gør det lettere at forudse belastning og timing</td>
+                        <td><span class="badge-good">Mere forudseenhed</span></td>
+                      </tr>
+                      <tr>
+                        <td>Bevillingsafhængighed</td>
+                        <td>Viser hvor likviditeten er mest sårbar eller afhængig</td>
+                        <td><span class="badge-soft">Bedre overblik</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-projekter">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Projektstyring</div>
+                    <h2>Projekter skal kunne ses i økonomisk sammenhæng</h2>
+                    <div class="panel-sub">
+                      Projekter er sjældent kun aktiviteter. De er også økonomiske forløb med budgetter, bevillinger, ressourcer og rapporteringskrav.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Fra aktivitet til styring</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="grid-3">
+                    <div class="card">
+                      <strong>Bedre økonomisk kobling</strong>
+                      <p>Lad projekter hænge sammen med budget, opfølgning og bevillingslogik.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mere gennemsigtighed</strong>
+                      <p>Gør det lettere at se status, økonomisk belastning og progression i samme billede.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Mindre fragmentering</strong>
+                      <p>Undgå at projektstyring bliver adskilt fra økonomifunktionen og dens behov for overblik.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-bevillinger">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Bevillinger & fonde</div>
+                    <h2>Bevillinger bør ikke håndteres i blinde sideprocesser</h2>
+                    <div class="panel-sub">
+                      For organisationer med fondsmidler og bevillingskrav er det afgørende, at økonomisk struktur, rapportering og projektlogik hænger sammen.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Mere sammenhæng i finansiering</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="grid-3">
+                    <div class="card">
+                      <strong>Samlet overblik over bevillinger</strong>
+                      <p>Hold styr på typer, perioder, krav og økonomisk betydning i en mere samlet model.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Bedre kobling til kontoplan og projekter</strong>
+                      <p>Skab mere direkte sammenhæng mellem bevillinger, aktiviteter og rapporteringsbehov.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Stærkere afrapportering</strong>
+                      <p>Når datagrundlaget er bedre samlet, bliver ekstern rapportering også mere overskuelig.</p>
+                    </div>
+                  </div>
+
+                  <table class="feature-table">
+                    <thead>
+                      <tr>
+                        <th>Behov</th>
+                        <th>Eksempel</th>
+                        <th>Mulig værdi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Bevillingsoverblik</td>
+                        <td>Beløb, periode, status og ansvar</td>
+                        <td><span class="badge-blue">Mere styring</span></td>
+                      </tr>
+                      <tr>
+                        <td>Kobling til økonomi</td>
+                        <td>Kontoplan, projekter og rapportering</td>
+                        <td><span class="badge-good">Mindre dobbeltarbejde</span></td>
+                      </tr>
+                      <tr>
+                        <td>Afrapporteringskrav</td>
+                        <td>Deadlines, formater og krav per bevilling</td>
+                        <td><span class="badge-soft">Mere overskuelig proces</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-vision">
+                <div class="panel-head" id="vision">
+                  <div>
+                    <div class="section-kicker">Vision</div>
+                    <h2>Teknologi skal gøre mere plads til det menneskelige</h2>
+                    <div class="panel-sub">
+                      SchellLogic er ikke bare tænkt som et system, men som en retning for, hvordan økonomiarbejde kan blive mere overskueligt, mere transparent og mere menneskeligt.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Mennesket først</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="vision-box">
+                    <p>
+                      Teknologi skal ikke føre os mod en dommedag, hvor mennesker bliver overflødige. Den skal gøre det modsatte. Min platform gør økonomien enkel og transparent, så organisationer kan bruge mindre tid på kompleksitet – og mere tid på det menneskelige: faglighed, relationer og følelser, som ingen maskine nogensinde kan erstatte.
+                    </p>
+                    <div class="muted-line">
+                      Målet er ikke bare effektivisering. Målet er bedre struktur, mere ro og mere plads til ansvar, dømmekraft og nærvær.
+                    </div>
+                  </div>
+
+                  <div class="grid-2">
+                    <div class="card">
+                      <strong>Bygget af en financial controller og softwareudvikler</strong>
+                      <p>SchellLogic vokser ud af både økonomisk praksis og teknisk opbygning, så løsningen er tænkt tættere på virkeligheden.</p>
+                    </div>
+                    <div class="card">
+                      <strong>Designet til organisationer med reelle behov</strong>
+                      <p>Ambitionen er at gøre stærk økonomistyring mere tilgængelig for dem, der har behovet, ikke kun for de største aktører.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel active" style="display:none"></section>
+
+              <section class="panel" id="kontakt">
+                <div class="panel-head">
+                  <div>
+                    <div class="section-kicker">Kontakt</div>
+                    <h2>Præsentation, dialog og næste skridt</h2>
+                    <div class="panel-sub">
+                      Hvis du vil høre mere om platformen, præsenterer jeg den gerne og uddyber, hvordan den kan bruges i praksis.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Direkte kontakt</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="contact-box">
+                    <div>
+                      <p class="lead">
+                        Du taler direkte med den person, der både forstår økonomiarbejdet og selv bygger løsningen.
+                      </p>
+                      <p style="margin-top: 10px;">
+                        <strong>Navn:</strong> Astrid Schell<br />
+                        <strong>Email:</strong> SchellLogic@proton.me
+                      </p>
+                    </div>
+
+                    <div>
+                      <a class="btn btn-primary" href="mailto:SchellLogic@proton.me?subject=Forespørgsel%20om%20præsentation%20af%20SchellLogic">Book en præsentation</a>
+                    </div>
+                  </div>
+
+                  <div class="module-list">
+                    <div class="module-row">
+                      <div class="module-row-title">Planlægning</div>
+                      <div class="module-tags">
+                        <span class="module-tag">Budget</span>
+                        <span class="module-tag">Budgetgrundlag</span>
+                        <span class="module-tag">Nye initiativer</span>
+                        <span class="module-tag">Referater</span>
+                      </div>
+                    </div>
+
+                    <div class="module-row">
+                      <div class="module-row-title">Styring</div>
+                      <div class="module-tags">
+                        <span class="module-tag">Opfølgning</span>
+                        <span class="module-tag">Forecast</span>
+                        <span class="module-tag">Likviditet</span>
+                        <span class="module-tag">Finansposter</span>
+                        <span class="module-tag">Konsolidering</span>
+                      </div>
+                    </div>
+
+                    <div class="module-row">
+                      <div class="module-row-title">Udvidelser</div>
+                      <div class="module-tags">
+                        <span class="module-tag">Projektstyring</span>
+                        <span class="module-tag">Bevillinger & fonde</span>
+                        <span class="module-tag">Afrapportering</span>
+                        <span class="module-tag">Ledelsesoverblik</span>
+                      </div>
+                    </div>
+
+                    <div class="module-row">
+                      <div class="module-row-title">Afslutning</div>
+                      <div class="module-tags">
+                        <span class="module-tag">Kvartalsluk</span>
+                        <span class="module-tag">Årsregnskab</span>
+                        <span class="module-tag">Årsrapport</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            </div><!-- content -->
+          </div><!-- dashboard-grid -->
+        </div><!-- dashboard -->
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      SchellLogic · En sammenhængende platform til organisationer og virksomheder, der ønsker mere klarhed, færre manuelle mellemled og bedre økonomisk beslutningskraft.
+      SchellLogic · Et cockpit for organisationer og virksomheder, der ønsker mere klarhed, mindre kompleksitet og mere plads til det menneskelige.
     </div>
   </footer>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".panel[id^='tab-']");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        panels.forEach((panel) => {
+          panel.classList.remove("active");
+          if (panel.id === target) {
+            panel.classList.add("active");
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
