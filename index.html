@@ -363,7 +363,11 @@
       font-size: 0.92rem;
     }
 
-    .preview-frame {
+    .hero-inline-preview {
+      margin-top: 22px;
+    }
+
+    .hero-inline-preview .preview-frame {
       overflow: hidden;
       border-radius: 24px;
       border: 1px solid rgba(156, 199, 255, 0.12);
@@ -372,21 +376,21 @@
       box-shadow: var(--glow);
     }
 
-    .preview-toolbar {
+    .hero-inline-preview .preview-toolbar {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 12px;
     }
 
-    .preview-dot {
+    .hero-inline-preview .preview-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: rgba(255,255,255,0.18);
     }
 
-    .preview-caption {
+    .hero-inline-preview .preview-caption {
       margin-left: auto;
       color: var(--muted);
       font-size: 0.8rem;
@@ -395,18 +399,118 @@
       text-transform: uppercase;
     }
 
-    .preview-image {
+    .hero-inline-preview .preview-image {
       width: 100%;
       display: block;
       border-radius: 18px;
       border: 1px solid rgba(156, 199, 255, 0.08);
     }
 
-    .preview-text {
+    .hero-inline-preview .preview-text {
       margin-top: 14px;
       color: var(--muted);
       font-size: 0.94rem;
       line-height: 1.6;
+    }
+
+    .preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .preview-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .preview-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(145, 232, 183, 0.12);
+      border: 1px solid rgba(145, 232, 183, 0.18);
+      color: #d8ffea;
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .preview-card,
+    .preview-wide {
+      border-radius: 22px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      padding: 16px;
+    }
+
+    .preview-label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .preview-value {
+      color: #ffffff;
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .preview-sub {
+      margin-top: 8px;
+      color: #d1e1f7;
+      font-size: 0.9rem;
+    }
+
+    .preview-wide {
+      grid-column: span 2;
+    }
+
+    .bar-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 126px 1fr 56px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .bar-row span {
+      color: #dcecff;
+      font-size: 0.87rem;
+      font-weight: 700;
+    }
+
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(156, 199, 255, 0.08);
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4a9fff, #93ecff);
+      box-shadow: 0 0 18px rgba(82, 168, 255, 0.26);
     }
 
     .main-shell {
@@ -729,6 +833,26 @@
       border-color: rgba(156, 199, 255, 0.1);
     }
 
+    .quote-card {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+    }
+
+    .quote-card p {
+      margin: 0;
+      color: #e7f2ff;
+      font-size: 1rem;
+    }
+
+    .quote-card small {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     .vision-box {
       padding: 26px;
       border-radius: 28px;
@@ -957,6 +1081,21 @@
                 Jeg tror på mennesker før penge. Selvfølgelig skal god software kunne betale sig. Men det vigtigste for mig er at bygge noget, der faktisk hjælper andre og gør en reel forskel i deres hverdag.
               </div>
 
+              <div class="hero-inline-preview">
+                <div class="preview-frame">
+                  <div class="preview-toolbar">
+                    <span class="preview-dot"></span>
+                    <span class="preview-dot"></span>
+                    <span class="preview-dot"></span>
+                    <span class="preview-caption">Real platform preview</span>
+                  </div>
+                  <img src="followup-overview.png" alt="Preview af SchellLogic opfølgningsmodul" class="preview-image" />
+                </div>
+                <div class="preview-text">
+                  Et glimt af platformen, som den ser ud i praksis: ledelsesrelevant opfølgning, tydelige signaler og en arbejdsflade bygget til virkeligheden.
+                </div>
+              </div>
+
               <div class="section-intro">
                 <div class="intro-chip">
                   <strong>Mere ro</strong>
@@ -974,17 +1113,61 @@
             </div>
 
             <div class="hero-preview">
-              <div class="preview-frame">
-                <div class="preview-toolbar">
-                  <span class="preview-dot"></span>
-                  <span class="preview-dot"></span>
-                  <span class="preview-dot"></span>
-                  <span class="preview-caption">Real platform preview</span>
-                </div>
-                <img src="followup-overview.png" alt="Preview af SchellLogic opfølgningsmodul" class="preview-image" />
+              <div class="preview-top">
+                <div class="preview-title">Cockpit preview</div>
+                <div class="preview-badge">Klar til implementering</div>
               </div>
-              <div class="preview-text">
-                Et glimt af platformen, som den ser ud i praksis: ledelsesrelevant opfølgning, tydelige signaler og en arbejdsflade bygget til virkeligheden.
+
+              <div class="preview-grid">
+                <div class="preview-card">
+                  <div class="preview-label">Samlet overblik</div>
+                  <div class="preview-value">Ét sted</div>
+                  <div class="preview-sub">Mindre hop mellem filer, noter og særskilte arbejdsgange</div>
+                </div>
+
+                <div class="preview-card">
+                  <div class="preview-label">Hverdagsfølelse</div>
+                  <div class="preview-value">Mere ro</div>
+                  <div class="preview-sub">Når strukturen er bedre, bliver arbejdet lettere at være i</div>
+                </div>
+
+                <div class="preview-card">
+                  <div class="preview-label">Afslutning</div>
+                  <div class="preview-value">Samlet</div>
+                  <div class="preview-sub">Kvartalsluk, årsregnskab og årsrapport i bedre sammenhæng</div>
+                </div>
+
+                <div class="preview-card">
+                  <div class="preview-label">Bevillinger</div>
+                  <div class="preview-value">Synligt</div>
+                  <div class="preview-sub">Bedre overblik over krav, perioder og økonomisk betydning</div>
+                </div>
+
+                <div class="preview-wide">
+                  <div class="preview-label">Sammenhæng på tværs</div>
+                  <div class="bar-stack">
+                    <div class="bar-row">
+                      <span>Planlægning</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 91%"></div></div>
+                      <span>91%</span>
+                    </div>
+                    <div class="bar-row">
+                      <span>Styring</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 88%"></div></div>
+                      <span>88%</span>
+                    </div>
+                    <div class="bar-row">
+                      <span>Afslutning</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 84%"></div></div>
+                      <span>84%</span>
+                    </div>
+                    <div class="bar-row">
+                      <span>Bevillinger</span>
+                      <div class="bar-track"><div class="bar-fill" style="width: 82%"></div></div>
+                      <span>82%</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div><!-- hero-grid -->
@@ -1566,14 +1749,18 @@
     const navKontakt = document.querySelector('a[href="#kontakt-section"]');
 
     if (navVision) {
-      navVision.addEventListener("click", () => {
+      navVision.addEventListener("click", (event) => {
+        event.preventDefault();
         activateTab("tab-vision");
+        document.getElementById("vision-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
 
     if (navKontakt) {
-      navKontakt.addEventListener("click", () => {
+      navKontakt.addEventListener("click", (event) => {
+        event.preventDefault();
         activateTab("tab-kontakt");
+        document.getElementById("kontakt-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
   </script>
