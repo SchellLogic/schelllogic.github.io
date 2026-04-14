@@ -363,11 +363,7 @@
       font-size: 0.92rem;
     }
 
-    .hero-inline-preview {
-      margin-top: 22px;
-    }
-
-    .hero-inline-preview .preview-frame {
+    .preview-frame {
       overflow: hidden;
       border-radius: 24px;
       border: 1px solid rgba(156, 199, 255, 0.12);
@@ -376,21 +372,21 @@
       box-shadow: var(--glow);
     }
 
-    .hero-inline-preview .preview-toolbar {
+    .preview-toolbar {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 12px;
     }
 
-    .hero-inline-preview .preview-dot {
+    .preview-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: rgba(255,255,255,0.18);
     }
 
-    .hero-inline-preview .preview-caption {
+    .preview-caption {
       margin-left: auto;
       color: var(--muted);
       font-size: 0.8rem;
@@ -399,14 +395,14 @@
       text-transform: uppercase;
     }
 
-    .hero-inline-preview .preview-image {
+    .preview-image {
       width: 100%;
       display: block;
       border-radius: 18px;
       border: 1px solid rgba(156, 199, 255, 0.08);
     }
 
-    .hero-inline-preview .preview-text {
+    .preview-text {
       margin-top: 14px;
       color: var(--muted);
       font-size: 0.94rem;
@@ -511,6 +507,10 @@
       border-radius: 999px;
       background: linear-gradient(90deg, #4a9fff, #93ecff);
       box-shadow: 0 0 18px rgba(82, 168, 255, 0.26);
+    }
+
+    .hero-preview-image-block {
+      margin-top: 18px;
     }
 
     .main-shell {
@@ -1081,21 +1081,6 @@
                 Jeg tror på mennesker før penge. Selvfølgelig skal god software kunne betale sig. Men det vigtigste for mig er at bygge noget, der faktisk hjælper andre og gør en reel forskel i deres hverdag.
               </div>
 
-              <div class="hero-inline-preview">
-                <div class="preview-frame">
-                  <div class="preview-toolbar">
-                    <span class="preview-dot"></span>
-                    <span class="preview-dot"></span>
-                    <span class="preview-dot"></span>
-                    <span class="preview-caption">Real platform preview</span>
-                  </div>
-                  <img src="followup-overview.png" alt="Preview af SchellLogic opfølgningsmodul" class="preview-image" />
-                </div>
-                <div class="preview-text">
-                  Et glimt af platformen, som den ser ud i praksis: ledelsesrelevant opfølgning, tydelige signaler og en arbejdsflade bygget til virkeligheden.
-                </div>
-              </div>
-
               <div class="section-intro">
                 <div class="intro-chip">
                   <strong>Mere ro</strong>
@@ -1169,8 +1154,23 @@
                   </div>
                 </div>
               </div>
+
+              <div class="hero-preview-image-block">
+                <div class="preview-frame">
+                  <div class="preview-toolbar">
+                    <span class="preview-dot"></span>
+                    <span class="preview-dot"></span>
+                    <span class="preview-dot"></span>
+                    <span class="preview-caption">Real platform preview</span>
+                  </div>
+                  <img src="followup-overview.png" alt="Preview af SchellLogic opfølgningsmodul" class="preview-image" />
+                </div>
+                <div class="preview-text">
+                  Et glimt af platformen, som den ser ud i praksis: ledelsesrelevant opfølgning, tydelige signaler og en arbejdsflade bygget til virkeligheden.
+                </div>
+              </div>
             </div>
-          </div><!-- hero-grid -->
+          </div>
         </div>
       </div>
     </section>
@@ -1700,9 +1700,9 @@
                 </div>
               </section>
 
-            </div><!-- content -->
-          </div><!-- dashboard-grid -->
-        </div><!-- dashboard -->
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
