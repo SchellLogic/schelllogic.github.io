@@ -15,7 +15,6 @@
       --bg-2: #0a1f38;
       --bg-3: #112f55;
       --bg-4: #1a4478;
-      --bg-5: #215892;
 
       --panel: rgba(9, 21, 39, 0.84);
       --panel-strong: rgba(8, 19, 36, 0.94);
@@ -37,9 +36,6 @@
       --blue-5: #3488ff;
       --cyan: #97efff;
       --green: #9ae7be;
-      --gold: #ffe2ab;
-      --amber: #f3b259;
-      --red: #ff8d95;
 
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
       --shadow-strong: 0 44px 120px rgba(1, 8, 22, 0.56);
@@ -53,9 +49,13 @@
       --max: 1380px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -163,7 +163,9 @@
       transition: 0.2s ease;
     }
 
-    .nav a:hover { color: #ffffff; }
+    .nav a:hover {
+      color: #ffffff;
+    }
 
     .btn {
       display: inline-flex;
@@ -179,7 +181,9 @@
       white-space: nowrap;
     }
 
-    .btn:hover { transform: translateY(-1px); }
+    .btn:hover {
+      transform: translateY(-1px);
+    }
 
     .btn-primary {
       color: #041120;
@@ -195,7 +199,9 @@
       border-color: rgba(156, 199, 255, 0.14);
     }
 
-    .hero-shell { padding: 30px 0 24px; }
+    .hero-shell {
+      padding: 30px 0 24px;
+    }
 
     .hero {
       position: relative;
@@ -221,10 +227,10 @@
     .hero-grid {
       position: relative;
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: 0.98fr 1.02fr;
       gap: 22px;
       padding: 28px;
-      align-items: stretch;
+      align-items: start;
     }
 
     .hero-copy,
@@ -310,52 +316,6 @@
       font-size: 0.95rem;
     }
 
-    .preview-frame {
-      position: relative;
-      overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid rgba(156, 199, 255, 0.12);
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      padding: 14px;
-      box-shadow: var(--glow);
-    }
-
-    .preview-toolbar {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .preview-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.18);
-    }
-
-    .preview-caption {
-      margin-left: auto;
-      color: var(--muted);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .preview-image {
-      width: 100%;
-      display: block;
-      border-radius: 18px;
-      border: 1px solid rgba(156, 199, 255, 0.08);
-    }
-
-    .preview-text {
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
     .section-intro {
       margin-top: 18px;
       display: grid;
@@ -384,7 +344,59 @@
       font-size: 0.92rem;
     }
 
-    .main-shell { padding-bottom: 56px; }
+    .preview-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(156, 199, 255, 0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding: 14px;
+      box-shadow: var(--glow);
+    }
+
+    .preview-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .preview-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      flex: 0 0 auto;
+    }
+
+    .preview-caption {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .preview-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(156, 199, 255, 0.08);
+      opacity: 1;
+    }
+
+    .preview-text {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .main-shell {
+      padding-bottom: 56px;
+    }
 
     .dashboard {
       border: 1px solid var(--line);
@@ -398,7 +410,7 @@
     .dashboard-grid {
       display: grid;
       grid-template-columns: 292px minmax(0, 1fr);
-      min-height: 1180px;
+      min-height: 1080px;
     }
 
     .sidebar {
@@ -555,8 +567,13 @@
       gap: 14px;
     }
 
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 
     .card {
       padding: 18px;
@@ -577,26 +594,6 @@
     .card p {
       margin: 0;
       color: var(--muted);
-    }
-
-    .quote-card {
-      padding: 22px;
-      border-radius: 24px;
-      border: 1px solid rgba(156, 199, 255, 0.1);
-      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
-    }
-
-    .quote-card p {
-      margin: 0;
-      color: #e7f2ff;
-      font-size: 1rem;
-    }
-
-    .quote-card small {
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 0.9rem;
     }
 
     .shot-card {
@@ -647,72 +644,17 @@
 
     .shot-image {
       width: 100%;
+      height: auto;
       display: block;
       border-radius: 18px;
       border: 1px solid rgba(156, 199, 255, 0.08);
+      background: rgba(255,255,255,0.02);
     }
 
     .shot-foot {
       padding: 0 18px 18px;
       color: var(--muted);
       font-size: 0.94rem;
-    }
-
-    .feature-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .feature-table th,
-    .feature-table td {
-      text-align: left;
-      padding: 14px 12px;
-      border-bottom: 1px solid rgba(156, 199, 255, 0.08);
-      vertical-align: top;
-    }
-
-    .feature-table th {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      color: #9fccff;
-      font-weight: 800;
-    }
-
-    .feature-table td { color: #dceafa; }
-
-    .feature-table td:last-child,
-    .feature-table th:last-child {
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 10px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      border: 1px solid transparent;
-    }
-
-    .badge-blue {
-      color: #deedff;
-      background: rgba(102, 173, 255, 0.12);
-      border-color: rgba(102, 173, 255, 0.18);
-    }
-
-    .badge-green {
-      color: #deffeb;
-      background: rgba(145, 232, 183, 0.12);
-      border-color: rgba(145, 232, 183, 0.18);
-    }
-
-    .badge-soft {
-      color: #d8e7ff;
-      background: rgba(255,255,255,0.04);
-      border-color: rgba(156, 199, 255, 0.1);
     }
 
     .vision-box {
@@ -749,7 +691,10 @@
       box-shadow: var(--glow);
     }
 
-    .contact-box p { margin: 0; color: var(--muted); }
+    .contact-box p {
+      margin: 0;
+      color: var(--muted);
+    }
 
     .contact-box .lead {
       color: #e7f2ff;
@@ -770,8 +715,14 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 1180px) {
@@ -800,11 +751,26 @@
     }
 
     @media (max-width: 720px) {
-      .container { width: min(var(--max), calc(100% - 20px)); }
-      .topbar-inner { padding: 12px 0; }
-      .sidebar-nav { grid-template-columns: 1fr; }
-      .brand-logo { width: 48px; height: 48px; }
-      .hero h1 { max-width: none; }
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .topbar-inner {
+        padding: 12px 0;
+      }
+
+      .sidebar-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero h1 {
+        max-width: none;
+      }
     }
   </style>
 </head>
@@ -852,10 +818,9 @@
                 <span class="pill">Forecast</span>
                 <span class="pill">Opfølgning</span>
                 <span class="pill">Likviditet</span>
-                <span class="pill">Projekter</span>
-                <span class="pill">Bevillinger & fonde</span>
+                <span class="pill">Initiativer</span>
+                <span class="pill">Kontoplan</span>
                 <span class="pill">Kvartalsluk</span>
-                <span class="pill">Årsregnskab</span>
                 <span class="pill">Årsrapport</span>
               </div>
 
@@ -927,8 +892,8 @@
                 <button class="tab-btn" data-tab="tab-budget">Budget</button>
                 <button class="tab-btn" data-tab="tab-forecast">Forecast</button>
                 <button class="tab-btn" data-tab="tab-opfoelgning">Opfølgning</button>
-                <button class="tab-btn" data-tab="tab-projekter">Initiativer</button>
-                <button class="tab-btn" data-tab="tab-bevillinger">Kontoplan</button>
+                <button class="tab-btn" data-tab="tab-initiativer">Initiativer</button>
+                <button class="tab-btn" data-tab="tab-kontoplan">Kontoplan</button>
                 <button class="tab-btn" data-tab="tab-kvartalsluk">Kvartalsluk</button>
                 <button class="tab-btn" data-tab="tab-aarsrapport">Årsrapport</button>
                 <button class="tab-btn" data-tab="tab-vision">Vision</button>
@@ -960,45 +925,6 @@
                     <div class="card">
                       <strong>Mere plads til mennesker</strong>
                       <p>God økonomistyring skal ikke stjæle al energi. Den skal give plads til faglighed, relationer og de opgaver, som virkelig betyder noget.</p>
-                    </div>
-                  </div>
-
-                  <div class="quote-card">
-                    <p>“Jeg vil ikke bare bygge software. Jeg vil gøre hverdagen lettere for mennesker, der hver dag bærer et tungt ansvar i økonomien.”</p>
-                    <small>— Astrid Schell</small>
-                  </div>
-
-                  <div class="grid-2">
-                    <div class="shot-card">
-                      <div class="shot-head">
-                        <div>
-                          <strong>Budget workspace</strong>
-                          <span>Overblik, versioner og økonomisk planlægning</span>
-                        </div>
-                        <div class="shot-badge">Planlægning</div>
-                      </div>
-                      <div class="shot-image-wrap">
-                        <img src="budget-overview.png" alt="Budget workspace i SchellLogic" class="shot-image" />
-                      </div>
-                      <div class="shot-foot">
-                        Et roligt overblik over versioner, status og nøgletal i den aktive budget-workspace.
-                      </div>
-                    </div>
-
-                    <div class="shot-card">
-                      <div class="shot-head">
-                        <div>
-                          <strong>Opfølgning og ledelsesblik</strong>
-                          <span>Afvigelser, kritiske linjer og eksport</span>
-                        </div>
-                        <div class="shot-badge">Styring</div>
-                      </div>
-                      <div class="shot-image-wrap">
-                        <img src="followup-overview.png" alt="Opfølgningsmodul i SchellLogic" class="shot-image" />
-                      </div>
-                      <div class="shot-foot">
-                        Et tydeligt billede af hvor der er brug for opmærksomhed, og hvad der allerede er under kontrol.
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -1151,11 +1077,11 @@
                 </div>
               </section>
 
-              <section class="panel" id="tab-projekter">
+              <section class="panel" id="tab-initiativer">
                 <div class="panel-head">
                   <div>
-                    <div class="kicker">Nye initiativer</div>
-                    <h2>Initiativer og økonomi tættere på hinanden</h2>
+                    <div class="kicker">Initiativer</div>
+                    <h2>Nye initiativer tættere på økonomien</h2>
                     <div class="panel-sub">
                       Nye initiativer er ofte der, hvor økonomi møder strategi. Derfor skal de også kunne ses og styres i samme univers.
                     </div>
@@ -1191,10 +1117,10 @@
                 </div>
               </section>
 
-              <section class="panel" id="tab-bevillinger">
+              <section class="panel" id="tab-kontoplan">
                 <div class="panel-head">
                   <div>
-                    <div class="kicker">Kontoplan og struktur</div>
+                    <div class="kicker">Kontoplan</div>
                     <h2>Et stærkt fundament gør resten af platformen mere ærlig</h2>
                     <div class="panel-sub">
                       God økonomistyring starter med en struktur, man kan stole på. Når linjer, typer og finanskonti hænger sammen, bliver alt andet lettere.
