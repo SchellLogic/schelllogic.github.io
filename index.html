@@ -281,6 +281,31 @@
       color: #ffffff;
     }
 
+    .hero__title--logic {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 0;
+      max-width: none;
+      font-size: clamp(2.55rem, 4.9vw, 5.2rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      color: #ffffff;
+    }
+
+    .logic-line {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .logic-letter {
+      display: inline-block;
+      width: 0.9em;
+      flex: 0 0 0.9em;
+      color: #7dd3fc;
+      font-weight: 800;
+    }
+
     .hero-lead {
       margin-top: 16px;
       max-width: 68ch;
@@ -1007,6 +1032,15 @@
         max-width: none;
       }
 
+      .hero__title--logic {
+        line-height: 1;
+      }
+
+      .logic-letter {
+        width: 0.82em;
+        flex-basis: 0.82em;
+      }
+
       .preview-grid {
         grid-template-columns: 1fr;
       }
@@ -1049,7 +1083,13 @@
           <div class="hero-grid">
             <div class="hero-copy">
               <div class="kicker">SchellLogic cockpit</div>
-              <h1>Økonomi må gerne være smuk, klar og lettere at være i.</h1>
+              <h1 class="hero__title hero__title--logic">
+                <span class="logic-line"><span class="logic-letter">L</span>angsigtet likviditetsstyring</span>
+                <span class="logic-line"><span class="logic-letter">O</span>verskuelig omkostningsfordeling</span>
+                <span class="logic-line"><span class="logic-letter">G</span>ennemsigtige prognoser</span>
+                <span class="logic-line"><span class="logic-letter">I</span>ntelligent afrapportering</span>
+                <span class="logic-line"><span class="logic-letter">C</span>entraliseret controlling</span>
+              </h1>
 
               <div class="hero-lead">
                 SchellLogic samler budget, forecast, opfølgning, likviditet, projekter, bevillinger, kvartalsluk, årsregnskab og årsrapport i én sammenhængende platform. Ikke for at gøre arbejdet koldere, men for at gøre det mere roligt, mere menneskeligt og mere til at stole på.
