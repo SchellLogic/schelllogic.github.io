@@ -965,6 +965,17 @@
       font-size: 0.94rem;
     }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @keyframes logoFloat {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-4px); }
@@ -1096,9 +1107,9 @@
                 Platformen samler budget, forecast, opfølgning, likviditet, projekter, bevillinger, kvartalsluk, årsregnskab og årsrapport i én sammenhængende platform. Ikke for at gøre arbejdet koldere, men for at gøre det mere roligt, mere menneskeligt og mere til at stole på.
               </div>
 
-              <div class="hero-empathy">
+              <div class="hero-empathy reveal">
                 <strong>Bygget i krydsfeltet mellem financial controlling og softwareudvikling</strong>
-                Platformen udspringer direkte af mit arbejde som financial controller og er udviklet med afsæt i min erfaring som softwareudvikler. Det giver en særlig kombination af praktisk indsigt og teknisk forståelse, hvor løsningen ikke alene er funktionel – men også forankret i de virkelige arbejdsgange, den skal understøtte. Det er netop i dette krydsfelt, at behovet for en mere sammenhængende tilgang til økonomistyring er blevet tydeligt. 
+                Platformen udspringer direkte af mit arbejde som financial controller og er udviklet med afsæt i min erfaring som softwareudvikler. Det giver en særlig kombination af praktisk indsigt og teknisk forståelse, hvor løsningen ikke alene er funktionel – men også forankret i de virkelige arbejdsgange, den skal understøtte. Det er netop i dette krydsfelt, at behovet for en mere sammenhængende tilgang til økonomistyring er blevet tydeligt.
               </div>
 
               <div class="hero-pills">
@@ -1118,21 +1129,21 @@
                 <a class="btn btn-secondary" href="#platform">Se platformen</a>
               </div>
 
-              <div class="hero-empathy">
-                <strong>Ikke bygget til de største – bygget til dem, der har behovet</strong> 
+              <div class="hero-empathy reveal">
+                <strong>Ikke bygget til de største – bygget til dem, der har behovet</strong>
                 Ambitionen er at gøre avanceret økonomistyring mere tilgængelig – gennem skræddersyede platforme, der kan implementeres uden de investeringer i millionklassen, som ellers ofte er en forudsætning. Det handler ikke om at gøre det simplere end det er – men om at gøre det mere tilgængeligt, mere sammenhængende og mere anvendeligt i praksis.
               </div>
 
               <div class="section-intro">
-                <div class="intro-chip">
+                <div class="intro-chip reveal">
                   <strong>Mere ro</strong>
                   <p>Mindre følelsen af at bære hele økonomien alene i spredte filer.</p>
                 </div>
-                <div class="intro-chip">
+                <div class="intro-chip reveal">
                   <strong>Mere klarhed</strong>
                   <p>Stærkere overblik og mindre usikkerhed omkring tallene.</p>
                 </div>
-                <div class="intro-chip">
+                <div class="intro-chip reveal">
                   <strong>Mere menneskelighed</strong>
                   <p>Mere plads til faglighed, ansvar og gode relationer i arbejdet.</p>
                 </div>
@@ -1146,31 +1157,31 @@
               </div>
 
               <div class="preview-grid">
-                <div class="preview-card">
+                <div class="preview-card reveal">
                   <div class="preview-label">Samlet overblik</div>
                   <div class="preview-value">Ét sted</div>
                   <div class="preview-sub">Færre skift mellem filer, noter og adskilte arbejdsgange</div>
                 </div>
 
-                <div class="preview-card">
+                <div class="preview-card reveal">
                   <div class="preview-label">Hverdagsfølelse</div>
                   <div class="preview-value">Mere ro</div>
                   <div class="preview-sub">Når strukturen er klarere, bliver arbejdet mere overskueligt</div>
                 </div>
 
-                <div class="preview-card">
+                <div class="preview-card reveal">
                   <div class="preview-label">Afslutning</div>
                   <div class="preview-value">Samlet</div>
                   <div class="preview-sub">Kvartalsluk, årsregnskab og årsrapport i bedre sammenhæng</div>
                 </div>
 
-                <div class="preview-card">
+                <div class="preview-card reveal">
                   <div class="preview-label">Bevillinger</div>
                   <div class="preview-value">Synligt</div>
                   <div class="preview-sub">Bedre overblik over krav, perioder og økonomisk betydning</div>
                 </div>
 
-                <div class="preview-wide">
+                <div class="preview-wide reveal">
                   <div class="preview-label">Sammenhæng på tværs</div>
                   <div class="bar-stack">
                     <div class="bar-row">
@@ -1197,7 +1208,7 @@
                 </div>
               </div>
 
-              <div class="hero-preview-image-block">
+              <div class="hero-preview-image-block reveal">
                 <div class="preview-frame">
                   <div class="preview-toolbar">
                     <span class="preview-dot"></span>
@@ -1264,59 +1275,85 @@
 
                 <div class="panel-body">
                   <div class="grid-3">
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Mindre tungt arbejde</strong>
                       <p>Når data og arbejdsgange hænger bedre sammen, bliver der mindre usikkerhed, mindre dobbeltarbejde og mere ro omkring tallene.</p>
                     </div>
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Mere tillid til processen</strong>
                       <p>Det bliver lettere at følge, forstå og forklare økonomien, når budget, opfølgning og afslutning hænger sammen.</p>
                     </div>
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Mere plads til mennesker</strong>
                       <p>God økonomistyring skal ikke stjæle al energi. Den skal give plads til faglighed, relationer og de opgaver, som virkelig betyder noget.</p>
                     </div>
                   </div>
 
-                  <div class="quote-card">
+                  <div class="quote-card reveal">
                     <p>
                       “Ambitionen er ikke blot at udvikle software, men at skabe en løsning, der reelt letter hverdagen for dem, der arbejder med økonomi og bærer ansvaret i praksis.”
                     </p>
                     <small>— Astrid Schell</small>
                   </div>
-                  <div class="shot-card">
-      <div class="shot-head">
-        <div>
-          <strong>Sådan bruges platformen i praksis</strong>
-          <span>Alt hænger sammen – hele vejen.</span>
-        </div>
-        <div class="shot-badge">I praksis</div>
-      </div>
 
-      <div style="padding: 22px;">
-        <div class="grid-2">
-          <div class="card">
-            <strong>1. Planlægning</strong>
-            <p>Budgettet opbygges som det strukturelle fundament, så økonomien starter med en klar og vedligeholdelig ramme.</p>
-          </div>
+                  <div class="shot-card reveal">
+                    <div class="shot-head">
+                      <div>
+                        <strong>Sådan bruges platformen i praksis</strong>
+                        <span>Alt hænger sammen – hele vejen.</span>
+                      </div>
+                      <div class="shot-badge">I praksis</div>
+                    </div>
 
-          <div class="card">
-            <strong>2. Styring</strong>
-            <p>Forecast og opfølgning bygger videre på den samme struktur, så data ikke skal genopfindes eller samles manuelt på ny.</p>
-          </div>
+                    <div style="padding: 22px;">
+                      <div class="grid-2">
+                        <div class="card reveal">
+                          <strong>1. Planlægning</strong>
+                          <p>Budgettet opbygges som det strukturelle fundament, så økonomien starter med en klar og vedligeholdelig ramme.</p>
+                        </div>
 
-          <div class="card">
-            <strong>3. Projekter og bevillinger</strong>
-            <p>Initiativer, projekter og bevillinger kobles tættere til økonomien, så prioritering, ansvar og opfølgning bliver mere overskuelige.</p>
-          </div>
+                        <div class="card reveal">
+                          <strong>2. Styring</strong>
+                          <p>Forecast og opfølgning bygger videre på den samme struktur, så data ikke skal genopfindes eller samles manuelt på ny.</p>
+                        </div>
 
-          <div class="card">
-            <strong>4. Afslutning</strong>
-            <p>Kvartalsluk, årsregnskab og årsrapport viderefører det samme grundlag, så afslutningen i højere grad bliver et resultat af det daglige arbejde.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+                        <div class="card reveal">
+                          <strong>3. Projekter og bevillinger</strong>
+                          <p>Initiativer, projekter og bevillinger kobles tættere til økonomien, så prioritering, ansvar og opfølgning bliver mere overskuelige.</p>
+                        </div>
+
+                        <div class="card reveal">
+                          <strong>4. Afslutning</strong>
+                          <p>Kvartalsluk, årsregnskab og årsrapport viderefører det samme grundlag, så afslutningen i højere grad bliver et resultat af det daglige arbejde.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="quote-card reveal">
+                    <p>
+                      Du åbner platformen.<br />
+                      Ikke for at lede – men for at fortsætte.
+                    </p>
+
+                    <p style="margin-top: 14px;">
+                      Budgettet er fundamentet.<br />
+                      Forecastet viser retningen.<br />
+                      Opfølgningen giver ro i tallene.
+                    </p>
+
+                    <p style="margin-top: 14px;">
+                      Du skifter ikke mellem systemer.<br />
+                      Du skifter bare perspektiv.
+                    </p>
+
+                    <p style="margin-top: 14px;">
+                      Og for første gang føles økonomien ikke som noget, der skal samles.<br />
+                      Men noget, der allerede hænger sammen.
+                    </p>
+
+                    <small>— En mere sammenhængende måde at arbejde på</small>
+                  </div>
                 </div>
               </section>
 
@@ -1334,7 +1371,7 @@
 
                 <div class="panel-body">
                   <div class="grid-2">
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Budget overview</strong>
@@ -1350,7 +1387,7 @@
                       </div>
                     </div>
 
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Budget grid i praksis</strong>
@@ -1383,7 +1420,7 @@
 
                 <div class="panel-body">
                   <div class="grid-2">
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Forecast overview</strong>
@@ -1399,7 +1436,7 @@
                       </div>
                     </div>
 
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Forecast på linjeniveau</strong>
@@ -1432,7 +1469,7 @@
 
                 <div class="panel-body">
                   <div class="grid-2">
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Ledelsesrelevant opfølgning</strong>
@@ -1448,7 +1485,7 @@
                       </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Hvorfor det betyder noget</strong>
                       <p>
                         Opfølgning er et af de steder, hvor man tydeligst mærker forskellen mellem tunge processer og god struktur. Når afvigelser, perioder og vurderinger samles i samme arbejdsrum, bliver det lettere at forstå tallene og handle på dem i tide.
@@ -1472,7 +1509,7 @@
 
                 <div class="panel-body">
                   <div class="grid-2">
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Nye initiativer</strong>
@@ -1488,7 +1525,7 @@
                       </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Bedre forberedelse til afrapportering</strong>
                       <p>
                         Jo bedre sammenhæng der er undervejs, desto enklere bliver det at samle op efterfølgende. Når projekter og initiativer kobles tæt til økonomien, styrkes både prioritering og opfølgning.
@@ -1512,7 +1549,7 @@
 
                 <div class="panel-body">
                   <div class="grid-2">
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Kontoplan og budgetlinjer</strong>
@@ -1528,7 +1565,7 @@
                       </div>
                     </div>
 
-                    <table class="feature-table">
+                    <table class="feature-table reveal">
                       <thead>
                         <tr>
                           <th>Behov</th>
@@ -1572,7 +1609,7 @@
 
                 <div class="panel-body">
                   <div class="grid-2">
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Kvartalsluk workspace</strong>
@@ -1588,7 +1625,7 @@
                       </div>
                     </div>
 
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Hvad det giver</strong>
                       <p>
                         Mere synlig proces. Mere tydeligt ansvar. Og en afslutning der i højere grad føles som en styret bevægelse fremad i stedet for et akut oprydningsarbejde.
@@ -1612,15 +1649,15 @@
 
                 <div class="panel-body">
                   <div class="grid-3">
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Samme logik hele vejen</strong>
                       <p>Når budget, opfølgning og afslutning hænger sammen, bliver årsregnskabet lettere at samle med ro og præcision.</p>
                     </div>
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Mindre nyopfindelse ved årets slutning</strong>
                       <p>En stor del af tyngden ved årsregnskab opstår, når man skal bygge bro mellem mange verdener. Det kan gøres enklere.</p>
                     </div>
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Bedre grundlag for kvalitet</strong>
                       <p>God kvalitet i årsregnskabet kommer ikke kun af kontrol. Den kommer også af god sammenhæng før afslutningen.</p>
                     </div>
@@ -1642,7 +1679,7 @@
 
                 <div class="panel-body">
                   <div class="grid-2">
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Årsrapport overview</strong>
@@ -1658,7 +1695,7 @@
                       </div>
                     </div>
 
-                    <div class="shot-card">
+                    <div class="shot-card reveal">
                       <div class="shot-head">
                         <div>
                           <strong>Årsrapport editor</strong>
@@ -1690,7 +1727,7 @@
                 </div>
 
                 <div class="panel-body">
-                  <div class="vision-box">
+                  <div class="vision-box reveal">
                     <p>
                       Teknologi skal ikke føre os mod en "dommedag", hvor mennesker bliver overflødige. Den skal gøre det modsatte. Formålet er at gøre økonomien mere enkel og transparent, så organisationer kan bruge mindre tid på kompleksitet – og mere tid på det menneskelige: faglighed, relationer og dømmekraft, som ingen maskine nogensinde kan erstatte.
                     </p>
@@ -1700,11 +1737,11 @@
                   </div>
 
                   <div class="grid-2">
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Bygget af en financial controller</strong>
                       <p>Det her er ikke kun tænkt i teori. Det kommer fra virkelige arbejdsgange, virkelige frustrationer og et reelt ønske om at gøre noget bedre.</p>
                     </div>
-                    <div class="card">
+                    <div class="card reveal">
                       <strong>Bygget af en software udvikler</strong>
                       <p>God software må gerne være smuk og stærk. Men det vigtigste er, at den gør hverdagen lettere at være i for de mennesker, der bruger den.</p>
                     </div>
@@ -1725,7 +1762,7 @@
                 </div>
 
                 <div class="panel-body">
-                  <div class="contact-box">
+                  <div class="contact-box reveal">
                     <div>
                       <p class="lead">
                         Du taler direkte med den person, der både forstår økonomiarbejdet og selv bygger løsningen.
@@ -1742,7 +1779,7 @@
                   </div>
 
                   <div class="module-list">
-                    <div class="module-row">
+                    <div class="module-row reveal">
                       <div class="module-row-title">Planlægning</div>
                       <div class="module-tags">
                         <span class="module-tag">Budget</span>
@@ -1752,7 +1789,7 @@
                       </div>
                     </div>
 
-                    <div class="module-row">
+                    <div class="module-row reveal">
                       <div class="module-row-title">Styring</div>
                       <div class="module-tags">
                         <span class="module-tag">Opfølgning</span>
@@ -1763,7 +1800,7 @@
                       </div>
                     </div>
 
-                    <div class="module-row">
+                    <div class="module-row reveal">
                       <div class="module-row-title">Afslutning</div>
                       <div class="module-tags">
                         <span class="module-tag">Kvartalsluk</span>
@@ -1838,6 +1875,23 @@
         document.getElementById("kontakt-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+      }
+    );
+
+    revealElements.forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
