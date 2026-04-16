@@ -52,8 +52,8 @@
     --radius-md: 22px;
     --radius-sm: 16px;
 
-    --max: 1580px;
-    --content-max: 1520px;
+    --max: 1720px;
+    --content-max: 1720px;
   }
 
   * {
@@ -101,7 +101,7 @@
   }
 
   .container {
-    width: min(var(--content-max), calc(100% - 28px));
+    width: min(var(--content-max), calc(100% - 18px));
     margin: 0 auto;
   }
 
@@ -256,7 +256,7 @@
   .hero-grid {
     position: relative;
     display: grid;
-    grid-template-columns: 1.04fr 0.96fr;
+    grid-template-columns: 1.1fr 0.9fr;
     gap: 24px;
     padding: 30px;
     align-items: start;
@@ -560,7 +560,7 @@
   }
 
   .sidebar {
-    padding: 20px 16px;
+    padding: 22px 14px;
     border-right: 1px solid var(--line);
     background:
       radial-gradient(circle at top right, rgba(112,196,255,0.10), transparent 30%),
@@ -629,7 +629,7 @@
   .tabs-shell {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
     padding: 8px;
     border-radius: 24px;
     background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.012));
@@ -693,7 +693,7 @@
     font-size: clamp(1.7rem, 2.45vw, 2.2rem);
     letter-spacing: -0.035em;
     color: #ffffff;
-    max-width: 32ch;
+    max-width: 34ch;
   }
 
   .panel-sub {
@@ -716,7 +716,7 @@
   }
 
   .panel-body {
-    padding: 24px;
+    padding: 26px;
     display: grid;
     gap: 18px;
   }
@@ -1198,7 +1198,7 @@
     }
   }
 
-  @media (max-width: 1320px) {
+  @media (max-width: 1330px) {
     .topbar-inner {
       grid-template-columns: 1fr;
       justify-items: start;
@@ -1211,7 +1211,7 @@
 
     .dashboard-grid,
     .hero-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1.15fr;
     }
 
     .sidebar {
@@ -1290,7 +1290,7 @@
     }
 
     .panel-head h2 {
-      max-width: none;
+      max-width: 38ch;
     }
   }
 </style> 
