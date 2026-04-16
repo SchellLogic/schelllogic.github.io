@@ -8,1324 +8,1583 @@
     name="description"
     content="Platformen samler budget, forecast, opfølgning, likviditet, projekter, bevillinger, kvartalsluk, årsregnskab og årsrapport i ét roligt og sammenhængende cockpit for organisationer og virksomheder, der ønsker mindre tungt arbejde og mere klarhed."
   />
-<style>
-  :root {
-    --bg-0: #030d18;
-    --bg-1: #071524;
-    --bg-2: #0a1f38;
-    --bg-3: #112f55;
-    --bg-4: #1a4478;
-    --bg-5: #215892;
-
-    --panel: rgba(9, 21, 39, 0.84);
-    --panel-strong: rgba(8, 19, 36, 0.94);
-    --panel-soft: rgba(255, 255, 255, 0.045);
-    --panel-soft-2: rgba(255, 255, 255, 0.028);
-    --panel-soft-3: rgba(255, 255, 255, 0.018);
-
-    --text: #eef5ff;
-    --text-soft: #dde9f8;
-    --muted: #9db5d4;
-    --muted-2: #bfd2e7;
-
-    --line: rgba(156, 199, 255, 0.11);
-    --line-strong: rgba(156, 199, 255, 0.22);
-
-    --blue-1: #f1f7ff;
-    --blue-2: #dceeff;
-    --blue-3: #b8dcff;
-    --blue-4: #8ac7ff;
-    --blue-5: #5db1ff;
-    --blue-6: #3488ff;
-    --blue-7: #7ed7ff;
-    --cyan: #a9f3ff;
-    --green: #9ae7be;
-    --gold: #ffe2ab;
-
-    --shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
-    --shadow-strong: 0 44px 120px rgba(1, 8, 22, 0.56);
-    --glow: 0 0 0 1px rgba(255,255,255,0.02), 0 0 32px rgba(86, 165, 255, 0.12);
-    --glow-soft: 0 0 0 1px rgba(255,255,255,0.03), 0 0 40px rgba(112, 196, 255, 0.12);
-
-    --radius-xl: 36px;
-    --radius-lg: 28px;
-    --radius-md: 22px;
-    --radius-sm: 16px;
-
-    --max: 1720px;
-    --content-max: 1720px;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text);
-    background:
-      radial-gradient(circle at 8% 0%, rgba(93, 162, 255, 0.16), transparent 28%),
-      radial-gradient(circle at 90% 10%, rgba(114, 230, 255, 0.14), transparent 24%),
-      radial-gradient(circle at 50% 100%, rgba(61, 123, 222, 0.20), transparent 34%),
-      linear-gradient(180deg, #030b16 0%, #06111f 18%, #08182b 40%, #0c2441 72%, #103055 100%);
-    line-height: 1.6;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-      linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
-    background-size: 88px 88px;
-    opacity: 0.08;
-    pointer-events: none;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent 96%);
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  .container {
-    width: min(var(--content-max), calc(100% - 18px));
-    margin: 0 auto;
-  }
-
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 60;
-    background: rgba(4, 14, 28, 0.68);
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
-    border-bottom: 1px solid rgba(156, 199, 255, 0.10);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
-  }
-
-  .topbar-inner {
-    min-height: 88px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 22px;
-  }
-
-  .brand-wrap {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    min-width: 0;
-    padding: 10px 0;
-  }
-
-  .brand-logo {
-    width: 56px;
-    height: 56px;
-    object-fit: contain;
-    border-radius: 16px;
-    filter:
-      drop-shadow(0 0 12px rgba(87, 165, 255, 0.18))
-      drop-shadow(0 12px 24px rgba(0, 0, 0, 0.20));
-    animation: logoFloat 6s ease-in-out infinite;
-  }
-
-  .brand {
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -0.035em;
-    color: #ffffff;
-  }
-
-  .brand small {
-    display: block;
-    margin-top: 4px;
-    font-size: 0.84rem;
-    color: var(--muted);
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-
-  .nav {
-    justify-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 8px 18px;
-    border-radius: 999px;
-    border: 1px solid rgba(156, 199, 255, 0.10);
-    background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.018));
-    box-shadow: var(--glow-soft);
-  }
-
-  .nav a {
-    font-size: 0.95rem;
-    color: #cfe3fa;
-    font-weight: 700;
-    transition: 0.2s ease;
-  }
-
-  .nav a:hover {
-    color: #ffffff;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 22px;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.22s ease;
-    white-space: nowrap;
-  }
-
-  .btn:hover {
-    transform: translateY(-1px);
-  }
-
-  .btn-primary {
-    color: #041120;
-    background: linear-gradient(135deg, #72bcff 0%, #b8f5ff 100%);
-    box-shadow:
-      0 16px 34px rgba(69, 150, 255, 0.30),
-      inset 0 1px 0 rgba(255,255,255,0.40);
-  }
-
-  .btn-secondary {
-    color: #edf5ff;
-    background: rgba(255,255,255,0.045);
-    border-color: rgba(156, 199, 255, 0.14);
-  }
-
-  .hero-shell {
-    padding: 30px 0 26px;
-  }
-
-  .hero {
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--line);
-    background: linear-gradient(180deg, rgba(10, 22, 42, 0.84), rgba(8, 18, 35, 0.96));
-    box-shadow: var(--shadow-strong);
-    backdrop-filter: blur(16px);
-  }
-
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 16% 12%, rgba(89, 165, 255, 0.16), transparent 24%),
-      radial-gradient(circle at 88% 18%, rgba(120, 236, 255, 0.14), transparent 24%),
-      radial-gradient(circle at 50% 100%, rgba(73, 131, 255, 0.12), transparent 32%);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: auto -10% -40% auto;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(117, 200, 255, 0.08), transparent 70%);
-    filter: blur(18px);
-    pointer-events: none;
-  }
-
-  .hero-grid {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 24px;
-    padding: 30px;
-    align-items: start;
-  }
-
-  .hero-copy,
-  .hero-preview {
-    position: relative;
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(156, 199, 255, 0.10);
-    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
-    padding: 28px;
-    box-shadow: var(--glow);
-  }
-
-  .kicker {
-    display: inline-block;
-    font-size: 0.76rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    font-weight: 800;
-    color: #9ecfff;
-    margin-bottom: 12px;
-  }
-
-  .hero h1 {
-    margin: 0;
-    color: #ffffff;
-  }
-
-  .hero__title--logic {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin: 0;
-    max-width: 18ch;
-    font-size: clamp(1.02rem, 1.62vw, 2rem);
-    line-height: 1.06;
-    letter-spacing: -0.015em;
-    color: #ffffff;
-  }
-
-  .logic-line {
-    display: flex;
-    align-items: baseline;
-    white-space: nowrap;
-  }
-
-  .logic-letter {
-    display: inline-block;
-    width: 0.78em;
-    flex: 0 0 0.78em;
-    margin-right: 0.08em;
-    color: #89ddff;
-    font-weight: 800;
-  }
-
-  .hero-lead {
-    margin-top: 16px;
-    max-width: 85ch;
-    color: var(--muted-2);
-    font-size: 1.06rem;
-  }
-
-  .hero-empathy {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 24px;
-    background: rgba(255,255,255,0.035);
-    border: 1px solid rgba(156, 199, 255, 0.10);
-    color: #e4efff;
-  }
-
-  .hero-empathy strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-    font-size: 1rem;
-  }
-
-  .hero-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 18px;
-  }
-
-  .pill {
-    padding: 10px 13px;
-    border-radius: 999px;
-    border: 1px solid rgba(156, 199, 255, 0.12);
-    background: rgba(255,255,255,0.04);
-    color: #dcecff;
-    font-size: 0.84rem;
-    font-weight: 700;
-  }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 22px;
-  }
-
-  .section-intro {
-    margin-top: 18px;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .intro-chip {
-    padding: 18px;
-    border-radius: 20px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.016));
-  }
-
-  .intro-chip strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #ffffff;
-    font-size: 0.98rem;
-    letter-spacing: -0.02em;
-  }
-
-  .intro-chip p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .preview-frame {
-    overflow: hidden;
-    border-radius: 24px;
-    border: 1px solid rgba(156, 199, 255, 0.12);
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    padding: 14px;
-    box-shadow: var(--glow);
-  }
-
-  .preview-toolbar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-  }
-
-  .preview-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.18);
-  }
-
-  .preview-caption {
-    margin-left: auto;
-    color: var(--muted);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
-  .preview-image {
-    width: 100%;
-    display: block;
-    border-radius: 18px;
-    border: 1px solid rgba(156, 199, 255, 0.08);
-  }
-
-  .preview-text {
-    margin-top: 14px;
-    color: var(--muted);
-    font-size: 0.94rem;
-    line-height: 1.6;
-  }
-
-  .preview-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-
-  .preview-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -0.02em;
-  }
-
-  .preview-badge {
-    padding: 8px 12px;
-    border-radius: 999px;
-    background: rgba(145, 232, 183, 0.12);
-    border: 1px solid rgba(145, 232, 183, 0.18);
-    color: #d8ffea;
-    font-size: 0.8rem;
-    font-weight: 800;
-  }
-
-  .preview-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .preview-card,
-  .preview-wide {
-    border-radius: 22px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    padding: 16px;
-  }
-
-  .preview-label {
-    color: var(--muted);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-weight: 800;
-    margin-bottom: 8px;
-  }
-
-  .preview-value {
-    color: #ffffff;
-    font-size: 1.7rem;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-  }
-
-  .preview-sub {
-    margin-top: 8px;
-    color: #d1e1f7;
-    font-size: 0.9rem;
-  }
-
-  .preview-wide {
-    grid-column: span 2;
-  }
-
-  .bar-stack {
-    display: grid;
-    gap: 10px;
-    margin-top: 6px;
-  }
-
-  .bar-row {
-    display: grid;
-    grid-template-columns: 126px 1fr 56px;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .bar-row span {
-    color: #dcecff;
-    font-size: 0.87rem;
-    font-weight: 700;
-  }
-
-  .bar-track {
-    height: 10px;
-    border-radius: 999px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(156, 199, 255, 0.08);
-  }
-
-  .bar-fill {
-    height: 100%;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #59a9ff, #a8f0ff);
-    box-shadow: 0 0 18px rgba(82, 168, 255, 0.26);
-  }
-
-  .hero-preview-image-block {
-    margin-top: 18px;
-  }
-
-  .main-shell {
-    padding-bottom: 56px;
-  }
-
-  .dashboard {
-    border: 1px solid var(--line);
-    border-radius: 34px;
-    overflow: hidden;
-    background: linear-gradient(180deg, rgba(8, 18, 35, 0.78), rgba(8, 18, 35, 0.92));
-    box-shadow: var(--shadow-strong);
-    backdrop-filter: blur(14px);
-  }
-
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
-  }
-
-  .sidebar {
-    padding: 22px 14px;
-    border-right: 1px solid var(--line);
-    background:
-      radial-gradient(circle at top right, rgba(112,196,255,0.10), transparent 30%),
-      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
-  }
-
-  .sidebar-title {
-    margin: 0 0 12px;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: #a8d5ff;
-    font-weight: 800;
-  }
-
-  .sidebar-nav {
-    display: grid;
-    gap: 10px;
-  }
-
-  .sidebar-link {
-    padding: 16px 14px;
-    border-radius: 18px;
-    color: #d9e9ff;
-    background: transparent;
-    border: 1px solid transparent;
-    font-weight: 700;
-    font-size: 0.98rem;
-    transition: 0.2s ease;
-  }
-
-  .sidebar-link:hover,
-  .sidebar-link.active {
-    color: #ffffff;
-    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.026));
-    border-color: rgba(156, 199, 255, 0.14);
-    box-shadow: var(--glow-soft);
-  }
-
-  .sidebar-note {
-    margin-top: 18px;
-    padding: 18px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    color: var(--muted);
-    font-size: 0.94rem;
-    line-height: 1.7;
-  }
-
-  .sidebar-note strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #ffffff;
-    font-size: 0.95rem;
-    letter-spacing: -0.02em;
-  }
-
-  .content {
-    padding: 20px;
-    display: grid;
-    gap: 18px;
-    align-content: start;
-  }
-
-  .tabs-shell {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 8px;
-    border-radius: 24px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.012));
-    border: 1px solid rgba(156, 199, 255, 0.08);
-  }
-
-  .tab-btn {
-    padding: 12px 15px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.024);
-    border: 1px solid rgba(156, 199, 255, 0.11);
-    color: #deebff;
-    font-weight: 800;
-    cursor: pointer;
-    transition: 0.18s ease;
-    min-height: 42px;
-  }
-
-  .tab-btn:hover {
-    color: #ffffff;
-    background: rgba(255,255,255,0.055);
-  }
-
-  .tab-btn.active {
-    color: #041120;
-    background: linear-gradient(135deg, #7bc3ff, #aef5ff);
-    border-color: transparent;
-    box-shadow:
-      0 12px 24px rgba(72, 145, 255, 0.24),
-      inset 0 1px 0 rgba(255,255,255,0.34);
-  }
-
-  .panel {
-    display: none;
-    border-radius: 30px;
-    border: 1px solid var(--line);
-    background:
-      radial-gradient(circle at top right, rgba(86,165,255,0.08), transparent 24%),
-      linear-gradient(180deg, rgba(12, 24, 46, 0.82), rgba(10, 19, 37, 0.96));
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-
-  .panel.active {
-    display: block;
-    animation: fadeUp 0.3s ease;
-  }
-
-  .panel-head {
-    padding: 26px 26px 24px;
-    border-bottom: 1px solid rgba(156, 199, 255, 0.1);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 22px;
-    flex-wrap: wrap;
-  }
-
-  .panel-head h2 {
-    margin: 0;
-    font-size: clamp(1.7rem, 2.45vw, 2.2rem);
-    letter-spacing: -0.035em;
-    color: #ffffff;
-    max-width: 34ch;
-  }
-
-  .panel-sub {
-    color: var(--muted);
-    margin-top: 10px;
-    max-width: 90ch;
-    font-size: 1.02rem;
-    line-height: 1.75;
-  }
-
-  .panel-tag {
-    padding: 12px 15px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    color: #e2efff;
-    font-size: 0.86rem;
-    font-weight: 800;
-    white-space: nowrap;
-  }
-
-  .panel-body {
-    padding: 26px;
-    display: grid;
-    gap: 18px;
-  }
-
-  .grid-2,
-  .grid-3 {
-    display: grid;
-    gap: 14px;
-  }
-
-  .grid-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .grid-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .card {
-    padding: 20px;
-    border-radius: 22px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
-  }
-
-  .card strong {
-    display: block;
-    color: #ffffff;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    letter-spacing: -0.02em;
-  }
-
-  .card p {
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  .shot-card {
-    overflow: hidden;
-    border-radius: 24px;
-    border: 1px solid rgba(156, 199, 255, 0.12);
-    background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
-    box-shadow: var(--glow);
-  }
-
-  .shot-head {
-    padding: 18px 20px;
-    border-bottom: 1px solid rgba(156, 199, 255, 0.08);
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .shot-head strong {
-    color: #ffffff;
-    font-size: 1.02rem;
-    letter-spacing: -0.02em;
-  }
-
-  .shot-head span {
-    color: var(--muted);
-    font-size: 0.92rem;
-    display: block;
-    margin-top: 4px;
-  }
-
-  .shot-badge {
-    padding: 8px 12px;
-    border-radius: 999px;
-    font-size: 0.79rem;
-    font-weight: 800;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    color: #dcecff;
-    white-space: nowrap;
-  }
-
-  .shot-image-wrap {
-    padding: 14px;
-  }
-
-  .shot-image {
-    width: 100%;
-    display: block;
-    border-radius: 18px;
-    border: 1px solid rgba(156, 199, 255, 0.08);
-    background: rgba(255,255,255,0.02);
-  }
-
-  .shot-foot {
-    padding: 0 18px 18px;
-    color: var(--muted);
-    font-size: 0.96rem;
-    line-height: 1.75;
-  }
-
-  .feature-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 22px;
-    overflow: hidden;
-    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-    border: 1px solid rgba(156,199,255,0.10);
-  }
-
-  .feature-table th,
-  .feature-table td {
-    text-align: left;
-    padding: 15px 14px;
-    border-bottom: 1px solid rgba(156, 199, 255, 0.08);
-    vertical-align: top;
-  }
-
-  .feature-table th {
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    color: #a8d5ff;
-    font-weight: 800;
-  }
-
-  .feature-table td {
-    color: #dceafa;
-  }
-
-  .feature-table td:last-child,
-  .feature-table th:last-child {
-    text-align: right;
-    white-space: nowrap;
-  }
-
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 10px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 800;
-    border: 1px solid transparent;
-  }
-
-  .badge-blue {
-    color: #ecf6ff;
-    background: rgba(102, 173, 255, 0.16);
-    border-color: rgba(102, 173, 255, 0.22);
-  }
-
-  .badge-green {
-    color: #deffeb;
-    background: rgba(145, 232, 183, 0.12);
-    border-color: rgba(145, 232, 183, 0.18);
-  }
-
-  .badge-soft {
-    color: #d8e7ff;
-    background: rgba(255,255,255,0.04);
-    border-color: rgba(156, 199, 255, 0.1);
-  }
-
-  .quote-card {
-    padding: 24px;
-    border-radius: 24px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
-  }
-
-  .quote-card p {
-    margin: 0;
-    color: #e7f2ff;
-    font-size: 1.02rem;
-    line-height: 1.85;
-  }
-
-  .quote-card small {
-    display: block;
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-
-  .vision-box {
-    padding: 28px;
-    border-radius: 28px;
-    border: 1px solid rgba(156, 199, 255, 0.12);
-    background:
-      radial-gradient(circle at top right, rgba(99, 182, 255, 0.14), transparent 34%),
-      linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    box-shadow: var(--glow);
-  }
-
-  .vision-box p {
-    margin: 0;
-    font-size: 1.06rem;
-    color: #e6f1ff;
-    line-height: 1.84;
-  }
-
-  .vision-box .soft-line {
-    margin-top: 14px;
-    color: var(--muted);
-    font-size: 0.97rem;
-  }
-
-  .contact-box {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 18px;
-    align-items: center;
-    padding: 26px;
-    border-radius: 28px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    box-shadow: var(--glow);
-  }
-
-  .contact-box p {
-    margin: 0;
-    color: var(--muted);
-    line-height: 1.75;
-  }
-
-  .contact-box .lead {
-    color: #e7f2ff;
-    font-weight: 700;
-    font-size: 1.02rem;
-  }
-
-  .module-list {
-    display: grid;
-    gap: 14px;
-  }
-
-  .module-row {
-    display: grid;
-    grid-template-columns: 190px minmax(0, 1fr);
-    gap: 16px;
-    padding: 18px;
-    border-radius: 24px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
-  }
-
-  .module-row-title {
-    color: #ffffff;
-    font-size: 1.04rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-
-  .module-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .module-tag {
-    padding: 10px 12px;
-    border-radius: 999px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: rgba(255,255,255,0.035);
-    color: #ddeaff;
-    font-size: 0.84rem;
-    font-weight: 800;
-  }
-
-  .footer {
-    padding: 22px 0 42px;
-    color: var(--muted);
-    font-size: 0.94rem;
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .story-flow {
-    display: grid;
-    gap: 18px;
-  }
-
-  .story-card {
-    position: relative;
-    padding: 24px 24px 24px 82px;
-    border-radius: 28px;
-    border: 1px solid rgba(156, 199, 255, 0.10);
-    background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02));
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
-  }
-
-  .story-step {
-    position: absolute;
-    left: 22px;
-    top: 22px;
-    width: 42px;
-    height: 42px;
-    border-radius: 999px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.84rem;
-    font-weight: 900;
-    color: #041120;
-    background: linear-gradient(135deg, #72bcff, #b6f6ff);
-    box-shadow:
-      0 10px 24px rgba(72,145,255,0.24),
-      inset 0 1px 0 rgba(255,255,255,0.34);
-  }
-
-  .story-card strong {
-    display: block;
-    color: #ffffff;
-    font-size: 1.08rem;
-    margin-bottom: 10px;
-    letter-spacing: -0.02em;
-  }
-
-  .story-card p {
-    margin: 0;
-    color: var(--muted-2);
-    line-height: 1.88;
-  }
-
-  .story-pair {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .reading-rail {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .reading-node {
-    padding: 18px;
-    border-radius: 20px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.018));
-  }
-
-  .reading-node span {
-    display: block;
-    font-size: 0.74rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: #9ecfff;
-    font-weight: 800;
-    margin-bottom: 8px;
-  }
-
-  .reading-node strong {
-    display: block;
-    color: #ffffff;
-    font-size: 0.98rem;
-    margin-bottom: 6px;
-  }
-
-  .reading-node p {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.93rem;
-    line-height: 1.68;
-  }
-
-  .longform-card {
-    padding: 24px;
-    border-radius: 26px;
-    border: 1px solid rgba(156, 199, 255, 0.11);
-    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  }
-
-  .longform-card strong {
-    display: block;
-    margin-bottom: 12px;
-    color: #ffffff;
-    font-size: 1.08rem;
-    letter-spacing: -0.02em;
-  }
-
-  .longform-card p {
-    margin: 0;
-    color: var(--muted-2);
-    line-height: 1.86;
-  }
-
-  .timeline-stack {
-    display: grid;
-    gap: 14px;
-  }
-
-  .timeline-row {
-    display: grid;
-    grid-template-columns: 168px minmax(0, 1fr);
-    gap: 14px;
-    align-items: stretch;
-  }
-
-  .timeline-label {
-    padding: 18px;
-    border-radius: 20px;
-    border: 1px solid rgba(156, 199, 255, 0.10);
-    background: linear-gradient(180deg, rgba(99,182,255,0.14), rgba(255,255,255,0.025));
-    color: #dff1ff;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-
-  .timeline-panel {
-    padding: 22px 24px;
-    border-radius: 22px;
-    border: 1px solid rgba(156, 199, 255, 0.1);
-    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  }
-
-  .timeline-panel strong {
-    display: block;
-    color: #ffffff;
-    margin-bottom: 10px;
-    font-size: 1rem;
-  }
-
-  .timeline-panel p {
-    margin: 0;
-    color: var(--muted-2);
-    line-height: 1.86;
-  }
-
-  .focus-quote {
-    padding: 24px 26px;
-    border-radius: 26px;
-    border: 1px solid rgba(156, 199, 255, 0.12);
-    background:
-      radial-gradient(circle at top left, rgba(99,182,255,0.10), transparent 28%),
-      linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    box-shadow: var(--glow);
-  }
-
-  .focus-quote p {
-    margin: 0;
-    color: #ecf5ff;
-    font-size: 1.03rem;
-    line-height: 1.9;
-  }
-
-  .focus-quote small {
-    display: block;
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 0.9rem;
-  }
-
-  @keyframes logoFloat {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-4px); }
-    100% { transform: translateY(0px); }
-  }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 1330px) {
-    .topbar-inner {
-      grid-template-columns: 1fr;
-      justify-items: start;
-      padding: 12px 0;
+  <style>
+    :root {
+      --bg-0: #030d18;
+      --bg-1: #071524;
+      --bg-2: #0a1f38;
+      --bg-3: #112f55;
+      --bg-4: #1a4478;
+      --bg-5: #215892;
+
+      --panel: rgba(9, 21, 39, 0.84);
+      --panel-strong: rgba(8, 19, 36, 0.94);
+      --panel-soft: rgba(255, 255, 255, 0.045);
+      --panel-soft-2: rgba(255, 255, 255, 0.028);
+      --panel-soft-3: rgba(255, 255, 255, 0.018);
+
+      --text: #eef5ff;
+      --text-soft: #dde9f8;
+      --muted: #9db5d4;
+      --muted-2: #bfd2e7;
+
+      --line: rgba(156, 199, 255, 0.11);
+      --line-strong: rgba(156, 199, 255, 0.22);
+
+      --blue-1: #f1f7ff;
+      --blue-2: #dceeff;
+      --blue-3: #b8dcff;
+      --blue-4: #8ac7ff;
+      --blue-5: #5db1ff;
+      --blue-6: #3488ff;
+      --blue-7: #7ed7ff;
+      --cyan: #a9f3ff;
+      --green: #9ae7be;
+      --gold: #ffe2ab;
+
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+      --shadow-strong: 0 44px 120px rgba(1, 8, 22, 0.56);
+      --glow: 0 0 0 1px rgba(255,255,255,0.02), 0 0 32px rgba(86, 165, 255, 0.12);
+      --glow-soft: 0 0 0 1px rgba(255,255,255,0.03), 0 0 40px rgba(112, 196, 255, 0.12);
+
+      --radius-xl: 36px;
+      --radius-lg: 28px;
+      --radius-md: 22px;
+      --radius-sm: 16px;
+
+      --max: 1720px;
+      --content-max: 1720px;
     }
 
-    .nav {
-      justify-self: start;
+    * {
+      box-sizing: border-box;
     }
 
-    .dashboard-grid,
-    .hero-grid {
-      grid-template-columns: 1.15fr;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .sidebar {
-      border-right: 0;
-      border-bottom: 1px solid var(--line);
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(93, 162, 255, 0.16), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(114, 230, 255, 0.14), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(61, 123, 222, 0.20), transparent 34%),
+        linear-gradient(180deg, #030b16 0%, #06111f 18%, #08182b 40%, #0c2441 72%, #103055 100%);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
     }
 
-    .reading-rail {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+      background-size: 88px 88px;
+      opacity: 0.08;
+      pointer-events: none;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent 96%);
     }
-  }
 
-  @media (max-width: 980px) {
-    .grid-2,
-    .grid-3,
-    .section-intro,
-    .contact-box,
-    .module-row,
-    .story-pair,
-    .timeline-row {
-      grid-template-columns: 1fr;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-  }
 
- @media (min-width: 1400px) {
-  .hero-lead {
-    max-width: 95ch;
-  }
+    img {
+      max-width: 100%;
+    }
 
-  .panel-sub {
-    max-width: 100ch;
-  }
-}
-  
-  @media (max-width: 720px) {
     .container {
       width: min(var(--content-max), calc(100% - 18px));
+      margin: 0 auto;
     }
 
-    .sidebar-nav,
-    .reading-rail {
-      grid-template-columns: 1fr;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(4, 14, 28, 0.68);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(156, 199, 255, 0.10);
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
+    }
+
+    .topbar-inner {
+      min-height: 88px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      padding: 10px 0;
     }
 
     .brand-logo {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 16px;
+      filter:
+        drop-shadow(0 0 12px rgba(87, 165, 255, 0.18))
+        drop-shadow(0 12px 24px rgba(0, 0, 0, 0.20));
+      animation: logoFloat 6s ease-in-out infinite;
+    }
+
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .nav {
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.018));
+      box-shadow: var(--glow-soft);
+    }
+
+    .nav a {
+      font-size: 0.95rem;
+      color: #cfe3fa;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: #ffffff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.22s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #041120;
+      background: linear-gradient(135deg, #72bcff 0%, #b8f5ff 100%);
+      box-shadow:
+        0 16px 34px rgba(69, 150, 255, 0.30),
+        inset 0 1px 0 rgba(255,255,255,0.40);
+    }
+
+    .btn-secondary {
+      color: #edf5ff;
+      background: rgba(255,255,255,0.045);
+      border-color: rgba(156, 199, 255, 0.14);
+    }
+
+    .hero-shell {
+      padding: 30px 0 26px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10, 22, 42, 0.84), rgba(8, 18, 35, 0.96));
+      box-shadow: var(--shadow-strong);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 16% 12%, rgba(89, 165, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 88% 18%, rgba(120, 236, 255, 0.14), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(73, 131, 255, 0.12), transparent 32%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -40% auto;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(117, 200, 255, 0.08), transparent 70%);
+      filter: blur(18px);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      padding: 30px;
+      align-items: start;
+    }
+
+    .hero-copy,
+    .hero-preview {
+      position: relative;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+      padding: 28px;
+      box-shadow: var(--glow);
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 800;
+      color: #9ecfff;
+      margin-bottom: 12px;
     }
 
     .hero h1 {
-      max-width: none;
+      margin: 0;
+      color: #ffffff;
     }
 
     .hero__title--logic {
-      max-width: none;
-      font-size: clamp(0.56rem, 2.2vw, 0.82rem);
-      line-height: 1.08;
+      display: flex;
+      flex-direction: column;
       gap: 3px;
+      margin: 0;
+      max-width: 18ch;
+      font-size: clamp(1.02rem, 1.62vw, 2rem);
+      line-height: 1.06;
+      letter-spacing: -0.015em;
+      color: #ffffff;
+    }
+
+    .logic-line {
+      display: flex;
+      align-items: baseline;
+      white-space: nowrap;
     }
 
     .logic-letter {
-      width: 0.68em;
-      flex-basis: 0.68em;
+      display: inline-block;
+      width: 0.78em;
+      flex: 0 0 0.78em;
+      margin-right: 0.08em;
+      color: #89ddff;
+      font-weight: 800;
+    }
+
+    .hero-lead {
+      margin-top: 16px;
+      max-width: 95ch;
+      color: var(--muted-2);
+      font-size: 1.06rem;
+    }
+
+    .hero-empathy {
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      color: #e4efff;
+    }
+
+    .hero-empathy strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      font-size: 1rem;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .pill {
+      padding: 10px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(156, 199, 255, 0.12);
+      background: rgba(255,255,255,0.04);
+      color: #dcecff;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .section-intro {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .intro-chip {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.016));
+    }
+
+    .intro-chip strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+    }
+
+    .intro-chip p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .preview-frame {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(156, 199, 255, 0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      padding: 14px;
+      box-shadow: var(--glow);
+    }
+
+    .preview-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .preview-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .preview-caption {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .preview-image {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(156, 199, 255, 0.08);
+    }
+
+    .preview-text {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .preview-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .preview-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(145, 232, 183, 0.12);
+      border: 1px solid rgba(145, 232, 183, 0.18);
+      color: #d8ffea;
+      font-size: 0.8rem;
+      font-weight: 800;
     }
 
     .preview-grid {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .preview-card,
+    .preview-wide {
+      border-radius: 22px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      padding: 16px;
+    }
+
+    .preview-label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .preview-value {
+      color: #ffffff;
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .preview-sub {
+      margin-top: 8px;
+      color: #d1e1f7;
+      font-size: 0.9rem;
     }
 
     .preview-wide {
-      grid-column: span 1;
+      grid-column: span 2;
+    }
+
+    .bar-stack {
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
     }
 
     .bar-row {
-      grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: 126px 1fr 56px;
+      gap: 10px;
+      align-items: center;
     }
 
-    .story-card {
-      padding-left: 22px;
-      padding-top: 76px;
+    .bar-row span {
+      color: #dcecff;
+      font-size: 0.87rem;
+      font-weight: 700;
     }
 
-    .story-step {
-      left: 22px;
-      top: 20px;
+    .bar-track {
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(156, 199, 255, 0.08);
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #59a9ff, #a8f0ff);
+      box-shadow: 0 0 18px rgba(82, 168, 255, 0.26);
+    }
+
+    .hero-preview-image-block {
+      margin-top: 18px;
+    }
+
+    .main-shell {
+      padding-bottom: 56px;
+    }
+
+    .dashboard {
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(8, 18, 35, 0.78), rgba(8, 18, 35, 0.92));
+      box-shadow: var(--shadow-strong);
+      backdrop-filter: blur(14px);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      padding: 22px 14px;
+      border-right: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(112,196,255,0.10), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.008));
+    }
+
+    .sidebar-title {
+      margin: 0 0 12px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a8d5ff;
+      font-weight: 800;
+    }
+
+    .sidebar-nav {
+      display: grid;
+      gap: 10px;
+    }
+
+    .sidebar-link {
+      padding: 16px 14px;
+      border-radius: 18px;
+      color: #d9e9ff;
+      background: transparent;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 0.98rem;
+      transition: 0.2s ease;
+    }
+
+    .sidebar-link:hover,
+    .sidebar-link.active {
+      color: #ffffff;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.026));
+      border-color: rgba(156, 199, 255, 0.14);
+      box-shadow: var(--glow-soft);
+    }
+
+    .sidebar-note {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    .sidebar-note strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+    }
+
+    .content {
+      padding: 20px;
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .tabs-shell {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.012));
+      border: 1px solid rgba(156, 199, 255, 0.08);
+    }
+
+    .tab-btn {
+      padding: 12px 15px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.024);
+      border: 1px solid rgba(156, 199, 255, 0.11);
+      color: #deebff;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.18s ease;
+      min-height: 42px;
+    }
+
+    .tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255,255,255,0.055);
+    }
+
+    .tab-btn.active {
+      color: #041120;
+      background: linear-gradient(135deg, #7bc3ff, #aef5ff);
+      border-color: transparent;
+      box-shadow:
+        0 12px 24px rgba(72, 145, 255, 0.24),
+        inset 0 1px 0 rgba(255,255,255,0.34);
+    }
+
+    .panel {
+      display: none;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(86,165,255,0.08), transparent 24%),
+        linear-gradient(180deg, rgba(12, 24, 46, 0.82), rgba(10, 19, 37, 0.96));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel.active {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .panel-head {
+      padding: 26px 26px 24px;
+      border-bottom: 1px solid rgba(156, 199, 255, 0.1);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
     }
 
     .panel-head h2 {
-      max-width: 38ch;
+      margin: 0;
+      font-size: clamp(1.7rem, 2.45vw, 2.2rem);
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      max-width: 34ch;
     }
-  }
-</style> 
+
+    .panel-sub {
+      color: var(--muted);
+      margin-top: 10px;
+      max-width: 100ch;
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .panel-tag {
+      padding: 12px 15px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      color: #e2efff;
+      font-size: 0.86rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .panel-body {
+      padding: 26px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .shot-card {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(156, 199, 255, 0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+      box-shadow: var(--glow);
+    }
+
+    .shot-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(156, 199, 255, 0.08);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .shot-head strong {
+      color: #ffffff;
+      font-size: 1.02rem;
+      letter-spacing: -0.02em;
+    }
+
+    .shot-head span {
+      color: var(--muted);
+      font-size: 0.92rem;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .shot-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.79rem;
+      font-weight: 800;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      color: #dcecff;
+      white-space: nowrap;
+    }
+
+    .shot-image-wrap {
+      padding: 14px;
+    }
+
+    .shot-image {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      border: 1px solid rgba(156, 199, 255, 0.08);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .shot-foot {
+      padding: 0 18px 18px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.75;
+    }
+
+    .feature-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 22px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(156,199,255,0.10);
+    }
+
+    .feature-table th,
+    .feature-table td {
+      text-align: left;
+      padding: 15px 14px;
+      border-bottom: 1px solid rgba(156, 199, 255, 0.08);
+      vertical-align: top;
+    }
+
+    .feature-table th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: #a8d5ff;
+      font-weight: 800;
+    }
+
+    .feature-table td {
+      color: #dceafa;
+    }
+
+    .feature-table td:last-child,
+    .feature-table th:last-child {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      border: 1px solid transparent;
+    }
+
+    .badge-blue {
+      color: #ecf6ff;
+      background: rgba(102, 173, 255, 0.16);
+      border-color: rgba(102, 173, 255, 0.22);
+    }
+
+    .badge-green {
+      color: #deffeb;
+      background: rgba(145, 232, 183, 0.12);
+      border-color: rgba(145, 232, 183, 0.18);
+    }
+
+    .badge-soft {
+      color: #d8e7ff;
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(156, 199, 255, 0.1);
+    }
+
+    .quote-card {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+    }
+
+    .quote-card p {
+      margin: 0;
+      color: #e7f2ff;
+      font-size: 1.02rem;
+      line-height: 1.85;
+    }
+
+    .quote-card small {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .vision-box {
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(156, 199, 255, 0.12);
+      background:
+        radial-gradient(circle at top right, rgba(99, 182, 255, 0.14), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--glow);
+    }
+
+    .vision-box p {
+      margin: 0;
+      font-size: 1.06rem;
+      color: #e6f1ff;
+      line-height: 1.84;
+    }
+
+    .vision-box .soft-line {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 26px;
+      border-radius: 28px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--glow);
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .contact-box .lead {
+      color: #e7f2ff;
+      font-weight: 700;
+      font-size: 1.02rem;
+    }
+
+    .module-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .module-row {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 16px;
+      padding: 18px;
+      border-radius: 24px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+    }
+
+    .module-row-title {
+      color: #ffffff;
+      font-size: 1.04rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .module-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .module-tag {
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: rgba(255,255,255,0.035);
+      color: #ddeaff;
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .footer {
+      padding: 22px 0 42px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .story-flow {
+      display: grid;
+      gap: 18px;
+    }
+
+    .story-card {
+      position: relative;
+      padding: 24px 24px 24px 82px;
+      border-radius: 28px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .story-step {
+      position: absolute;
+      left: 22px;
+      top: 22px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.84rem;
+      font-weight: 900;
+      color: #041120;
+      background: linear-gradient(135deg, #72bcff, #b6f6ff);
+      box-shadow:
+        0 10px 24px rgba(72,145,255,0.24),
+        inset 0 1px 0 rgba(255,255,255,0.34);
+    }
+
+    .story-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted-2);
+      line-height: 1.88;
+    }
+
+    .story-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .reading-rail {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .reading-node {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.018));
+    }
+
+    .reading-node span {
+      display: block;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ecfff;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .reading-node strong {
+      display: block;
+      color: #ffffff;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .reading-node p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.68;
+    }
+
+    .longform-card {
+      padding: 24px;
+      border-radius: 26px;
+      border: 1px solid rgba(156, 199, 255, 0.11);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .longform-card strong {
+      display: block;
+      margin-bottom: 12px;
+      color: #ffffff;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .longform-card p {
+      margin: 0;
+      color: var(--muted-2);
+      line-height: 1.86;
+    }
+
+    .timeline-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 168px minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .timeline-label {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(99,182,255,0.14), rgba(255,255,255,0.025));
+      color: #dff1ff;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .timeline-panel {
+      padding: 22px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .timeline-panel strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .timeline-panel p {
+      margin: 0;
+      color: var(--muted-2);
+      line-height: 1.86;
+    }
+
+    .focus-quote {
+      padding: 24px 26px;
+      border-radius: 26px;
+      border: 1px solid rgba(156, 199, 255, 0.12);
+      background:
+        radial-gradient(circle at top left, rgba(99,182,255,0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--glow);
+    }
+
+    .focus-quote p {
+      margin: 0;
+      color: #ecf5ff;
+      font-size: 1.03rem;
+      line-height: 1.9;
+    }
+
+    .focus-quote small {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* --- Reading rhythm / progressive text system --- */
+
+    .reading-block {
+      position: relative;
+      padding: 24px 0 6px;
+    }
+
+    .reading-block + .reading-block {
+      margin-top: 2px;
+    }
+
+    .reading-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: #a8d5ff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .reading-label::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(126,215,255,0.95), rgba(126,215,255,0.08));
+      border-radius: 999px;
+    }
+
+    .reading-flow {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .reading-flow::before {
+      content: "";
+      position: absolute;
+      left: 13px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(
+        180deg,
+        rgba(126, 215, 255, 0.18),
+        rgba(126, 215, 255, 0.06)
+      );
+      pointer-events: none;
+    }
+
+    .flow-item {
+      position: relative;
+      padding-left: 42px;
+    }
+
+    .flow-item::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0.78em;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #7bc3ff, #b6f6ff);
+      box-shadow:
+        0 0 0 5px rgba(123,195,255,0.08),
+        0 0 18px rgba(123,195,255,0.22);
+    }
+
+    .flow-item p,
+    .flow-item li,
+    .flow-item strong,
+    .flow-item em,
+    .line-fade {
+      opacity: 0;
+      transform: translateY(14px);
+      filter: blur(1px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease,
+        filter 0.7s ease;
+    }
+
+    .flow-item.visible p,
+    .flow-item.visible li,
+    .flow-item.visible strong,
+    .flow-item.visible em,
+    .flow-item.visible .line-fade {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    .flow-item.visible p:nth-of-type(1),
+    .flow-item.visible .line-fade:nth-child(1) { transition-delay: 0.03s; }
+
+    .flow-item.visible p:nth-of-type(2),
+    .flow-item.visible .line-fade:nth-child(2) { transition-delay: 0.10s; }
+
+    .flow-item.visible p:nth-of-type(3),
+    .flow-item.visible .line-fade:nth-child(3) { transition-delay: 0.17s; }
+
+    .flow-item.visible p:nth-of-type(4),
+    .flow-item.visible .line-fade:nth-child(4) { transition-delay: 0.24s; }
+
+    .flow-item.visible p:nth-of-type(5),
+    .flow-item.visible .line-fade:nth-child(5) { transition-delay: 0.31s; }
+
+    .flow-item.visible p:nth-of-type(6) { transition-delay: 0.38s; }
+    .flow-item.visible p:nth-of-type(7) { transition-delay: 0.45s; }
+    .flow-item.visible p:nth-of-type(8) { transition-delay: 0.52s; }
+    .flow-item.visible p:nth-of-type(9) { transition-delay: 0.59s; }
+    .flow-item.visible p:nth-of-type(10) { transition-delay: 0.66s; }
+    .flow-item.visible p:nth-of-type(11) { transition-delay: 0.73s; }
+    .flow-item.visible p:nth-of-type(12) { transition-delay: 0.80s; }
+    .flow-item.visible p:nth-of-type(13) { transition-delay: 0.87s; }
+    .flow-item.visible p:nth-of-type(14) { transition-delay: 0.94s; }
+    .flow-item.visible p:nth-of-type(15) { transition-delay: 1.01s; }
+
+    .flow-card {
+      position: relative;
+      overflow: hidden;
+      padding: 24px 24px 24px 42px;
+      border-radius: 26px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background:
+        radial-gradient(circle at top right, rgba(110,190,255,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .flow-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 64px;
+      background: linear-gradient(
+        180deg,
+        rgba(7, 20, 37, 0),
+        rgba(7, 20, 37, 0.58) 72%,
+        rgba(7, 20, 37, 0.82)
+      );
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .flow-card.has-fade::after {
+      opacity: 1;
+    }
+
+    .flow-title {
+      display: block;
+      margin-bottom: 14px;
+      color: #ffffff;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .flow-text {
+      display: grid;
+      gap: 14px;
+      max-width: 96ch;
+    }
+
+    .flow-text p {
+      margin: 0;
+      color: var(--muted-2);
+      line-height: 1.88;
+    }
+
+    .flow-text p.lead-line {
+      color: #dcecff;
+      font-size: 1.02rem;
+    }
+
+    .mini-skim-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-skim-card {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.018));
+    }
+
+    .mini-skim-card span {
+      display: block;
+      margin-bottom: 8px;
+      color: #a8d5ff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .mini-skim-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 0.98rem;
+    }
+
+    .mini-skim-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .skim-divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(156,199,255,0.22),
+        transparent
+      );
+      margin: 6px 0 2px;
+    }
+
+    .reading-glow {
+      position: relative;
+    }
+
+    .reading-glow::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at top left, rgba(126,215,255,0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(90,170,255,0.08), transparent 28%);
+      pointer-events: none;
+    }
+
+    @keyframes logoFloat {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1330px) {
+      .topbar-inner {
+        grid-template-columns: 1fr;
+        justify-items: start;
+        padding: 12px 0;
+      }
+
+      .nav {
+        justify-self: start;
+      }
+
+      .dashboard-grid,
+      .hero-grid {
+        grid-template-columns: 1.15fr;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .reading-rail,
+      .mini-skim-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 980px) {
+      .grid-2,
+      .grid-3,
+      .section-intro,
+      .contact-box,
+      .module-row,
+      .story-pair,
+      .timeline-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .hero-lead {
+        max-width: 95ch;
+      }
+
+      .panel-sub {
+        max-width: 100ch;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(var(--content-max), calc(100% - 18px));
+      }
+
+      .sidebar-nav,
+      .reading-rail,
+      .mini-skim-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-logo {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero h1 {
+        max-width: none;
+      }
+
+      .hero__title--logic {
+        max-width: none;
+        font-size: clamp(0.56rem, 2.2vw, 0.82rem);
+        line-height: 1.08;
+        gap: 3px;
+      }
+
+      .logic-letter {
+        width: 0.68em;
+        flex-basis: 0.68em;
+      }
+
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-wide {
+        grid-column: span 1;
+      }
+
+      .bar-row {
+        grid-template-columns: 1fr;
+      }
+
+      .story-card {
+        padding-left: 22px;
+        padding-top: 76px;
+      }
+
+      .story-step {
+        left: 22px;
+        top: 20px;
+      }
+
+      .panel-head h2 {
+        max-width: 38ch;
+      }
+
+      .flow-card {
+        padding-left: 24px;
+      }
+
+      .flow-item {
+        padding-left: 32px;
+      }
+
+      .reading-flow::before {
+        left: 9px;
+      }
+
+      .flow-item::before {
+        left: 4px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
-  <div class="container topbar-inner">
-    <div class="brand-wrap">
-      <img src="logo.png" alt="SchellLogic logo" class="brand-logo" />
-      <div class="brand">
-        SchellLogic
-        <small>Et roligt og sammenhængende cockpit for økonomi</small>
+    <div class="container topbar-inner">
+      <div class="brand-wrap">
+        <img src="logo.png" alt="SchellLogic logo" class="brand-logo" />
+        <div class="brand">
+          SchellLogic
+          <small>Et roligt og sammenhængende cockpit for økonomi</small>
+        </div>
       </div>
+
+      <nav class="nav">
+        <a href="#cockpit">Cockpit</a>
+        <a href="#platform">Platform</a>
+        <a href="#vision-section">Vision</a>
+        <a href="#kontakt-section">Kontakt</a>
+      </nav>
+
+      <a class="btn btn-primary" href="mailto:SchellLogic@proton.me?subject=Forespørgsel%20om%20SchellLogic">Book en præsentation</a>
     </div>
-
-    <nav class="nav">
-      <a href="#cockpit">Cockpit</a>
-      <a href="#platform">Platform</a>
-      <a href="#vision-section">Vision</a>
-      <a href="#kontakt-section">Kontakt</a>
-    </nav>
-
-    <a class="btn btn-primary" href="mailto:SchellLogic@proton.me?subject=Forespørgsel%20om%20SchellLogic">Book en præsentation</a>
-  </div>
-</header>
+  </header>
 
   <main>
     <section class="hero-shell" id="cockpit">
@@ -1493,7 +1752,7 @@
                 <br /><br />
                 Det er mange perspektiver på den samme virkelighed – planlægning, opfølgning, prioritering og afslutning.
                 <br /><br />
-                Når de ikke hænger sammen, bliver arbejdet tungere.  
+                Når de ikke hænger sammen, bliver arbejdet tungere.
                 Når de gør, bliver det muligt at arbejde med ro, overblik og ansvar.
               </div>
             </aside>
@@ -1524,8 +1783,8 @@
                       I mange organisationer er økonomiarbejdet båret af stor faglighed og stort ansvar.
                       Alligevel bliver det ofte tungere, end det behøver at være.
                       <br /><br />
-                      Ikke fordi opgaven er uvigtig.  
-                      Ikke fordi menneskerne bag mangler kompetencer.  
+                      Ikke fordi opgaven er uvigtig.
+                      Ikke fordi menneskerne bag mangler kompetencer.
                       Men fordi sammenhængen mellem systemer, data og processer i for høj grad skal skabes manuelt.
                       <br /><br />
                       Når det sker, ender en stor del af kompleksiteten hos brugeren.
@@ -1602,24 +1861,24 @@
                       Du åbner platformen.<br />
                       Ikke for at lede – men for at fortsætte.
                     </p>
-                    
+
                     <p style="margin-top: 14px;">
                       Budgettet er ikke et dokument.<br />
                       Det er fundamentet.<br />
                       Forecastet er ikke en øvelse.<br />
                       Det er retningen.
                     </p>
-                    
+
                     <p style="margin-top: 14px;">
                       Opfølgningen er ikke kontrol.<br />
                       Det er forståelse.
                     </p>
-                    
+
                     <p style="margin-top: 14px;">
                       Du skifter ikke mellem systemer.<br />
                       Du skifter perspektiv.
                     </p>
-                    
+
                     <p style="margin-top: 14px;">
                       Og langsomt forsvinder behovet for at holde det hele sammen selv.
                     </p>
@@ -1642,70 +1901,79 @@
                 </div>
 
                 <div class="panel-body">
-                  <div class="reading-rail">
-                    <div class="reading-node reveal">
+                  <div class="mini-skim-grid">
+                    <div class="mini-skim-card reveal">
                       <span>01</span>
                       <strong>Baggrund</strong>
                       <p>Økonomi, matematik og software engineering i samme fortælling.</p>
                     </div>
-                    <div class="reading-node reveal">
+                    <div class="mini-skim-card reveal">
                       <span>02</span>
                       <strong>Tilbud</strong>
                       <p>Ikke standard. Ikke tvang. Men tilpasning til virkeligheden.</p>
                     </div>
-                    <div class="reading-node reveal">
+                    <div class="mini-skim-card reveal">
                       <span>03</span>
                       <strong>Motivation</strong>
                       <p>Fordi de tunge arbejdsgange er virkelige og mærkes i hverdagen.</p>
                     </div>
-                    <div class="reading-node reveal">
+                    <div class="mini-skim-card reveal">
                       <span>04</span>
                       <strong>Udgangspunkt</strong>
                       <p>Teknologi skal være meningsfuld, tillidsfuld og menneskelig.</p>
                     </div>
                   </div>
 
-                  <div class="story-flow">
-                    <div class="story-card reveal">
-                      <div class="story-step">1</div>
-                      <strong>Hvem jeg er</strong>
-                      <p>
-                        Jeg hedder Astrid Schell.<br /><br />
-                        Jeg er uddannet inden for økonomi og matematik med speciale i software engineering. I dag arbejder jeg som financial controller – men i sin kerne er jeg softwareudvikler.<br /><br />
-                        Min hverdag består af økonomi, struktur, modeller og detaljer. Samtidig er den præget af en vedvarende refleksion over, hvorfor så meget af det føles mere komplekst og tungt, end det egentlig burde være.<br /><br />
-                        Jeg ser igen og igen, hvordan kompetente mennesker bruger enorme mængder energi på værktøjer, der burde understøtte dem. Tid og energi, som i stedet kunne bruges på beslutninger, udvikling og mennesker.<br /><br />
-                        Og det er svært for mig at acceptere, at det er sådan, det er blevet.<br /><br />
-                        Jeg tror på fællesskab.<br /><br />
-                        Jeg tror på et samfund, hvor vi tager ansvar – ikke kun for vores egne resultater, men for den måde vi påvirker hinanden på.<br /><br />
-                        For mig hænger det uløseligt sammen med den måde, vi bygger teknologi på.<br /><br />
-                        Og jeg tror på, at vi som mennesker har en forpligtelse til at bruge vores evner til noget, der rækker ud over os selv.
-                      </p>
-                    </div>
+                  <div class="skim-divider"></div>
 
-                    <div class="story-card reveal">
-                      <div class="story-step">2</div>
-                      <strong>Hvad jeg tilbyder</strong>
-                      <p>
-                        Jeg tilbyder ikke en standardløsning, og jeg forsøger heller ikke at presse organisationer ind i en fast struktur.<br /><br />
-                        Jeg bygger løsninger, der tager udgangspunkt i den enkelte organisation – i dens måde at arbejde på, dens behov, dens kompleksitet og dens virkelighed.<br /><br />
-                        Det betyder i praksis, at jeres økonomistyring tager udgangspunkt i det, I allerede gør – ikke noget, I først skal lære at passe ind i. Løsningen er derfor ikke noget, man tilpasser sig til, men noget der udvikles i takt med, hvordan man faktisk arbejder.<br /><br />
-                        Vi er alle anderledes, og vi er alle specielle – både som mennesker og som organisationer. Det er ikke en udfordring, der skal reduceres, men en realitet, der skal respekteres. Derfor mener jeg også, at alle fortjener løsninger, der passer til dem – og ikke løsninger, de skal forsøge at passe ind i.<br /><br />
-                        Alt dette sker naturligvis inden for rammerne af GDPR og klare aftaler om data og ansvar.<br /><br />
-                        Men for mig handler det ikke kun om compliance – det handler om tillid.
-                      </p>
-                    </div>
+                  <div class="reading-block">
+                    <div class="reading-label">Historien bag</div>
 
-                    <div class="story-card reveal">
-                      <div class="story-step">3</div>
-                      <strong>Hvorfor jeg gør det</strong>
-                      <p>
-                        Jeg gør det, fordi jeg selv sidder midt i det.<br /><br />
-                        Jeg arbejder med de samme Excel-ark, de samme modeller og de samme manuelle processer som så mange andre. Og jeg ved, hvor meget energi det kræver – også når man er dygtig til det. Ikke fordi arbejdet i sig selv er forkert, men fordi værktøjerne ofte ikke er bygget til den virkelighed, de bruges i.<br /><br />
-                        Det betyder, at fokus flytter sig. Fra det faglige, fra udviklingen, fra de mennesker man arbejder sammen med – over på drift, gentagelser og håndtering af kompleksitet, der i mange tilfælde kunne være undgået.<br /><br />
-                        Resultatet er mindre overskud i hverdagen – selv hos de mest kompetente. Og det er netop det, jeg forsøger at ændre.<br /><br />
-                        Jeg er overbevist om, at det kan gøres anderledes. Ikke nødvendigvis enklere i alle tilfælde, men mere meningsfuldt.<br /><br />
-                        Og jeg er ikke drevet af at maksimere profit, men af at kunne se, at det, jeg bygger, faktisk gør en forskel for de mennesker, der bruger det.
-                      </p>
+                    <div class="reading-flow">
+                      <div class="flow-item">
+                        <div class="flow-card reading-glow">
+                          <strong class="flow-title">Hvem jeg er</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Jeg hedder Astrid Schell.</p>
+                            <p>Jeg er uddannet inden for økonomi og matematik med speciale i software engineering. I dag arbejder jeg som financial controller – men i sin kerne er jeg softwareudvikler.</p>
+                            <p>Min hverdag består af økonomi, struktur, modeller og detaljer. Samtidig er den præget af en vedvarende refleksion over, hvorfor så meget af det føles mere komplekst og tungt, end det egentlig burde være.</p>
+                            <p>Jeg ser igen og igen, hvordan kompetente mennesker bruger enorme mængder energi på værktøjer, der burde understøtte dem. Tid og energi, som i stedet kunne bruges på beslutninger, udvikling og mennesker.</p>
+                            <p>Og det er svært for mig at acceptere, at det er sådan, det er blevet.</p>
+                            <p>Jeg tror på fællesskab.</p>
+                            <p>Jeg tror på et samfund, hvor vi tager ansvar – ikke kun for vores egne resultater, men for den måde vi påvirker hinanden på.</p>
+                            <p>For mig hænger det uløseligt sammen med den måde, vi bygger teknologi på.</p>
+                            <p>Og jeg tror på, at vi som mennesker har en forpligtelse til at bruge vores evner til noget, der rækker ud over os selv.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="flow-item">
+                        <div class="flow-card">
+                          <strong class="flow-title">Hvad jeg tilbyder</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Jeg tilbyder ikke en standardløsning, og jeg forsøger heller ikke at presse organisationer ind i en fast struktur.</p>
+                            <p>Jeg bygger løsninger, der tager udgangspunkt i den enkelte organisation – i dens måde at arbejde på, dens behov, dens kompleksitet og dens virkelighed.</p>
+                            <p>Det betyder i praksis, at jeres økonomistyring tager udgangspunkt i det, I allerede gør – ikke noget, I først skal lære at passe ind i. Løsningen er derfor ikke noget, man tilpasser sig til, men noget der udvikles i takt med, hvordan man faktisk arbejder.</p>
+                            <p>Vi er alle anderledes, og vi er alle specielle – både som mennesker og som organisationer. Det er ikke en udfordring, der skal reduceres, men en realitet, der skal respekteres. Derfor mener jeg også, at alle fortjener løsninger, der passer til dem – og ikke løsninger, de skal forsøge at passe ind i.</p>
+                            <p>Alt dette sker naturligvis inden for rammerne af GDPR og klare aftaler om data og ansvar.</p>
+                            <p>Men for mig handler det ikke kun om compliance – det handler om tillid.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="flow-item">
+                        <div class="flow-card">
+                          <strong class="flow-title">Hvorfor jeg gør det</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Jeg gør det, fordi jeg selv sidder midt i det.</p>
+                            <p>Jeg arbejder med de samme Excel-ark, de samme modeller og de samme manuelle processer som så mange andre. Og jeg ved, hvor meget energi det kræver – også når man er dygtig til det. Ikke fordi arbejdet i sig selv er forkert, men fordi værktøjerne ofte ikke er bygget til den virkelighed, de bruges i.</p>
+                            <p>Det betyder, at fokus flytter sig. Fra det faglige, fra udviklingen, fra de mennesker man arbejder sammen med – over på drift, gentagelser og håndtering af kompleksitet, der i mange tilfælde kunne være undgået.</p>
+                            <p>Resultatet er mindre overskud i hverdagen – selv hos de mest kompetente. Og det er netop det, jeg forsøger at ændre.</p>
+                            <p>Jeg er overbevist om, at det kan gøres anderledes. Ikke nødvendigvis enklere i alle tilfælde, men mere meningsfuldt.</p>
+                            <p>Og jeg er ikke drevet af at maksimere profit, men af at kunne se, at det, jeg bygger, faktisk gør en forskel for de mennesker, der bruger det.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -2152,72 +2420,72 @@
                     </div>
                   </div>
 
-                  <div class="timeline-stack">
-                    <div class="timeline-row reveal">
-                      <div class="timeline-label">Udgangspunkt</div>
-                      <div class="timeline-panel">
-                        <strong>Hvad jeg gør anderledes og hvorfor</strong>
-                        <p>
-                          Jeg tror ikke på, at standardsoftware kan dække alle behov – ikke fordi det er forkert, men fordi det i sin natur er generisk.<br /><br />
-                          Hvis vi accepterer, at mennesker og organisationer er forskellige, så giver det ikke mening, at de alle skal arbejde i de samme strukturer. Alligevel er det ofte sådan, det foregår i praksis.<br /><br />
-                          Jeg mener, at software bør tilpasse sig organisationen – ikke omvendt.<br /><br />
-                          Det er her, mange oplever en form for modstand i hverdagen – og det er netop den modstand, jeg forsøger at fjerne.<br /><br />
-                          Jeg tror heller ikke på, at adgang til gode løsninger skal være begrænset af pris og økonomiske rammer i en grad, hvor kun de største organisationer har mulighed for at få noget, der reelt passer til dem. Det skaber en skævhed, som jeg ikke synes giver mening – hverken fagligt eller menneskeligt.
-                        </p>
-                      </div>
-                    </div>
+                  <div class="reading-block">
+                    <div class="reading-label">Retning og filosofi</div>
 
-                    <div class="timeline-row reveal">
-                      <div class="timeline-label">Ambition</div>
-                      <div class="timeline-panel">
-                        <strong>Hvad jeg vil opnå</strong>
-                        <p>
-                          Jeg har ikke en ambition om at konkurrere med de største softwareleverandører.<br /><br />
-                          Min ambition er at gøre noget anderledes – at skabe løsninger, der er mere meningsfulde og mere brugbare for den enkelte.<br /><br />
-                          At vise, at det er muligt at bygge løsninger, der tager udgangspunkt i mennesker og organisationer, og som skaber mere ro, bedre overblik og en mere tryg arbejdsdag. Når værktøjerne fungerer, frigiver det energi til det arbejde, der faktisk skaber værdi.<br /><br />
-                          Hvis det samtidig kan føre til mere glæde og mere overskud i hverdagen, så er det i sig selv en værdi.<br /><br />
-                          Jeg ønsker også at bidrage til et andet syn på økonomi.<br /><br />
-                          Et syn, hvor begreber som budget, regnskab, resultatopgørelse og balance ikke kun er forbeholdt økonomiuddannede, men noget flere kan forstå og arbejde med. Hvor økonomi ikke opleves som noget tungt eller utilgængeligt, men som noget, der giver indsigt og retning.<br /><br />
-                          Jeg vil gerne være med til at fjerne den usikkerhed og afstand, nogle oplever i mødet med økonomi – og vise, at økonomi og matematik hænger sammen, og i virkeligheden rummer en enkelhed og en form for skønhed, når de rigtige redskaber er på plads.
-                        </p>
+                    <div class="reading-flow">
+                      <div class="flow-item">
+                        <div class="flow-card">
+                          <strong class="flow-title">Hvad jeg gør anderledes og hvorfor</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Jeg tror ikke på, at standardsoftware kan dække alle behov – ikke fordi det er forkert, men fordi det i sin natur er generisk.</p>
+                            <p>Hvis vi accepterer, at mennesker og organisationer er forskellige, så giver det ikke mening, at de alle skal arbejde i de samme strukturer. Alligevel er det ofte sådan, det foregår i praksis.</p>
+                            <p>Jeg mener, at software bør tilpasse sig organisationen – ikke omvendt.</p>
+                            <p>Det er her, mange oplever en form for modstand i hverdagen – og det er netop den modstand, jeg forsøger at fjerne.</p>
+                            <p>Jeg tror heller ikke på, at adgang til gode løsninger skal være begrænset af pris og økonomiske rammer i en grad, hvor kun de største organisationer har mulighed for at få noget, der reelt passer til dem. Det skaber en skævhed, som jeg ikke synes giver mening – hverken fagligt eller menneskeligt.</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="timeline-row reveal">
-                      <div class="timeline-label">Drivkraft</div>
-                      <div class="timeline-panel">
-                        <strong>Hvad der driver mig</strong>
-                        <p>
-                          Jeg er drevet af at forstå og løse problemer – ikke kun teknisk, men i deres kontekst.<br /><br />
-                          Min hjerne er i konstant bevægelse, og jeg trives i at finde løsninger, der ikke bare fungerer i teorien, men i praksis. Det handler ikke om perfektion, men om at komme tættere på noget, der giver mening.<br /><br />
-                          Man kan kalde det altruisme, nysgerrighed eller bare stædighed. For mig er det en naturlig måde at være i verden på.<br /><br />
-                          Og når det, jeg laver, gør en forskel for andre – når noget komplekst bliver mere enkelt og til at arbejde med – så giver det mig en helt særlig tilfredshed. Ikke fordi det er perfekt, men fordi det bliver brugbart og giver mening i virkeligheden.
-                        </p>
+                      <div class="flow-item">
+                        <div class="flow-card">
+                          <strong class="flow-title">Hvad jeg vil opnå</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Jeg har ikke en ambition om at konkurrere med de største softwareleverandører.</p>
+                            <p>Min ambition er at gøre noget anderledes – at skabe løsninger, der er mere meningsfulde og mere brugbare for den enkelte.</p>
+                            <p>At vise, at det er muligt at bygge løsninger, der tager udgangspunkt i mennesker og organisationer, og som skaber mere ro, bedre overblik og en mere tryg arbejdsdag. Når værktøjerne fungerer, frigiver det energi til det arbejde, der faktisk skaber værdi.</p>
+                            <p>Hvis det samtidig kan føre til mere glæde og mere overskud i hverdagen, så er det i sig selv en værdi.</p>
+                            <p>Jeg ønsker også at bidrage til et andet syn på økonomi.</p>
+                            <p>Et syn, hvor begreber som budget, regnskab, resultatopgørelse og balance ikke kun er forbeholdt økonomiuddannede, men noget flere kan forstå og arbejde med. Hvor økonomi ikke opleves som noget tungt eller utilgængeligt, men som noget, der giver indsigt og retning.</p>
+                            <p>Jeg vil gerne være med til at fjerne den usikkerhed og afstand, nogle oplever i mødet med økonomi – og vise, at økonomi og matematik hænger sammen, og i virkeligheden rummer en enkelhed og en form for skønhed, når de rigtige redskaber er på plads.</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                    <div class="timeline-row reveal">
-                      <div class="timeline-label">Retning</div>
-                      <div class="timeline-panel">
-                        <strong>Min vision</strong>
-                        <p>
-                          Min vision er, at mennesker og organisationer i højere grad får mulighed for at vælge det, der passer til dem.<br /><br />
-                          At vi accepterer forskellighed som et grundvilkår – ikke som noget, der skal reduceres, men som noget, der skal forstås og arbejdes med. Og at vi bygger vores værktøjer derefter.<br /><br />
-                          At teknologi ikke erstatter mennesker, men understøtter dem.<br /><br />
-                          At den frigiver tid og energi, i stedet for at binde den i systemer, der ikke er skabt til den virkelighed, de bruges i.<br /><br />
-                          Teknologi skal ikke føre os mod en form for “dommedag”, hvor mennesker bliver overflødige.<br /><br />
-                          Den skal gøre det modsatte.<br /><br />
-                          Formålet er ikke at fjerne kompleksiteten fra økonomiarbejdet, men at understøtte den – at skabe struktur, sammenhæng og klarhed.<br /><br />
-                          Når strukturen holder, og sammenhængen er tydelig, opstår der noget andet:<br />
-                          mere plads til det menneskelige. Til faglighed, relationer og dømmekraft – det, som ingen maskine nogensinde kan erstatte.<br /><br />
-                          Jeg tror på, at når værktøjer er rigtige, så mærker man dem næsten ikke.<br /><br />
-                          De står ikke i vejen, de kræver ikke unødig opmærksomhed – de skaber ro, overblik og mulighed for at fokusere på det, der faktisk betyder noget.<br /><br />
-                          For mig handler det ikke kun om effektivitet, men om kvaliteten af den tid, vi bruger på vores arbejde. Om at skabe rammer, hvor mennesker kan tænke klarere, samarbejde bedre og finde mening i det, de gør.<br /><br />
-                          Mennesket i centrum.<br />
-                          Teknologien som hjælp.<br />
-                          Ikke for at erstatte.<br />
-                          Men for at give plads.
-                        </p>
+                      <div class="flow-item">
+                        <div class="flow-card">
+                          <strong class="flow-title">Hvad der driver mig</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Jeg er drevet af at forstå og løse problemer – ikke kun teknisk, men i deres kontekst.</p>
+                            <p>Min hjerne er i konstant bevægelse, og jeg trives i at finde løsninger, der ikke bare fungerer i teorien, men i praksis. Det handler ikke om perfektion, men om at komme tættere på noget, der giver mening.</p>
+                            <p>Man kan kalde det altruisme, nysgerrighed eller bare stædighed. For mig er det en naturlig måde at være i verden på.</p>
+                            <p>Og når det, jeg laver, gør en forskel for andre – når noget komplekst bliver mere enkelt og til at arbejde med – så giver det mig en helt særlig tilfredshed. Ikke fordi det er perfekt, men fordi det bliver brugbart og giver mening i virkeligheden.</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="flow-item">
+                        <div class="flow-card reading-glow">
+                          <strong class="flow-title">Min vision</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Min vision er, at mennesker og organisationer i højere grad får mulighed for at vælge det, der passer til dem.</p>
+                            <p>At vi accepterer forskellighed som et grundvilkår – ikke som noget, der skal reduceres, men som noget, der skal forstås og arbejdes med. Og at vi bygger vores værktøjer derefter.</p>
+                            <p>At teknologi ikke erstatter mennesker, men understøtter dem.</p>
+                            <p>At den frigiver tid og energi, i stedet for at binde den i systemer, der ikke er skabt til den virkelighed, de bruges i.</p>
+                            <p>Teknologi skal ikke føre os mod en form for “dommedag”, hvor mennesker bliver overflødige.</p>
+                            <p>Den skal gøre det modsatte.</p>
+                            <p>Formålet er ikke at fjerne kompleksiteten fra økonomiarbejdet, men at understøtte den – at skabe struktur, sammenhæng og klarhed.</p>
+                            <p>Når strukturen holder, og sammenhængen er tydelig, opstår der noget andet:</p>
+                            <p>mere plads til det menneskelige. Til faglighed, relationer og dømmekraft – det, som ingen maskine nogensinde kan erstatte.</p>
+                            <p>Jeg tror på, at når værktøjer er rigtige, så mærker man dem næsten ikke.</p>
+                            <p>De står ikke i vejen, de kræver ikke unødig opmærksomhed – de skaber ro, overblik og mulighed for at fokusere på det, der faktisk betyder noget.</p>
+                            <p>For mig handler det ikke kun om effektivitet, men om kvaliteten af den tid, vi bruger på vores arbejde. Om at skabe rammer, hvor mennesker kan tænke klarere, samarbejde bedre og finde mening i det, de gør.</p>
+                            <p>Mennesket i centrum.</p>
+                            <p>Teknologien som hjælp.</p>
+                            <p>Ikke for at erstatte.</p>
+                            <p>Men for at give plads.</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -2247,44 +2515,51 @@
                 </div>
 
                 <div class="panel-body">
-                  <div class="reading-rail">
-                    <div class="reading-node reveal">
+                  <div class="mini-skim-grid">
+                    <div class="mini-skim-card reveal">
                       <span>01</span>
                       <strong>Fundament</strong>
                       <p>Platformen tager udgangspunkt i reelle økonomiprocesser.</p>
                     </div>
-                    <div class="reading-node reveal">
+                    <div class="mini-skim-card reveal">
                       <span>02</span>
                       <strong>Tilpasning</strong>
                       <p>Små virksomheder, større organisationer, NGO’er eller fonde.</p>
                     </div>
-                    <div class="reading-node reveal">
+                    <div class="mini-skim-card reveal">
                       <span>03</span>
                       <strong>Implementering</strong>
                       <p>Engangsbeløb for opsætning, struktur og tilpasning.</p>
                     </div>
-                    <div class="reading-node reveal">
+                    <div class="mini-skim-card reveal">
                       <span>04</span>
                       <strong>Drift</strong>
                       <p>Hosting, vedligeholdelse og support som løbende base.</p>
                     </div>
                   </div>
 
-                  <div class="story-flow">
-                    <div class="story-card reveal">
-                      <div class="story-step">1</div>
-                      <strong>Koncept og prissætning</strong>
-                      <p>
-                        Jeg har bygget en finansiel platform, der tager udgangspunkt i de processer, jeg selv arbejder med: budget, opfølgning, forecast, rapportering og beslægtede områder.<br /><br />
-                        Platformen er ikke tænkt som en færdig pakke, men som et fundament, der kan udvides og tilpasses. Den kan være enkel i sin form, hvis behovet er det, eller mere kompleks, hvis organisationen kræver det. Den kan bruges i små virksomheder, større organisationer, NGO’er eller fonde, hvor eksempelvis projekt- og bevillingsstyring spiller en central rolle.<br /><br />
-                        Prissætningen følger samme princip.<br /><br />
-                        Der er et engangsbeløb for implementering, hvor løsningen tilpasses jeres organisation, jeres struktur og jeres måde at arbejde på. Det er her fundamentet bliver lagt – ikke som en standardopsætning, men som noget der giver mening fra starten.<br /><br />
-                        Derudover er der en løbende månedlig drift, som dækker hosting, vedligeholdelse og support. Det sikrer, at løsningen fungerer stabilt i hverdagen, og at den kan udvikle sig i takt med jeres behov.<br /><br />
-                        Begge dele afhænger af omfang og kompleksitet – men også af organisationens virkelighed og økonomiske rammer. Målet er ikke at presse en fast model ned over jer, men at finde et niveau, der er realistisk og bæredygtigt.<br /><br />
-                        I praksis betyder det, at I betaler for det, I har brug for – og ikke for en standardpakke, der sjældent passer.<br /><br />
-                        Jeg er bevidst om, at økonomi spiller en rolle. Derfor er princippet enkelt: det skal kunne lade sig gøre.<br /><br />
-                        For mange vil værdien ikke kun ligge i prisen, men i den tid og det overblik, der frigives, når værktøjerne begynder at arbejde med jer – og ikke imod jer.
-                      </p>
+                  <div class="skim-divider"></div>
+
+                  <div class="reading-block">
+                    <div class="reading-label">Hvordan samarbejdet tænkes</div>
+
+                    <div class="reading-flow">
+                      <div class="flow-item">
+                        <div class="flow-card reading-glow">
+                          <strong class="flow-title">Koncept og prissætning</strong>
+                          <div class="flow-text">
+                            <p class="lead-line">Jeg har bygget en finansiel platform, der tager udgangspunkt i de processer, jeg selv arbejder med: budget, opfølgning, forecast, rapportering og beslægtede områder.</p>
+                            <p>Platformen er ikke tænkt som en færdig pakke, men som et fundament, der kan udvides og tilpasses. Den kan være enkel i sin form, hvis behovet er det, eller mere kompleks, hvis organisationen kræver det. Den kan bruges i små virksomheder, større organisationer, NGO’er eller fonde, hvor eksempelvis projekt- og bevillingsstyring spiller en central rolle.</p>
+                            <p>Prissætningen følger samme princip.</p>
+                            <p>Der er et engangsbeløb for implementering, hvor løsningen tilpasses jeres organisation, jeres struktur og jeres måde at arbejde på. Det er her fundamentet bliver lagt – ikke som en standardopsætning, men som noget der giver mening fra starten.</p>
+                            <p>Derudover er der en løbende månedlig drift, som dækker hosting, vedligeholdelse og support. Det sikrer, at løsningen fungerer stabilt i hverdagen, og at den kan udvikle sig i takt med jeres behov.</p>
+                            <p>Begge dele afhænger af omfang og kompleksitet – men også af organisationens virkelighed og økonomiske rammer. Målet er ikke at presse en fast model ned over jer, men at finde et niveau, der er realistisk og bæredygtigt.</p>
+                            <p>I praksis betyder det, at I betaler for det, I har brug for – og ikke for en standardpakke, der sjældent passer.</p>
+                            <p>Jeg er bevidst om, at økonomi spiller en rolle. Derfor er princippet enkelt: det skal kunne lade sig gøre.</p>
+                            <p>For mange vil værdien ikke kun ligge i prisen, men i den tid og det overblik, der frigives, når værktøjerne begynder at arbejde med jer – og ikke imod jer.</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -2472,6 +2747,40 @@
     );
 
     revealElements.forEach((el) => observer.observe(el));
+
+    const flowItems = document.querySelectorAll(".flow-item");
+
+    const flowObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
+
+    flowItems.forEach((item) => flowObserver.observe(item));
+
+    function applyLongTextFade() {
+      const cards = document.querySelectorAll(".flow-card");
+      cards.forEach((card) => {
+        const text = card.querySelector(".flow-text");
+        if (!text) return;
+
+        const textLength = text.innerText.trim().length;
+
+        if (textLength > 700) {
+          card.classList.add("has-fade");
+        }
+      });
+    }
+
+    applyLongTextFade();
   </script>
 </body>
 </html>
