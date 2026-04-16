@@ -970,6 +970,189 @@
       transform: translateY(0);
     }
 
+    .story-flow {
+      display: grid;
+      gap: 16px;
+    }
+
+    .story-card {
+      position: relative;
+      padding: 22px 22px 22px 78px;
+      border-radius: 26px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .story-step {
+      position: absolute;
+      left: 22px;
+      top: 22px;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.84rem;
+      font-weight: 900;
+      color: #041120;
+      background: linear-gradient(135deg, #62adff, #97eeff);
+      box-shadow:
+        0 10px 24px rgba(72,145,255,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.34);
+    }
+
+    .story-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted-2);
+      line-height: 1.78;
+    }
+
+    .story-pair {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .reading-rail {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .reading-node {
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.018));
+    }
+
+    .reading-node span {
+      display: block;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ecfff;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .reading-node strong {
+      display: block;
+      color: #ffffff;
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .reading-node p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .longform-card {
+      padding: 24px;
+      border-radius: 26px;
+      border: 1px solid rgba(156, 199, 255, 0.11);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .longform-card strong {
+      display: block;
+      margin-bottom: 12px;
+      color: #ffffff;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+    }
+
+    .longform-card p {
+      margin: 0;
+      color: var(--muted-2);
+      line-height: 1.82;
+    }
+
+    .timeline-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .timeline-label {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(99,182,255,0.12), rgba(255,255,255,0.025));
+      color: #dff1ff;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .timeline-panel {
+      padding: 20px 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(156, 199, 255, 0.1);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .timeline-panel strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .timeline-panel p {
+      margin: 0;
+      color: var(--muted-2);
+      line-height: 1.78;
+    }
+
+    .subtle-divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, rgba(156,199,255,0.24), transparent);
+      margin: 4px 0;
+    }
+
+    .focus-quote {
+      padding: 24px 26px;
+      border-radius: 26px;
+      border: 1px solid rgba(156, 199, 255, 0.12);
+      background:
+        radial-gradient(circle at top left, rgba(99,182,255,0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--glow);
+    }
+
+    .focus-quote p {
+      margin: 0;
+      color: #ecf5ff;
+      font-size: 1.03rem;
+      line-height: 1.85;
+    }
+
+    .focus-quote small {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
     @keyframes logoFloat {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-4px); }
@@ -1001,6 +1184,10 @@
       .sidebar-nav {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .reading-rail {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 980px) {
@@ -1008,8 +1195,14 @@
       .grid-3,
       .section-intro,
       .contact-box,
-      .module-row {
+      .module-row,
+      .story-pair,
+      .timeline-row {
         grid-template-columns: 1fr;
+      }
+
+      .timeline-label {
+        padding-bottom: 10px;
       }
     }
 
@@ -1022,7 +1215,8 @@
         padding: 12px 0;
       }
 
-      .sidebar-nav {
+      .sidebar-nav,
+      .reading-rail {
         grid-template-columns: 1fr;
       }
 
@@ -1057,6 +1251,16 @@
 
       .bar-row {
         grid-template-columns: 1fr;
+      }
+
+      .story-card {
+        padding-left: 22px;
+        padding-top: 72px;
+      }
+
+      .story-step {
+        left: 22px;
+        top: 20px;
       }
     }
   </style>
@@ -1397,8 +1601,32 @@
                 </div>
 
                 <div class="panel-body">
-                  <div class="grid-3">
-                    <div class="card reveal">
+                  <div class="reading-rail">
+                    <div class="reading-node reveal">
+                      <span>01</span>
+                      <strong>Baggrund</strong>
+                      <p>Økonomi, matematik og software engineering i samme fortælling.</p>
+                    </div>
+                    <div class="reading-node reveal">
+                      <span>02</span>
+                      <strong>Tilbud</strong>
+                      <p>Ikke standard. Ikke tvang. Men tilpasning til virkeligheden.</p>
+                    </div>
+                    <div class="reading-node reveal">
+                      <span>03</span>
+                      <strong>Motivation</strong>
+                      <p>Fordi de tunge arbejdsgange er virkelige og mærkes i hverdagen.</p>
+                    </div>
+                    <div class="reading-node reveal">
+                      <span>04</span>
+                      <strong>Udgangspunkt</strong>
+                      <p>Teknologi skal være meningsfuld, tillidsfuld og menneskelig.</p>
+                    </div>
+                  </div>
+
+                  <div class="story-flow">
+                    <div class="story-card reveal">
+                      <div class="story-step">1</div>
                       <strong>Hvem jeg er</strong>
                       <p>
                         Jeg hedder Astrid Schell.<br /><br />
@@ -1413,7 +1641,8 @@
                       </p>
                     </div>
 
-                    <div class="card reveal">
+                    <div class="story-card reveal">
+                      <div class="story-step">2</div>
                       <strong>Hvad jeg tilbyder</strong>
                       <p>
                         Jeg tilbyder ikke en standardløsning, og jeg forsøger heller ikke at presse organisationer ind i en fast struktur.<br /><br />
@@ -1425,7 +1654,8 @@
                       </p>
                     </div>
 
-                    <div class="card reveal">
+                    <div class="story-card reveal">
+                      <div class="story-step">3</div>
                       <strong>Hvorfor jeg gør det</strong>
                       <p>
                         Jeg gør det, fordi jeg selv sidder midt i det.<br /><br />
@@ -1438,22 +1668,22 @@
                     </div>
                   </div>
 
-                  <div class="quote-card reveal">
+                  <div class="focus-quote reveal">
                     <p>
                       Vi er alle anderledes, og vi er alle specielle – både som mennesker og som organisationer. Det er ikke en udfordring, der skal reduceres, men en realitet, der skal respekteres.
                     </p>
                     <small>— Et menneskeligt udgangspunkt for teknologi</small>
                   </div>
 
-                  <div class="grid-2">
-                    <div class="card reveal">
+                  <div class="story-pair">
+                    <div class="longform-card reveal">
                       <strong>Et syn på fællesskab</strong>
                       <p>
                         Jeg tror på fællesskab. Jeg tror på et samfund, hvor vi tager ansvar – ikke kun for vores egne resultater, men for den måde vi påvirker hinanden på. For mig hænger det uløseligt sammen med den måde, vi bygger teknologi på.
                       </p>
                     </div>
 
-                    <div class="card reveal">
+                    <div class="longform-card reveal">
                       <strong>Et ansvar for at bruge sine evner</strong>
                       <p>
                         Jeg tror på, at vi som mennesker har en forpligtelse til at bruge vores evner til noget, der rækker ud over os selv. Ikke kun for at gøre ting hurtigere, men for at gøre dem mere meningsfulde og bedre at være i for dem, der bærer arbejdet i praksis.
@@ -1881,93 +2111,77 @@
                     </div>
                   </div>
 
-                  <div class="grid-3">
-                    <div class="card reveal">
-                      <strong>Hvad jeg gør anderledes og hvorfor</strong>
-                      <p>
-                        Jeg tror ikke på, at standardsoftware kan dække alle behov – ikke fordi det er forkert, men fordi det i sin natur er generisk.
-                        <br /><br />
-                        Hvis vi accepterer, at mennesker og organisationer er forskellige, så giver det ikke mening, at de alle skal arbejde i de samme strukturer. Alligevel er det ofte sådan, det foregår i praksis.
-                        <br /><br />
-                        Jeg mener, at software bør tilpasse sig organisationen – ikke omvendt.
-                        <br /><br />
-                        Det er her, mange oplever en form for modstand i hverdagen – og det er netop den modstand, jeg forsøger at fjerne.
-                        <br /><br />
-                        Jeg tror heller ikke på, at adgang til gode løsninger skal være begrænset af pris og økonomiske rammer i en grad, hvor kun de største organisationer har mulighed for at få noget, der reelt passer til dem. Det skaber en skævhed, som jeg ikke synes giver mening – hverken fagligt eller menneskeligt.
-                      </p>
+                  <div class="timeline-stack">
+                    <div class="timeline-row reveal">
+                      <div class="timeline-label">Udgangspunkt</div>
+                      <div class="timeline-panel">
+                        <strong>Hvad jeg gør anderledes og hvorfor</strong>
+                        <p>
+                          Jeg tror ikke på, at standardsoftware kan dække alle behov – ikke fordi det er forkert, men fordi det i sin natur er generisk.<br /><br />
+                          Hvis vi accepterer, at mennesker og organisationer er forskellige, så giver det ikke mening, at de alle skal arbejde i de samme strukturer. Alligevel er det ofte sådan, det foregår i praksis.<br /><br />
+                          Jeg mener, at software bør tilpasse sig organisationen – ikke omvendt.<br /><br />
+                          Det er her, mange oplever en form for modstand i hverdagen – og det er netop den modstand, jeg forsøger at fjerne.<br /><br />
+                          Jeg tror heller ikke på, at adgang til gode løsninger skal være begrænset af pris og økonomiske rammer i en grad, hvor kun de største organisationer har mulighed for at få noget, der reelt passer til dem. Det skaber en skævhed, som jeg ikke synes giver mening – hverken fagligt eller menneskeligt.
+                        </p>
+                      </div>
                     </div>
 
-                    <div class="card reveal">
-                      <strong>Hvad jeg vil opnå</strong>
-                      <p>
-                        Jeg har ikke en ambition om at konkurrere med de største softwareleverandører.
-                        <br /><br />
-                        Min ambition er at gøre noget anderledes – at skabe løsninger, der er mere meningsfulde og mere brugbare for den enkelte.
-                        <br /><br />
-                        At vise, at det er muligt at bygge løsninger, der tager udgangspunkt i mennesker og organisationer, og som skaber mere ro, bedre overblik og en mere tryg arbejdsdag. Når værktøjerne fungerer, frigiver det energi til det arbejde, der faktisk skaber værdi.
-                        <br /><br />
-                        Hvis det samtidig kan føre til mere glæde og mere overskud i hverdagen, så er det i sig selv en værdi.
-                        <br /><br />
-                        Jeg ønsker også at bidrage til et andet syn på økonomi.
-                        <br /><br />
-                        Et syn, hvor begreber som budget, regnskab, resultatopgørelse og balance ikke kun er forbeholdt økonomiuddannede, men noget flere kan forstå og arbejde med. Hvor økonomi ikke opleves som noget tungt eller utilgængeligt, men som noget, der giver indsigt og retning.
-                        <br /><br />
-                        Jeg vil gerne være med til at fjerne den usikkerhed og afstand, nogle oplever i mødet med økonomi – og vise, at økonomi og matematik hænger sammen, og i virkeligheden rummer en enkelhed og en form for skønhed, når de rigtige redskaber er på plads.
-                      </p>
+                    <div class="timeline-row reveal">
+                      <div class="timeline-label">Ambition</div>
+                      <div class="timeline-panel">
+                        <strong>Hvad jeg vil opnå</strong>
+                        <p>
+                          Jeg har ikke en ambition om at konkurrere med de største softwareleverandører.<br /><br />
+                          Min ambition er at gøre noget anderledes – at skabe løsninger, der er mere meningsfulde og mere brugbare for den enkelte.<br /><br />
+                          At vise, at det er muligt at bygge løsninger, der tager udgangspunkt i mennesker og organisationer, og som skaber mere ro, bedre overblik og en mere tryg arbejdsdag. Når værktøjerne fungerer, frigiver det energi til det arbejde, der faktisk skaber værdi.<br /><br />
+                          Hvis det samtidig kan føre til mere glæde og mere overskud i hverdagen, så er det i sig selv en værdi.<br /><br />
+                          Jeg ønsker også at bidrage til et andet syn på økonomi.<br /><br />
+                          Et syn, hvor begreber som budget, regnskab, resultatopgørelse og balance ikke kun er forbeholdt økonomiuddannede, men noget flere kan forstå og arbejde med. Hvor økonomi ikke opleves som noget tungt eller utilgængeligt, men som noget, der giver indsigt og retning.<br /><br />
+                          Jeg vil gerne være med til at fjerne den usikkerhed og afstand, nogle oplever i mødet med økonomi – og vise, at økonomi og matematik hænger sammen, og i virkeligheden rummer en enkelhed og en form for skønhed, når de rigtige redskaber er på plads.
+                        </p>
+                      </div>
                     </div>
 
-                    <div class="card reveal">
-                      <strong>Hvad der driver mig</strong>
-                      <p>
-                        Jeg er drevet af at forstå og løse problemer – ikke kun teknisk, men i deres kontekst.
-                        <br /><br />
-                        Min hjerne er i konstant bevægelse, og jeg trives i at finde løsninger, der ikke bare fungerer i teorien, men i praksis. Det handler ikke om perfektion, men om at komme tættere på noget, der giver mening.
-                        <br /><br />
-                        Man kan kalde det altruisme, nysgerrighed eller bare stædighed. For mig er det en naturlig måde at være i verden på.
-                        <br /><br />
-                        Og når det, jeg laver, gør en forskel for andre – når noget komplekst bliver mere enkelt og til at arbejde med – så giver det mig en helt særlig tilfredshed. Ikke fordi det er perfekt, men fordi det bliver brugbart og giver mening i virkeligheden.
-                      </p>
+                    <div class="timeline-row reveal">
+                      <div class="timeline-label">Drivkraft</div>
+                      <div class="timeline-panel">
+                        <strong>Hvad der driver mig</strong>
+                        <p>
+                          Jeg er drevet af at forstå og løse problemer – ikke kun teknisk, men i deres kontekst.<br /><br />
+                          Min hjerne er i konstant bevægelse, og jeg trives i at finde løsninger, der ikke bare fungerer i teorien, men i praksis. Det handler ikke om perfektion, men om at komme tættere på noget, der giver mening.<br /><br />
+                          Man kan kalde det altruisme, nysgerrighed eller bare stædighed. For mig er det en naturlig måde at være i verden på.<br /><br />
+                          Og når det, jeg laver, gør en forskel for andre – når noget komplekst bliver mere enkelt og til at arbejde med – så giver det mig en helt særlig tilfredshed. Ikke fordi det er perfekt, men fordi det bliver brugbart og giver mening i virkeligheden.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="timeline-row reveal">
+                      <div class="timeline-label">Retning</div>
+                      <div class="timeline-panel">
+                        <strong>Min vision</strong>
+                        <p>
+                          Min vision er, at mennesker og organisationer i højere grad får mulighed for at vælge det, der passer til dem.<br /><br />
+                          At vi accepterer forskellighed som et grundvilkår – ikke som noget, der skal reduceres, men som noget, der skal forstås og arbejdes med. Og at vi bygger vores værktøjer derefter.<br /><br />
+                          At teknologi ikke erstatter mennesker, men understøtter dem.<br /><br />
+                          At den frigiver tid og energi, i stedet for at binde den i systemer, der ikke er skabt til den virkelighed, de bruges i.<br /><br />
+                          Teknologi skal ikke føre os mod en form for “dommedag”, hvor mennesker bliver overflødige.<br /><br />
+                          Den skal gøre det modsatte.<br /><br />
+                          Formålet er ikke at fjerne kompleksiteten fra økonomiarbejdet, men at understøtte den – at skabe struktur, sammenhæng og klarhed.<br /><br />
+                          Når strukturen holder, og sammenhængen er tydelig, opstår der noget andet:<br />
+                          mere plads til det menneskelige. Til faglighed, relationer og dømmekraft – det, som ingen maskine nogensinde kan erstatte.<br /><br />
+                          Jeg tror på, at når værktøjer er rigtige, så mærker man dem næsten ikke.<br /><br />
+                          De står ikke i vejen, de kræver ikke unødig opmærksomhed – de skaber ro, overblik og mulighed for at fokusere på det, der faktisk betyder noget.<br /><br />
+                          For mig handler det ikke kun om effektivitet, men om kvaliteten af den tid, vi bruger på vores arbejde. Om at skabe rammer, hvor mennesker kan tænke klarere, samarbejde bedre og finde mening i det, de gør.<br /><br />
+                          Mennesket i centrum.<br />
+                          Teknologien som hjælp.<br />
+                          Ikke for at erstatte.<br />
+                          Men for at give plads.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="card reveal">
-                    <strong>Min vision</strong>
-                    <p>
-                      Min vision er, at mennesker og organisationer i højere grad får mulighed for at vælge det, der passer til dem.
-                      <br /><br />
-                      At vi accepterer forskellighed som et grundvilkår – ikke som noget, der skal reduceres, men som noget, der skal forstås og arbejdes med. Og at vi bygger vores værktøjer derefter.
-                      <br /><br />
-                      At teknologi ikke erstatter mennesker, men understøtter dem.
-                      <br /><br />
-                      At den frigiver tid og energi, i stedet for at binde den i systemer, der ikke er skabt til den virkelighed, de bruges i.
-                      <br /><br />
-                      Teknologi skal ikke føre os mod en form for “dommedag”, hvor mennesker bliver overflødige.
-                      <br /><br />
-                      Den skal gøre det modsatte.
-                      <br /><br />
-                      Formålet er ikke at fjerne kompleksiteten fra økonomiarbejdet, men at understøtte den – at skabe struktur, sammenhæng og klarhed.
-                      <br /><br />
-                      Når strukturen holder, og sammenhængen er tydelig, opstår der noget andet:
-                      <br />
-                      mere plads til det menneskelige. Til faglighed, relationer og dømmekraft – det, som ingen maskine nogensinde kan erstatte.
-                      <br /><br />
-                      Jeg tror på, at når værktøjer er rigtige, så mærker man dem næsten ikke.
-                      <br /><br />
-                      De står ikke i vejen, de kræver ikke unødig opmærksomhed – de skaber ro, overblik og mulighed for at fokusere på det, der faktisk betyder noget.
-                      <br /><br />
-                      For mig handler det ikke kun om effektivitet, men om kvaliteten af den tid, vi bruger på vores arbejde. Om at skabe rammer, hvor mennesker kan tænke klarere, samarbejde bedre og finde mening i det, de gør.
-                      <br /><br />
-                      Mennesket i centrum.
-                      <br />
-                      Teknologien som hjælp.
-                      <br />
-                      Ikke for at erstatte.
-                      <br />
-                      Men for at give plads.
-                    </p>
-                  </div>
-
-                  <div class="quote-card reveal">
+                  <div class="focus-quote reveal">
                     <p>
                       Mennesket i centrum.<br />
                       Teknologien som hjælp.<br />
@@ -1992,49 +2206,59 @@
                 </div>
 
                 <div class="panel-body">
-                  <div class="grid-2">
-                    <div class="card reveal">
-                      <strong>Koncept</strong>
-                      <p>
-                        Jeg har bygget en finansiel platform, der tager udgangspunkt i de processer, jeg selv arbejder med: budget, opfølgning, forecast, rapportering og beslægtede områder.
-                        <br /><br />
-                        Platformen er ikke tænkt som en færdig pakke, men som et fundament, der kan udvides og tilpasses. Den kan være enkel i sin form, hvis behovet er det, eller mere kompleks, hvis organisationen kræver det. Den kan bruges i små virksomheder, større organisationer, NGO’er eller fonde, hvor eksempelvis projekt- og bevillingsstyring spiller en central rolle.
-                        <br /><br />
-                        Prissætningen følger samme princip.
-                      </p>
+                  <div class="reading-rail">
+                    <div class="reading-node reveal">
+                      <span>01</span>
+                      <strong>Fundament</strong>
+                      <p>Platformen tager udgangspunkt i reelle økonomiprocesser.</p>
                     </div>
+                    <div class="reading-node reveal">
+                      <span>02</span>
+                      <strong>Tilpasning</strong>
+                      <p>Små virksomheder, større organisationer, NGO’er eller fonde.</p>
+                    </div>
+                    <div class="reading-node reveal">
+                      <span>03</span>
+                      <strong>Implementering</strong>
+                      <p>Engangsbeløb for opsætning, struktur og tilpasning.</p>
+                    </div>
+                    <div class="reading-node reveal">
+                      <span>04</span>
+                      <strong>Drift</strong>
+                      <p>Hosting, vedligeholdelse og support som løbende base.</p>
+                    </div>
+                  </div>
 
-                    <div class="card reveal">
-                      <strong>Prissætning</strong>
+                  <div class="story-flow">
+                    <div class="story-card reveal">
+                      <div class="story-step">1</div>
+                      <strong>Koncept og prissætning</strong>
                       <p>
-                        Der er et engangsbeløb for implementering, hvor løsningen tilpasses jeres organisation, jeres struktur og jeres måde at arbejde på. Det er her fundamentet bliver lagt – ikke som en standardopsætning, men som noget der giver mening fra starten.
-                        <br /><br />
-                        Derudover er der en løbende månedlig drift, som dækker hosting, vedligeholdelse og support. Det sikrer, at løsningen fungerer stabilt i hverdagen, og at den kan udvikle sig i takt med jeres behov.
-                        <br /><br />
-                        Begge dele afhænger af omfang og kompleksitet – men også af organisationens virkelighed og økonomiske rammer. Målet er ikke at presse en fast model ned over jer, men at finde et niveau, der er realistisk og bæredygtigt.
+                        Jeg har bygget en finansiel platform, der tager udgangspunkt i de processer, jeg selv arbejder med: budget, opfølgning, forecast, rapportering og beslægtede områder.<br /><br />
+                        Platformen er ikke tænkt som en færdig pakke, men som et fundament, der kan udvides og tilpasses. Den kan være enkel i sin form, hvis behovet er det, eller mere kompleks, hvis organisationen kræver det. Den kan bruges i små virksomheder, større organisationer, NGO’er eller fonde, hvor eksempelvis projekt- og bevillingsstyring spiller en central rolle.<br /><br />
+                        Prissætningen følger samme princip.<br /><br />
+                        Der er et engangsbeløb for implementering, hvor løsningen tilpasses jeres organisation, jeres struktur og jeres måde at arbejde på. Det er her fundamentet bliver lagt – ikke som en standardopsætning, men som noget der giver mening fra starten.<br /><br />
+                        Derudover er der en løbende månedlig drift, som dækker hosting, vedligeholdelse og support. Det sikrer, at løsningen fungerer stabilt i hverdagen, og at den kan udvikle sig i takt med jeres behov.<br /><br />
+                        Begge dele afhænger af omfang og kompleksitet – men også af organisationens virkelighed og økonomiske rammer. Målet er ikke at presse en fast model ned over jer, men at finde et niveau, der er realistisk og bæredygtigt.<br /><br />
+                        I praksis betyder det, at I betaler for det, I har brug for – og ikke for en standardpakke, der sjældent passer.<br /><br />
+                        Jeg er bevidst om, at økonomi spiller en rolle. Derfor er princippet enkelt: det skal kunne lade sig gøre.<br /><br />
+                        For mange vil værdien ikke kun ligge i prisen, men i den tid og det overblik, der frigives, når værktøjerne begynder at arbejde med jer – og ikke imod jer.
                       </p>
                     </div>
                   </div>
 
-                  <div class="quote-card reveal">
-                    <p>
-                      I praksis betyder det, at I betaler for det, I har brug for – og ikke for en standardpakke, der sjældent passer.
-                    </p>
-                    <small>— Et mere fleksibelt og realistisk udgangspunkt</small>
-                  </div>
-
-                  <div class="grid-2">
-                    <div class="card reveal">
+                  <div class="story-pair">
+                    <div class="longform-card reveal">
                       <strong>Et princip, ikke en fast model</strong>
                       <p>
-                        Jeg er bevidst om, at økonomi spiller en rolle. Derfor er princippet enkelt: det skal kunne lade sig gøre.
+                        Målet er ikke at presse en fast model ned over jer, men at finde et niveau, der er realistisk og bæredygtigt.
                       </p>
                     </div>
 
-                    <div class="card reveal">
+                    <div class="longform-card reveal">
                       <strong>Hvor værdien ofte ligger</strong>
                       <p>
-                        For mange vil værdien ikke kun ligge i prisen, men i den tid og det overblik, der frigives, når værktøjerne begynder at arbejde med jer – og ikke imod jer.
+                        Når værktøjerne begynder at arbejde med jer – og ikke imod jer – flytter værdien sig fra blot pris til tid, ro og bedre overblik.
                       </p>
                     </div>
                   </div>
