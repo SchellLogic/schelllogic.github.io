@@ -316,7 +316,7 @@
 
   .hero-lead {
     margin-top: 16px;
-    max-width: 68ch;
+    max-width: 85ch;
     color: var(--muted-2);
     font-size: 1.06rem;
   }
@@ -699,7 +699,7 @@
   .panel-sub {
     color: var(--muted);
     margin-top: 10px;
-    max-width: 82ch;
+    max-width: 90ch;
     font-size: 1.02rem;
     line-height: 1.75;
   }
@@ -1236,6 +1236,16 @@
     }
   }
 
+ @media (min-width: 1400px) {
+  .hero-lead {
+    max-width: 95ch;
+  }
+
+  .panel-sub {
+    max-width: 100ch;
+  }
+}
+  
   @media (max-width: 720px) {
     .container {
       width: min(var(--content-max), calc(100% - 18px));
