@@ -697,6 +697,87 @@
     .focus-quote { padding: 24px 26px; border-radius: 26px; border: 1px solid rgba(156, 199, 255, 0.12); background: radial-gradient(circle at top left, rgba(99,182,255,0.10), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); box-shadow: var(--glow); }
     .focus-quote p { margin: 0; color: #ecf5ff; font-size: 1.03rem; line-height: 1.9; }
 
+    .demo-strip {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .demo-step {
+      position: relative;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: linear-gradient(180deg, rgba(126, 215, 255, 0.07), rgba(255,255,255,0.018));
+    }
+
+    .demo-step span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+      border-radius: 999px;
+      color: #041120;
+      background: linear-gradient(135deg, #72bcff, #b8f5ff);
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .demo-step strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #ffffff;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+    }
+
+    .demo-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .impact-card {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid rgba(156, 199, 255, 0.10);
+      background: radial-gradient(circle at top right, rgba(126,215,255,0.10), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    }
+
+    .impact-card span {
+      display: block;
+      margin-bottom: 8px;
+      color: #a8d5ff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .impact-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .impact-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
     @keyframes logoFloat { 0% { transform: translateY(0px); } 50% { transform: translateY(-4px); } 100% { transform: translateY(0px); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -709,7 +790,7 @@
     }
 
     @media (max-width: 980px) {
-      .grid-2, .grid-3, .section-intro, .contact-box, .module-row, .story-pair { grid-template-columns: 1fr; }
+      .grid-2, .grid-3, .section-intro, .contact-box, .module-row, .story-pair, .demo-strip, .impact-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
@@ -818,6 +899,13 @@
                   <p>Opdater forventningerne med samme struktur som budgettet, så organisationen får et mere aktuelt og troværdigt beslutningsgrundlag.</p>
                 </div>
               </div>
+
+              <div class="hero-empathy reveal">
+                <strong>Relevant som oplæg for ISOBRO og NGO’er</strong>
+                En præsentation kan tage udgangspunkt i konkrete NGO-scenarier: hvordan budget bliver til opfølgning, hvordan projekter og bevillinger kobles til økonomien, og hvordan rapportering til ledelse, bestyrelse og fonde kan blive mere sammenhængende.
+                <br /><br />
+                Fokus er ikke kun på software, men på de arbejdsgange og styringsudfordringer mange organisationer genkender fra hverdagen.
+              </div>
             </div>
 
             <div class="hero-preview">
@@ -913,6 +1001,7 @@
                 <button class="tab-btn" data-tab="tab-budget">Budget</button>
                 <button class="tab-btn" data-tab="tab-forecast">Forecast</button>
                 <button class="tab-btn" data-tab="tab-opfoelgning">Opfølgning</button>
+                <button class="tab-btn" data-tab="tab-demo">Demo-flow</button>
                 <button class="tab-btn" data-tab="tab-projekter">Projekter</button>
                 <button class="tab-btn" data-tab="tab-bevillinger">Bevillinger</button>
                 <button class="tab-btn" data-tab="tab-kvartalsluk">Kvartalsluk</button>
@@ -1098,6 +1187,59 @@
                       <div class="shot-foot">Når opfølgningen er tydelig og samlet, bliver samtalen om økonomi mindre defensiv og mere præget af forståelse, ansvar og handling.</div>
                     </div>
                     <div class="card reveal"><strong>Hvorfor det betyder noget</strong><p>Opfølgning er et af de steder, hvor god struktur virkelig kan mærkes. Når afvigelser, perioder og vurderinger hænger sammen, bliver det lettere at arbejde ærligt med tallene.</p></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel" id="tab-demo">
+                <div class="panel-head">
+                  <div>
+                    <div class="kicker">Demo-flow</div>
+                    <h2>En konkret gennemgang fra budget til rapportering</h2>
+                    <div class="panel-sub">
+                      En demo kan vise platformen som en samlet arbejdsproces – ikke kun som enkeltstående moduler. Det gør det lettere for NGO’er at se, hvordan løsningen kan bruges i en almindelig økonomihverdag.
+                      <br /><br />
+                      Eksemplet kan tage udgangspunkt i en organisation med aktiviteter, formål, projekter og bevillinger, hvor ledelsen har brug for løbende overblik og mere sikker rapportering.
+                    </div>
+                  </div>
+                  <div class="panel-tag">Konkret og genkendeligt</div>
+                </div>
+
+                <div class="panel-body">
+                  <div class="demo-strip">
+                    <div class="demo-step reveal"><span>1</span><strong>Budget opbygges</strong><p>Budgettet lægges på aktiviteter, formål og konti, så strukturen er klar fra starten.</p></div>
+                    <div class="demo-step reveal"><span>2</span><strong>Faktisk forbrug læses ind</strong><p>Regnskabstal kobles til budgettet, så afvigelser kan ses uden manuel sammenstilling.</p></div>
+                    <div class="demo-step reveal"><span>3</span><strong>Forecast justeres</strong><p>Årsforventningen opdateres på samme struktur, så ledelsen får et aktuelt billede.</p></div>
+                    <div class="demo-step reveal"><span>4</span><strong>Rapportering samles</strong><p>Overblik, kommentarer og eksport kan bruges videre til ledelse, bestyrelse eller fond.</p></div>
+                  </div>
+
+                  <div class="impact-grid">
+                    <div class="impact-card reveal"><span>For økonomi</span><strong>Mindre manuelt samlearbejde</strong><p>Færre parallelle Excel-ark og mindre tid brugt på at kontrollere, om tallene hænger sammen.</p></div>
+                    <div class="impact-card reveal"><span>For ledelse</span><strong>Bedre beslutningsgrundlag</strong><p>Budget, faktisk forbrug og forecast kan læses samlet, så økonomien bliver lettere at forstå.</p></div>
+                    <div class="impact-card reveal"><span>For NGO’er</span><strong>Stærkere dokumentation</strong><p>Projekter, bevillinger og rapportering kan kobles tættere til den økonomiske styring.</p></div>
+                  </div>
+
+                  <div class="shot-card reveal">
+                    <div class="shot-head">
+                      <div>
+                        <strong>Forslag til live-demo</strong>
+                        <span>Et kort forløb der kan vises på 15–20 minutter</span>
+                      </div>
+                      <div class="shot-badge">Oplæg</div>
+                    </div>
+                    <div style="padding: 22px;">
+                      <table class="feature-table">
+                        <thead>
+                          <tr><th>Del</th><th>Hvad vises</th><th>Hvorfor det er relevant</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Budget</td><td>Budgetlinjer, måneder, versioner og totaler</td><td><span class="badge badge-blue">Fælles fundament</span></td></tr>
+                          <tr><td>Opfølgning</td><td>Afvigelser, status og eksport</td><td><span class="badge badge-green">Løbende styring</span></td></tr>
+                          <tr><td>Forecast</td><td>Budget, actuals, forecast og varians</td><td><span class="badge badge-soft">Aktuel retning</span></td></tr>
+                          <tr><td>Bevillinger</td><td>Beløb, periode, ansvar og rapporteringskrav</td><td><span class="badge badge-blue">NGO-nær værdi</span></td></tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </section>
